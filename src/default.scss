@@ -1,0 +1,43 @@
+html {
+  font-size: 10px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+a, a:hover {
+  transition: all .4s ease-in-out;
+}
+
+
+///* Colors: */
+//TODO: dont forget you have the colors
+//--unnamed-color-ffe5e5: #FFE5E5;
+//--unnamed-color-46af32: #46AF32;
+//--unnamed-color-4b9ce2: #4B9CE2;
+//--unnamed-color-f0f8ff: #F0F8FF;
+//--unnamed-color-f77474: #F77474;
+//--unnamed-color-3e3e3e: #3E3E3E;
+//--unnamed-color-525252: #525252;
+//--unnamed-color-b1b1b1: #B1B1B1;
+//--unnamed-color-eaeaea: #EAEAEA;
+//--unnamed-color-f2f2f2: #F2F2F2;
+//--unnamed-color-ffffff: #FFFFFF;
