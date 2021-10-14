@@ -1,12 +1,16 @@
 import {
-  SET_USER,
   SG_SIGN_IN,
-  SG_SIGN_OUT,
   SG_SIGN_UP,
+  SG_SIGN_OUT,
+  SG_CHECK_SESSION,
 } from "../types/AuthTypes";
 
-export const signIn = () => ({
+export const signIn = (email, password) => ({
   type: SG_SIGN_IN,
+  payload: {
+    email,
+    password,
+  },
 });
 
 export const signUp = (email, password) => ({
@@ -21,7 +25,10 @@ export const signOut = () => ({
   type: SG_SIGN_OUT,
 });
 
-export const setUser = (user) => ({
-  type: SET_USER,
-  payload: user,
+export const checkUserSession = (token, email) => ({
+  type: SG_CHECK_SESSION,
+  payload: {
+    token,
+    email,
+  },
 });

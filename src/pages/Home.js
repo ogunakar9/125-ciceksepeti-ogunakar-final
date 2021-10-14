@@ -1,10 +1,9 @@
 import React from "react";
-import SignUpPage from "./SignUpPage";
 
 const Home = () => {
   return (
     <>
-      <SignUpPage />
+      <h1>hello sir please choose items</h1>
     </>
   );
 };

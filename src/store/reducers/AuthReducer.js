@@ -1,33 +1,24 @@
-import { SET_USER } from "../types/AuthTypes";
+import { SET_USER, SIGN_OUT } from "../types/AuthTypes";
 
 const INIT_STATE = {
-  email: "",
-  password: "",
-  emailValid: true,
-  user: undefined,
+  token: null,
+  email: null,
+  userErr: false,
+  isSignedIn: false,
 };
 
 export default function authReducer(state = INIT_STATE, action) {
   switch (action.type) {
-    // case SET_EMAIL:
-    //   const { email, valid } = action.payload;
-    //   return {
-    //     ...state,
-    //     email: email,
-    //     emailValid: valid,
-    //   };
-    //
-    // case SET_PASSWORD:
-    //   return {
-    //     ...state,
-    //     password: action.payload,
-    //   };
-
     case SET_USER:
-      const { token } = action.payload;
       return {
         ...state,
-        token,
+        token: action.payload.token,
+        email: action.payload.email,
+        isSignedIn: action.payload.isSignedIn,
+      };
+    case SIGN_OUT:
+      return {
+        INIT_STATE,
       };
 
     default:
