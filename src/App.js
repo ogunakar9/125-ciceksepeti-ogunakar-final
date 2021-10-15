@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import "./default.scss";
-import Home from "./pages/Home";
+import Index from "./pages";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
-import { checkUserSession } from "./store/actions";
+import Profile from "./pages/Profile";
+import { checkUserSession, fetchProducts } from "./store/actions";
 import Header from "./components/Header";
+import AddProduct from "./pages/AddProduct";
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(checkUserSession());
-  }, [dispatch]);
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   return (
     <Router>
@@ -23,7 +29,7 @@ export default function App() {
         <Switch>
           <Route exact path="/">
             <Header />
-            <Home />
+            <Index />
           </Route>
           <Route path="/signup">
             <Header />
@@ -32,6 +38,12 @@ export default function App() {
           <Route path="/signin">
             <Header />
             <SignInPage />
+          </Route>
+          <Route path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/addproducts">
+            <AddProduct />
           </Route>
         </Switch>
       </div>
