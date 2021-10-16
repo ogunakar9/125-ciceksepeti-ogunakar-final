@@ -14,7 +14,7 @@ import {
   fetchGivenOffers,
 } from "./store/actions";
 import Header from "./components/Header";
-import AddProduct from "./pages/AddProduct";
+import CreateProduct from "./pages/CreateProduct";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -34,6 +34,8 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchGivenOffers());
   }, []);
+
+  //TODO: introduce private routes
 
   return (
     <Router>
@@ -55,8 +57,8 @@ export default function App() {
           <Route path="/profile">
             <Profile />
           </Route>
-          <Route path="/addproducts">
-            <AddProduct />
+          <Route path="/createproduct">
+            <CreateProduct />
           </Route>
           <Route path="/productdetails/:id">
             <ProductDetails />

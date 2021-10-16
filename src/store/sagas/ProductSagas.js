@@ -6,6 +6,8 @@ import {
   SG_FETCH_PRODUCT_DETAIL,
   SET_PRODUCT_DETAILS,
   SG_GIVE_OFFER,
+  SG_CREATE_PRODUCT,
+  SG_UPLOAD_NEW_PRODUCT_IMAGE,
 } from "../types/ProductTypes";
 import { all, call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
@@ -161,10 +163,97 @@ function* sgGiveOffer(action) {
     ]);
   }
 }
+//
+// function* sgCreateProduct(action) {
+//   console.log("Create Product Saga");
+//
+//   try {
+//     const { isSignedIn, token } = yield select((state) => state.auth);
+//
+//     if (!isSignedIn) {
+//       return;
+//     }
+//
+//     const {} = = yield select((state) => state.products);
+//
+//     const response = yield call(API.post, "/product/create", price, {
+//       headers: {
+//         Authorization: `Bearer ${token}`,
+//       },
+//     });
+//
+//     console.log(response);
+//
+//     yield put({
+//       type: SG_FETCH_PRODUCT_DETAIL,
+//       payload: id,
+//     });
+//   } catch (error) {
+//     console.error("ProductDetail Saga", error.code, error.message);
+//     //TODO: show error message here
+//     yield all([
+//       // put({
+//       //   type: SET_SNACKBAR_OPEN,
+//       //   payload: true,
+//       // }),
+//       // put({
+//       //   type: SET_SNACKBAR_MESSAGE,
+//       //   payload: error.message,
+//       // }),
+//     ]);
+//   }
+// }
+
+function* sgUploadNewProductImage(action) {
+  console.log("Upload New Product Image Saga");
+
+  try {
+    const { isSignedIn, token } = yield select((state) => state.auth);
+
+    if (!isSignedIn) {
+      return;
+    }
+
+    //TODO: upload image here
+    const image = action.payload;
+    console.log("image saga", image);
+    const formData = new FormData();
+    formData.append("newImage", image);
+    console.log(formData);
+    const response = yield call(API.post, "/file/upload/image", formData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-type": "multipart/form-data",
+      },
+    });
+
+    console.log(response);
+
+    yield put({
+      type: SG_CREATE_PRODUCT,
+      payload: response,
+    });
+  } catch (error) {
+    console.error("Upload New Product Image Saga", error.code, error.message);
+    //TODO: show error message here
+    yield all([
+      // put({
+      //   type: SET_SNACKBAR_OPEN,
+      //   payload: true,
+      // }),
+      // put({
+      //   type: SET_SNACKBAR_MESSAGE,
+      //   payload: error.message,
+      // }),
+    ]);
+  }
+}
 
 export function* productWatcher() {
   yield takeLatest(SG_FETCH_PRODUCTS, sgFetchProducts);
   yield takeLatest(SG_FETCH_CATEGORIES, sgFetchCategories);
   yield takeLatest(SG_FETCH_PRODUCT_DETAIL, sgFetchProductDetail);
   yield takeLatest(SG_GIVE_OFFER, sgGiveOffer);
+  // yield takeLatest(SG_CREATE_PRODUCT, sgCreateProduct);
+  yield takeLatest(SG_UPLOAD_NEW_PRODUCT_IMAGE, sgUploadNewProductImage);
 }

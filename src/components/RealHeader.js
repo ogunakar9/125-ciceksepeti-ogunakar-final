@@ -8,7 +8,7 @@ const RealHeader = () => {
 
   const handleProfile = () => history.push("/profile");
   const handleSignIn = () => history.push("/signin");
-  const handleProducts = () => history.push("/addproducts");
+  const handleProducts = () => history.push("/createproduct");
 
   const ProfileButton = () => {
     return isSignedIn ? (
