@@ -20,17 +20,21 @@ const ProductDetails = () => {
   };
 
   const {
-    productDetails: { isOfferable, offerId },
+    productDetails: { isOfferable, offerId, isSold },
   } = useSelector((state) => state.products);
+
+  const OfferButtons = ({ offerId }) => {
+    return offerId ? (
+      <button onClick={cancel}>Teklifi Geri Cek</button>
+    ) : (
+      <button onClick={give}>Teklif Ver</button>
+    );
+  };
   return (
     <div>
       <p>{id}</p>
-      {isOfferable &&
-        (offerId ? (
-          <button onClick={cancel}>Teklifi Geri Cek</button>
-        ) : (
-          <button onClick={give}>Teklif Ver</button>
-        ))}
+      {isSold && <button disabled>Urun Satilmis</button>}
+      {!isSold && isOfferable && <OfferButtons offerId={offerId} />}
     </div>
   );
 };
