@@ -24,6 +24,7 @@ const ProductDetails = () => {
   } = useSelector((state) => state.products);
 
   const OfferButtons = ({ offerId }) => {
+    //offerId = true ==>> offer exists
     return offerId ? (
       <button onClick={cancel}>Teklifi Geri Cek</button>
     ) : (
