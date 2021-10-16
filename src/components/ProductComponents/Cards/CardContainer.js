@@ -1,8 +1,17 @@
 import React from "react";
 import Card from "./Card";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 const CardContainer = () => {
   const items = useSelector((state) => state.products.items);
+  let query = new URLSearchParams(useLocation().search);
+  const categoryQuery = query.get("category");
+  let filtered = items;
+
+  if (categoryQuery) {
+    filtered = items.filter((item) => item.category.id === categoryQuery);
+  }
+
   return (
     <div
       style={{
@@ -12,7 +21,7 @@ const CardContainer = () => {
         justifyContent: "center",
       }}
     >
-      {items.map((item) => (
+      {filtered.map((item) => (
         <Card
           key={item.id}
           img={item.imageUrl}
@@ -20,6 +29,7 @@ const CardContainer = () => {
           brand={item.brand.title}
           color={item.color.title}
           description={item.description}
+          id={item.id}
         />
       ))}
     </div>

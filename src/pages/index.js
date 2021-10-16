@@ -1,12 +1,12 @@
 import React from "react";
 import RealHeader from "../components/RealHeader";
-import Categories from "../components/ProductComponents/Categories";
+import ProductsContainer from "../components/ProductComponents/ProductsContainer";
 
 const Index = () => {
   return (
     <>
       <RealHeader />
-      <Categories />
+      <ProductsContainer />
     </>
   );
 };

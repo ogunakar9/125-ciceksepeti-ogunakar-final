@@ -1,8 +1,13 @@
-import { SET_PRODUCTS } from "../types/ProductTypes";
+import {
+  SET_PRODUCTS,
+  SET_CATEGORIES,
+  SET_PRODUCT_DETAILS,
+} from "../types/ProductTypes";
 
 const INIT_STATE = {
   items: [],
-  category: "",
+  categories: [],
+  productDetails: {},
 };
 
 export default function productReducer(state = INIT_STATE, action) {
@@ -10,8 +15,19 @@ export default function productReducer(state = INIT_STATE, action) {
     case SET_PRODUCTS:
       return {
         ...state,
-        //TODO: figure out if i need ... here!!
-        items: [...action.payload],
+        items: action.payload,
+      };
+
+    case SET_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload,
+      };
+
+    case SET_PRODUCT_DETAILS:
+      return {
+        ...state,
+        productDetails: action.payload,
       };
 
     default:

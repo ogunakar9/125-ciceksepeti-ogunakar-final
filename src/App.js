@@ -6,7 +6,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import Profile from "./pages/Profile";
-import { checkUserSession, fetchProducts } from "./store/actions";
+import ProductDetails from "./pages/ProductDetails";
+import {
+  checkUserSession,
+  fetchCategories,
+  fetchProducts,
+  fetchGivenOffers,
+} from "./store/actions";
 import Header from "./components/Header";
 import AddProduct from "./pages/AddProduct";
 
@@ -21,6 +27,14 @@ export default function App() {
     dispatch(fetchProducts());
   }, []);
 
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchGivenOffers());
+  }, []);
+
   return (
     <Router>
       <div>
@@ -28,7 +42,6 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route exact path="/">
-            <Header />
             <Index />
           </Route>
           <Route path="/signup">
@@ -44,6 +57,9 @@ export default function App() {
           </Route>
           <Route path="/addproducts">
             <AddProduct />
+          </Route>
+          <Route path="/productdetails/:id">
+            <ProductDetails />
           </Route>
         </Switch>
       </div>
