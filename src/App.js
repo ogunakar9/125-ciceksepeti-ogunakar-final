@@ -12,6 +12,9 @@ import {
   fetchCategories,
   fetchProducts,
   fetchGivenOffers,
+  fetchColors,
+  fetchBrands,
+  fetchStatuses,
 } from "./store/actions";
 import Header from "./components/Header";
 import CreateProduct from "./pages/CreateProduct";
@@ -29,6 +32,9 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchCategories());
+    dispatch(fetchColors());
+    dispatch(fetchBrands());
+    dispatch(fetchStatuses());
   }, []);
 
   useEffect(() => {

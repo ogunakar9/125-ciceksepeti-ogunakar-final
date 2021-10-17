@@ -175,7 +175,8 @@ function* sgCreateProduct(action) {
       return;
     }
 
-    const data = [];
+    const { newImageUrl } = yield select((state) => state.products);
+    const data = { ...action.payload, imageUrl: newImageUrl };
     const response = yield call(API.post, "/product/create", data, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -184,11 +185,11 @@ function* sgCreateProduct(action) {
 
     console.log(response);
 
-    yield put({
-      type: SG_FETCH_PRODUCT_DETAIL,
-    });
+    // yield put({
+    //   type: SG_FETCH_PRODUCT_DETAIL,
+    // });
   } catch (error) {
-    console.error("ProductDetail Saga", error.code, error.message);
+    console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
     yield all([
       // put({

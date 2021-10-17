@@ -10,6 +10,10 @@ const INIT_STATE = {
   categories: [],
   productDetails: {},
   newImageUrl: "",
+  newProduct: {},
+  colors: [],
+  statuses: [],
+  brands: [],
 };
 
 export default function productReducer(state = INIT_STATE, action) {

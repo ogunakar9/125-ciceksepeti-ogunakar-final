@@ -5,23 +5,48 @@ import UploadImageInput from "../components/ProductComponents/CreateProduct/Uplo
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.products);
 
-  const [newProductDetails, setNewProductDetails] = useState({});
+  const { colors, statuses, brands } = useSelector((state) => state.main);
+  const [newProduct, setNewProduct] = useState({
+    title: "",
+    description: "",
+    isOfferable: false,
+    price: 0,
+  });
   //TODO: change input selector to custom css and enable it through click event
 
   const handleProductDetailChange = (e) => {
-    setNewProductDetails({
-      ...newProductDetails,
+    if (e.target.name === "price") {
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: parseInt(e.target.value),
+      });
+      return;
+    }
+    if (e.target.name === "isOfferable") {
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: e.target.value === "true",
+      });
+      return;
+    }
+    setNewProduct({
+      ...newProduct,
       [e.target.name]: e.target.value,
     });
   };
-
+  const handleSelectChange = (e, valueType) => {
+    setNewProduct({
+      ...newProduct,
+      [e.target.name]: valueType[e.target.value],
+    });
+  };
+  console.log(newProduct);
   const handleCreateProduct = () => {
-    dispatch(createProduct(newProductDetails));
+    dispatch(createProduct(newProduct));
   };
 
-  const { newImageUrl } = useSelector((state) => state.products);
-  console.log(newImageUrl);
   return (
     <div
       style={{
@@ -42,7 +67,128 @@ const CreateProduct = () => {
             name="title"
             type="text"
             id="new-product-name"
-            value={newProductDetails.name}
+            value={newProduct.title}
+            onChange={handleProductDetailChange}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="description">Aciklama</label>
+          <input
+            name="description"
+            type="text"
+            id="description"
+            value={newProduct.description}
+            onChange={handleProductDetailChange}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="category">Kategori</label>
+          <select
+            id="category"
+            name="category"
+            onChange={(e) => handleSelectChange(e, categories)}
+          >
+            {categories.map((item, idx) => (
+              <option value={idx} key={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="brand">Brand</label>
+          <select
+            id="brand"
+            name="brand"
+            onChange={(e) => handleSelectChange(e, brands)}
+          >
+            {brands.map((item, idx) => (
+              <option value={idx} key={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="color">Colors</label>
+          <select
+            id="color"
+            name="color"
+            onChange={(e) => handleSelectChange(e, colors)}
+          >
+            {colors.map((item, idx) => (
+              <option value={idx} key={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="status">Kullanim durumu</label>
+          <select
+            id="status"
+            name="status"
+            onChange={(e) => handleSelectChange(e, statuses)}
+          >
+            {statuses.map((item, idx) => (
+              <option value={idx} key={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="price">Price</label>
+          <input
+            name="price"
+            type="number"
+            id="price"
+            value={newProduct.price}
+            onChange={handleProductDetailChange}
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <label htmlFor="isOfferable">isOfferable</label>
+          <input
+            name="isOfferable"
+            type="checkbox"
+            id="isOfferable"
+            value={newProduct.isOfferable}
             onChange={handleProductDetailChange}
           />
         </div>
