@@ -163,46 +163,45 @@ function* sgGiveOffer(action) {
     ]);
   }
 }
-//
-// function* sgCreateProduct(action) {
-//   console.log("Create Product Saga");
-//
-//   try {
-//     const { isSignedIn, token } = yield select((state) => state.auth);
-//
-//     if (!isSignedIn) {
-//       return;
-//     }
-//
-//     const {} = = yield select((state) => state.products);
-//
-//     const response = yield call(API.post, "/product/create", price, {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//
-//     console.log(response);
-//
-//     yield put({
-//       type: SG_FETCH_PRODUCT_DETAIL,
-//       payload: id,
-//     });
-//   } catch (error) {
-//     console.error("ProductDetail Saga", error.code, error.message);
-//     //TODO: show error message here
-//     yield all([
-//       // put({
-//       //   type: SET_SNACKBAR_OPEN,
-//       //   payload: true,
-//       // }),
-//       // put({
-//       //   type: SET_SNACKBAR_MESSAGE,
-//       //   payload: error.message,
-//       // }),
-//     ]);
-//   }
-// }
+
+function* sgCreateProduct(action) {
+  console.log("Create Product Saga");
+
+  try {
+    const { isSignedIn, token } = yield select((state) => state.auth);
+
+    if (!isSignedIn) {
+      return;
+    }
+    //TODO: take url from state after image upload
+    const { url } = yield select((state) => state.products);
+    const data = [];
+    const response = yield call(API.post, "/product/create", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    console.log(response);
+
+    yield put({
+      type: SG_FETCH_PRODUCT_DETAIL,
+    });
+  } catch (error) {
+    console.error("ProductDetail Saga", error.code, error.message);
+    //TODO: show error message here
+    yield all([
+      // put({
+      //   type: SET_SNACKBAR_OPEN,
+      //   payload: true,
+      // }),
+      // put({
+      //   type: SET_SNACKBAR_MESSAGE,
+      //   payload: error.message,
+      // }),
+    ]);
+  }
+}
 
 function* sgUploadNewProductImage(action) {
   console.log("Upload New Product Image Saga");
@@ -218,7 +217,7 @@ function* sgUploadNewProductImage(action) {
     const image = action.payload;
     console.log("image saga", image);
     const formData = new FormData();
-    formData.append("newImage", image);
+    formData.append("file", image);
     console.log(formData);
     const response = yield call(API.post, "/file/upload/image", formData, {
       headers: {
@@ -254,6 +253,6 @@ export function* productWatcher() {
   yield takeLatest(SG_FETCH_CATEGORIES, sgFetchCategories);
   yield takeLatest(SG_FETCH_PRODUCT_DETAIL, sgFetchProductDetail);
   yield takeLatest(SG_GIVE_OFFER, sgGiveOffer);
-  // yield takeLatest(SG_CREATE_PRODUCT, sgCreateProduct);
+  yield takeLatest(SG_CREATE_PRODUCT, sgCreateProduct);
   yield takeLatest(SG_UPLOAD_NEW_PRODUCT_IMAGE, sgUploadNewProductImage);
 }
