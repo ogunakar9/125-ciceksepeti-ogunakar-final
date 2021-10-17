@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { signUp } from "../store/actions";
-import UserAuthForm from "../components/UserAuthForm";
+import UserAuthForm from "../components/User/UserAuthForm";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 

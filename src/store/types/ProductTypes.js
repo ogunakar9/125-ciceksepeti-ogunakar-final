@@ -1,6 +1,7 @@
 export const SET_PRODUCTS = "SET_PRODUCTS";
 export const SET_PRODUCT_DETAILS = "SET_PRODUCT_DETAILS";
 export const SET_CATEGORIES = "SET_CATEGORIES";
+export const SET_NEW_IMAGE_URL = "SET_NEW_IMAGE_URL";
 
 //saga
 export const SG_FETCH_PRODUCTS = "SG_FETCH_PRODUCTS";

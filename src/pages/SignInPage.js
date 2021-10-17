@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import UserAuthForm from "../components/UserAuthForm";
+import UserAuthForm from "../components/User/UserAuthForm";
 import { signIn } from "../store/actions";
 
 const SignInPage = () => {

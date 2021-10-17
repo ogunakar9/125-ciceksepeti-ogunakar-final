@@ -2,12 +2,14 @@ import {
   SET_PRODUCTS,
   SET_CATEGORIES,
   SET_PRODUCT_DETAILS,
+  SET_NEW_IMAGE_URL,
 } from "../types/ProductTypes";
 
 const INIT_STATE = {
   items: [],
   categories: [],
   productDetails: {},
+  newImageUrl: "",
 };
 
 export default function productReducer(state = INIT_STATE, action) {
@@ -28,6 +30,12 @@ export default function productReducer(state = INIT_STATE, action) {
       return {
         ...state,
         productDetails: action.payload,
+      };
+
+    case SET_NEW_IMAGE_URL:
+      return {
+        ...state,
+        newImageUrl: action.payload,
       };
 
     default:

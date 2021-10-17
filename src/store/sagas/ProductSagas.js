@@ -8,6 +8,7 @@ import {
   SG_GIVE_OFFER,
   SG_CREATE_PRODUCT,
   SG_UPLOAD_NEW_PRODUCT_IMAGE,
+  SET_NEW_IMAGE_URL,
 } from "../types/ProductTypes";
 import { all, call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
@@ -173,8 +174,7 @@ function* sgCreateProduct(action) {
     if (!isSignedIn) {
       return;
     }
-    //TODO: take url from state after image upload
-    const { url } = yield select((state) => state.products);
+
     const data = [];
     const response = yield call(API.post, "/product/create", data, {
       headers: {
@@ -213,7 +213,6 @@ function* sgUploadNewProductImage(action) {
       return;
     }
 
-    //TODO: upload image here
     const image = action.payload;
     console.log("image saga", image);
     const formData = new FormData();
@@ -226,11 +225,11 @@ function* sgUploadNewProductImage(action) {
       },
     });
 
-    console.log(response);
+    console.log("image upload url", response);
 
     yield put({
-      type: SG_CREATE_PRODUCT,
-      payload: response,
+      type: SET_NEW_IMAGE_URL,
+      payload: response.data.url,
     });
   } catch (error) {
     console.error("Upload New Product Image Saga", error.code, error.message);
