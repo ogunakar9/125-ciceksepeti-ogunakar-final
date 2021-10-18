@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
-import Account from "./pages/Account";
+import AccountDetailsPage from "./pages/AccountDetailsPage";
 import ProductDetails from "./pages/ProductDetails";
 import {
   checkUserSession,
@@ -61,7 +61,7 @@ export default function App() {
             <SignInPage />
           </Route>
           <Route path="/account">
-            <Account />
+            <AccountDetailsPage />
           </Route>
           <Route path="/createproduct">
             <CreateProduct />
