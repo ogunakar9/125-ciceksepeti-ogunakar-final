@@ -10,13 +10,22 @@ import {
 } from "../types/AccountTypes";
 import API from "../../services/api";
 import { SG_FETCH_PRODUCT_DETAIL } from "../types/ProductTypes";
+import { SET_LOADING } from "../types/MainTypes";
 
 export function* sgFetchGivenOffers() {
   console.log("profile Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -27,22 +36,42 @@ export function* sgFetchGivenOffers() {
     });
     console.log("account response", response);
 
-    yield put({
-      type: SET_GIVEN_OFFERS,
-      payload: response.data,
-    });
+    yield all([
+      put({
+        type: SET_GIVEN_OFFERS,
+        payload: response.data,
+      }),
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.log(error);
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 
 export function* sgFetchReceivedOffers() {
   console.log("received offer Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
+
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -53,22 +82,42 @@ export function* sgFetchReceivedOffers() {
     });
     console.log("account response", response);
 
-    yield put({
-      type: SET_RECEIVED_OFFERS,
-      payload: response.data,
-    });
+    yield all([
+      put({
+        type: SET_RECEIVED_OFFERS,
+        payload: response.data,
+      }),
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.log(error);
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 
 export function* sgRejectOffer(action) {
   console.log("reject offer Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
+
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -86,21 +135,40 @@ export function* sgRejectOffer(action) {
     );
     console.log(response);
 
-    yield put({
-      type: SG_FETCH_RECEIVED_OFFERS,
-    });
+    yield all([
+      put({
+        type: SG_FETCH_RECEIVED_OFFERS,
+      }),
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.log(error);
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 
 export function* sgAcceptOffer(action) {
   console.log("accept offer Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -119,22 +187,41 @@ export function* sgAcceptOffer(action) {
 
     console.log(response);
 
-    yield put({
-      type: SG_FETCH_RECEIVED_OFFERS,
-    });
+    yield all([
+      put({
+        type: SG_FETCH_RECEIVED_OFFERS,
+      }),
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.log(error);
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 
 export function* sgCancelOffer(action) {
   console.log("cancel offer Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
     const { productId, offerId } = action.payload;
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -149,13 +236,24 @@ export function* sgCancelOffer(action) {
     );
     console.log("account response", response);
 
-    yield put({
-      type: SG_FETCH_PRODUCT_DETAIL,
-      payload: productId,
-    });
+    yield all([
+      put({
+        type: SG_FETCH_PRODUCT_DETAIL,
+        payload: productId,
+      }),
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.log(error);
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 

@@ -15,6 +15,10 @@ function* sgSignUp(action) {
   console.log("Sign Up Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { email, password } = action.payload;
 
     const data = { email, password };
@@ -25,14 +29,24 @@ function* sgSignUp(action) {
     localStorage.setItem(user_token, token);
     localStorage.setItem(user_mail, email);
 
-    yield put({
-      type: SET_USER,
-      payload: { token, email, isSignedIn: true },
-    });
+    yield all([
+      put({
+        type: SET_USER,
+        payload: { token, email, isSignedIn: true },
+      }),
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.error("Sign Up Saga", error.code, error.message);
     //TODO: show error message here
     yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
       // put({
       //   type: SET_SNACKBAR_OPEN,
       //   payload: true,
@@ -48,6 +62,10 @@ function* sgSignUp(action) {
 function* sgSignIn(action) {
   console.log("Sign in Saga");
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { email, password } = action.payload;
 
     const data = { email, password };
@@ -58,14 +76,25 @@ function* sgSignIn(action) {
     localStorage.setItem(user_token, token);
     localStorage.setItem(user_mail, email);
 
-    yield put({
-      type: SET_USER,
-      payload: { token, email, isSignedIn: true },
-    });
+    yield all([
+      put({
+        type: SET_USER,
+        payload: { token, email, isSignedIn: true },
+      }),
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   } catch (error) {
     console.error("Sign In Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([]);
+    yield all([
+      put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      }),
+    ]);
   }
 }
 
