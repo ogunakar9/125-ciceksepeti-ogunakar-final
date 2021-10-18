@@ -12,6 +12,7 @@ import {
   fetchCategories,
   fetchProducts,
   fetchGivenOffers,
+  fetchReceivedOffers,
   fetchColors,
   fetchBrands,
   fetchStatuses,
@@ -39,6 +40,10 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchGivenOffers());
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchReceivedOffers());
   }, []);
 
   //TODO: introduce private routes & lazy load & suspense

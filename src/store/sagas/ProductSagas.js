@@ -9,10 +9,12 @@ import {
   SG_CREATE_PRODUCT,
   SG_UPLOAD_NEW_PRODUCT_IMAGE,
   SET_NEW_IMAGE_URL,
+  SG_PURCHASE_PRODUCT,
 } from "../types/ProductTypes";
 import { all, call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
 import { sgFetchGivenOffers } from "./AccountSagas";
+import { SG_FETCH_GIVEN_OFFERS } from "../types/AccountTypes";
 
 function* sgFetchProducts() {
   console.log("Products Saga");
@@ -204,6 +206,50 @@ function* sgCreateProduct(action) {
   }
 }
 
+function* sgPurchaseProduct(action) {
+  console.log("Purchase Product Saga");
+
+  try {
+    const { isSignedIn, token } = yield select((state) => state.auth);
+    console.log(isSignedIn);
+
+    if (!isSignedIn) {
+      return;
+    }
+    const id = action.payload;
+    console.log("id saga", id);
+    const response = yield call(
+      API.put,
+      `/product/purchase/${id}`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    console.log(response);
+
+    yield put({
+      type: SG_FETCH_GIVEN_OFFERS,
+    });
+  } catch (error) {
+    console.error("Create product Saga", error.code, error.message);
+    //TODO: show error message here
+    yield all([
+      // put({
+      //   type: SET_SNACKBAR_OPEN,
+      //   payload: true,
+      // }),
+      // put({
+      //   type: SET_SNACKBAR_MESSAGE,
+      //   payload: error.message,
+      // }),
+    ]);
+  }
+}
+
 function* sgUploadNewProductImage(action) {
   console.log("Upload New Product Image Saga");
 
@@ -254,5 +300,6 @@ export function* productWatcher() {
   yield takeLatest(SG_FETCH_PRODUCT_DETAIL, sgFetchProductDetail);
   yield takeLatest(SG_GIVE_OFFER, sgGiveOffer);
   yield takeLatest(SG_CREATE_PRODUCT, sgCreateProduct);
+  yield takeLatest(SG_PURCHASE_PRODUCT, sgPurchaseProduct);
   yield takeLatest(SG_UPLOAD_NEW_PRODUCT_IMAGE, sgUploadNewProductImage);
 }

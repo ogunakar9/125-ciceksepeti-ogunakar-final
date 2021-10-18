@@ -5,6 +5,7 @@ import {
   SG_GIVE_OFFER,
   SG_CREATE_PRODUCT,
   SG_UPLOAD_NEW_PRODUCT_IMAGE,
+  SG_PURCHASE_PRODUCT,
 } from "../types/ProductTypes";
 
 export const fetchProducts = () => ({
@@ -28,6 +29,11 @@ export const giveOffer = (id) => ({
 export const createProduct = (newProduct) => ({
   type: SG_CREATE_PRODUCT,
   payload: newProduct,
+});
+
+export const purchaseProduct = (id) => ({
+  type: SG_PURCHASE_PRODUCT,
+  payload: id,
 });
 
 export const uploadNewProductImage = (image) => ({

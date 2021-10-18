@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import RealHeader from "../components/RealHeader";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { acceptOffer, purchaseProduct, rejectOffer } from "../store/actions";
 
 const AccountDetailsPage = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
   useEffect(() => {
     if (!isSignedIn) {
@@ -27,6 +29,20 @@ const AccountDetailsPage = () => {
   const handleGiven = () => {
     setActiveTab("given");
   };
+
+  const handleAcceptOffer = (id) => {
+    dispatch(acceptOffer(id));
+  };
+
+  const handleRejectOffer = (id) => {
+    dispatch(rejectOffer(id));
+  };
+
+  const handlePurchaseOffered = (id) => {
+    console.log("purchase id", id);
+    dispatch(purchaseProduct(id));
+  };
+
   return (
     <div>
       <RealHeader />
@@ -40,7 +56,7 @@ const AccountDetailsPage = () => {
             borderBottom: activeTab === "received" && "2px solid black",
           }}
         >
-          <p>Received offers</p>
+          <p>Teklif Verdiklerim givenoffers</p>
         </div>
         <div
           onClick={handleGiven}
@@ -49,7 +65,7 @@ const AccountDetailsPage = () => {
             borderBottom: activeTab === "given" && "2px solid black",
           }}
         >
-          <p>Given offers</p>
+          <p>Teklif aldiklarim received offers</p>
         </div>
       </div>
       <div>
@@ -70,8 +86,12 @@ const AccountDetailsPage = () => {
               <div>
                 {!item.product.isSold && (
                   <div>
-                    <button>Onayla</button>
-                    <button>Reddet</button>
+                    <button onClick={() => handleAcceptOffer(item.id)}>
+                      Onayla
+                    </button>
+                    <button onClick={() => handleRejectOffer(item.id)}>
+                      Reddet
+                    </button>
                   </div>
                 )}
               </div>
@@ -93,12 +113,16 @@ const AccountDetailsPage = () => {
                 <p>{item.product.price}</p>
               </div>
               <div>
-                {!item.product.isSold && (
-                  <div>
-                    <button>Onayla</button>
-                    <button>Reddet</button>
-                  </div>
-                )}
+                <div>
+                  {/*{!item.product.isSold && (*/}
+                  <button
+                    onClick={() => handlePurchaseOffered(item.product.id)}
+                  >
+                    Satin al
+                  </button>
+                  {/*)}*/}
+                  <span>{item.status}</span>
+                </div>
               </div>
             </div>
           ))}
