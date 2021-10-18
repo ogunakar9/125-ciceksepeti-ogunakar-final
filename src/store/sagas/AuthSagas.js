@@ -96,7 +96,7 @@ export function* sgCheckUserSession() {
         type: SET_USER,
         payload: {
           token: existingToken,
-          mail: existingMail,
+          email: existingMail,
           isSignedIn: true,
         },
       });

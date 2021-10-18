@@ -6,7 +6,7 @@ const RealHeader = () => {
   const history = useHistory();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
-  const handleProfile = () => history.push("/profile");
+  const handleProfile = () => history.push("/account");
   const handleSignIn = () => history.push("/signin");
   const handleProducts = () => history.push("/createproduct");
 

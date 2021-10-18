@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
-import Profile from "./pages/Profile";
+import Account from "./pages/Account";
 import ProductDetails from "./pages/ProductDetails";
 import {
   checkUserSession,
@@ -41,7 +41,7 @@ export default function App() {
     dispatch(fetchGivenOffers());
   }, []);
 
-  //TODO: introduce private routes
+  //TODO: introduce private routes & lazy load & suspense
 
   return (
     <Router>
@@ -60,8 +60,8 @@ export default function App() {
             <Header />
             <SignInPage />
           </Route>
-          <Route path="/profile">
-            <Profile />
+          <Route path="/account">
+            <Account />
           </Route>
           <Route path="/createproduct">
             <CreateProduct />
