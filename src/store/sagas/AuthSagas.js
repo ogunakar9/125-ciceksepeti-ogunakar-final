@@ -1,4 +1,4 @@
-import { all, takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put } from "redux-saga/effects";
 import {
   SET_USER,
   SG_SIGN_UP,
@@ -29,33 +29,29 @@ function* sgSignUp(action) {
     localStorage.setItem(user_token, token);
     localStorage.setItem(user_mail, email);
 
-    yield all([
-      put({
-        type: SET_USER,
-        payload: { token, email, isSignedIn: true },
-      }),
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_USER,
+      payload: { token, email, isSignedIn: true },
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Sign Up Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -76,36 +72,43 @@ function* sgSignIn(action) {
     localStorage.setItem(user_token, token);
     localStorage.setItem(user_mail, email);
 
-    yield all([
-      put({
-        type: SET_USER,
-        payload: { token, email, isSignedIn: true },
-      }),
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_USER,
+      payload: { token, email, isSignedIn: true },
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Sign In Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
 export function* sgSignOut() {
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     localStorage.clear();
     yield put({
       type: SIGN_OUT,
     });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
-    yield all([]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
@@ -137,12 +140,10 @@ export function* sgCheckUserSession() {
     });
   } catch (error) {
     console.log(error);
-    yield all([
-      yield put({
-        type: SET_LOADING,
-        payload: false,
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 

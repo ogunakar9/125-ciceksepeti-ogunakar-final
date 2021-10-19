@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "./default.scss";
+import "./style/default.scss";
 import Index from "./pages";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

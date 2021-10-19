@@ -1,4 +1,4 @@
-import { all, takeLatest, call, put, select } from "redux-saga/effects";
+import { takeLatest, call, put, select } from "redux-saga/effects";
 import {
   SET_GIVEN_OFFERS,
   SET_RECEIVED_OFFERS,
@@ -36,24 +36,20 @@ export function* sgFetchGivenOffers() {
     });
     console.log("account response", response);
 
-    yield all([
-      put({
-        type: SET_GIVEN_OFFERS,
-        payload: response.data,
-      }),
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_GIVEN_OFFERS,
+      payload: response.data,
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.log(error);
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
@@ -82,24 +78,20 @@ export function* sgFetchReceivedOffers() {
     });
     console.log("account response", response);
 
-    yield all([
-      put({
-        type: SET_RECEIVED_OFFERS,
-        payload: response.data,
-      }),
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_RECEIVED_OFFERS,
+      payload: response.data,
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.log(error);
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
@@ -135,23 +127,19 @@ export function* sgRejectOffer(action) {
     );
     console.log(response);
 
-    yield all([
-      put({
-        type: SG_FETCH_RECEIVED_OFFERS,
-      }),
-      yield put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SG_FETCH_RECEIVED_OFFERS,
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.log(error);
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
@@ -187,23 +175,19 @@ export function* sgAcceptOffer(action) {
 
     console.log(response);
 
-    yield all([
-      put({
-        type: SG_FETCH_RECEIVED_OFFERS,
-      }),
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SG_FETCH_RECEIVED_OFFERS,
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.log(error);
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 
@@ -236,24 +220,20 @@ export function* sgCancelOffer(action) {
     );
     console.log("account response", response);
 
-    yield all([
-      put({
-        type: SG_FETCH_PRODUCT_DETAIL,
-        payload: productId,
-      }),
-      yield put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SG_FETCH_PRODUCT_DETAIL,
+      payload: productId,
+    });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.log(error);
-    yield all([
-      put({
-        type: SET_LOADING,
-        payload: { loading: false },
-      }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   }
 }
 

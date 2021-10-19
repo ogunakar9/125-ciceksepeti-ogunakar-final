@@ -11,16 +11,20 @@ import {
   SET_NEW_IMAGE_URL,
   SG_PURCHASE_PRODUCT,
 } from "../types/ProductTypes";
-import { all, call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
 import { sgFetchGivenOffers } from "./AccountSagas";
 import { SG_FETCH_GIVEN_OFFERS } from "../types/AccountTypes";
+import { SET_LOADING } from "../types/MainTypes";
 
 function* sgFetchProducts() {
   console.log("Products Saga");
 
   try {
-    // const data = { email, password };
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const response = yield call(API.get, "/product/all");
     const data = response.data;
     console.log(data);
@@ -33,19 +37,25 @@ function* sgFetchProducts() {
       type: SET_PRODUCTS,
       payload: data,
     });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Fetch Products Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -53,6 +63,10 @@ function* sgFetchCategories() {
   console.log("Categories Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     // const data = { email, password };
     const response = yield call(API.get, "/detail/category/all");
     const data = response.data;
@@ -66,19 +80,26 @@ function* sgFetchCategories() {
       type: SET_CATEGORIES,
       payload: data,
     });
+
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Fetch Categories Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -86,6 +107,10 @@ function* sgFetchProductDetail(action) {
   console.log("ProductDetail Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const id = action.payload;
 
     const response = yield call(API.get, `/product/${id}`);
@@ -110,19 +135,25 @@ function* sgFetchProductDetail(action) {
       type: SET_PRODUCT_DETAILS,
       payload: { ...data, offerId },
     });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("ProductDetail Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -130,6 +161,10 @@ function* sgGiveOffer(action) {
   console.log("Give offer Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const id = action.payload;
     const { isSignedIn, token } = yield select((state) => state.auth);
 
@@ -151,19 +186,26 @@ function* sgGiveOffer(action) {
       type: SG_FETCH_PRODUCT_DETAIL,
       payload: id,
     });
+
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("ProductDetail Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -171,6 +213,10 @@ function* sgCreateProduct(action) {
   console.log("Create Product Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
@@ -190,19 +236,25 @@ function* sgCreateProduct(action) {
     // yield put({
     //   type: SG_FETCH_PRODUCT_DETAIL,
     // });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -210,10 +262,18 @@ function* sgPurchaseProduct(action) {
   console.log("Purchase Product Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
     console.log(isSignedIn);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
     const id = action.payload;
@@ -234,19 +294,25 @@ function* sgPurchaseProduct(action) {
     yield put({
       type: SG_FETCH_GIVEN_OFFERS,
     });
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
@@ -254,9 +320,17 @@ function* sgUploadNewProductImage(action) {
   console.log("Upload New Product Image Saga");
 
   try {
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: true },
+    });
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
+      yield put({
+        type: SET_LOADING,
+        payload: { loading: false },
+      });
       return;
     }
 
@@ -278,19 +352,26 @@ function* sgUploadNewProductImage(action) {
       type: SET_NEW_IMAGE_URL,
       payload: response.data.url,
     });
+
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
   } catch (error) {
     console.error("Upload New Product Image Saga", error.code, error.message);
     //TODO: show error message here
-    yield all([
-      // put({
-      //   type: SET_SNACKBAR_OPEN,
-      //   payload: true,
-      // }),
-      // put({
-      //   type: SET_SNACKBAR_MESSAGE,
-      //   payload: error.message,
-      // }),
-    ]);
+    yield put({
+      type: SET_LOADING,
+      payload: { loading: false },
+    });
+    // put({
+    //   type: SET_SNACKBAR_OPEN,
+    //   payload: true,
+    // }),
+    // put({
+    //   type: SET_SNACKBAR_MESSAGE,
+    //   payload: error.message,
+    // }),
   }
 }
 
