@@ -1,0 +1,16 @@
+.products-wrapper {
+  background-color: #F2F2F2;
+  width: 100%;
+  padding: 1.25rem 13.75rem;
+}
+
+.banner-container {
+  height: 100%;
+  position: relative;
+  border-radius: 0.5rem;
+
+  img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
