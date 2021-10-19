@@ -1,7 +1,6 @@
 import React from "react";
 import "./Modal.scss";
 import { useSelector } from "react-redux";
-import Loading from "../Loading";
 import ReactDOM from "react-dom";
 
 const Modal = () => {
@@ -22,7 +21,7 @@ const Modal = () => {
         {/*<div className="modal-header">*/}
         {/*  <h4 className="modal-title">Modal title</h4>*/}
         {/*</div>*/}
-        <Loading className="modal-loader" loading={loading} />
+        {/*<Loader className="modal-loader" loading={loading} />*/}
         {/*<div className="modal-body">This is modal content</div>*/}
         {/*<div className="modal-footer">*/}
         {/*  <button className="button">Close</button>*/}
