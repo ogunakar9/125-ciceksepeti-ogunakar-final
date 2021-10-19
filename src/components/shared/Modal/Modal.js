@@ -1,5 +1,5 @@
 import React from "react";
-import "./Modal.scss";
+import "./styles.scss";
 import { useSelector } from "react-redux";
 import ReactDOM from "react-dom";
 

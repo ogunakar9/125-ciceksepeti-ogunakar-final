@@ -17,7 +17,7 @@ import {
   fetchBrands,
   fetchStatuses,
 } from "./store/actions";
-import Header from "./components/Header";
+import Header2 from "./components/Header2";
 import CreateProduct from "./pages/CreateProduct";
 
 export default function App() {
@@ -58,11 +58,11 @@ export default function App() {
             <Index />
           </Route>
           <Route path="/signup">
-            <Header />
+            <Header2 />
             <SignUpPage />
           </Route>
           <Route path="/signin">
-            <Header />
+            <Header2 />
             <SignInPage />
           </Route>
           <Route path="/account">

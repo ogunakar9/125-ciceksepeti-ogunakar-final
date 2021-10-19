@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import RealHeader from "../components/RealHeader";
+import Header from "../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { acceptOffer, purchaseProduct, rejectOffer } from "../store/actions";
@@ -45,7 +45,7 @@ const AccountDetailsPage = () => {
 
   return (
     <div>
-      <RealHeader />
+      <Header />
       <div style={{ width: "100%", height: "20%", backgroundColor: "#ddd" }}>
         {email}
       </div>

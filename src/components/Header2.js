@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { signOut } from "../store/actions";
 
-const Header = () => {
+const Header2 = () => {
   const dispatch = useDispatch();
 
   const handleSignOut = () => {
@@ -16,4 +16,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Loader.scss";
+import "./styles.scss";
 import Loader from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import ReactDOM from "react-dom";
