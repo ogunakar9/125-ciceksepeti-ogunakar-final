@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { cancelOffer, fetchProductsDetail, giveOffer } from "../store/actions";
+import { useDispatch } from "react-redux";
+import { fetchProductsDetail } from "../store/actions";
+import Header from "../components/Header/Header";
+import ProductDetailSection from "../components/ProductDetailComponents/ProductDetailSection/ProductDetailSection";
+import Loader from "../components/shared/Loader/Loader";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -9,34 +12,14 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(fetchProductsDetail(id));
-  }, []);
+  }, [dispatch, id]);
 
-  const give = () => {
-    dispatch(giveOffer(id));
-  };
-
-  const cancel = () => {
-    dispatch(cancelOffer(id, offerId));
-  };
-
-  const {
-    productDetails: { isOfferable, offerId, isSold },
-  } = useSelector((state) => state.products);
-
-  const OfferButtons = ({ offerId }) => {
-    //offerId = true ==>> offer exists
-    return offerId ? (
-      <button onClick={cancel}>Teklifi Geri Cek</button>
-    ) : (
-      <button onClick={give}>Teklif Ver</button>
-    );
-  };
   return (
-    <div>
-      <p>{id}</p>
-      {isSold && <button disabled>Urun Satilmis</button>}
-      {!isSold && isOfferable && <OfferButtons offerId={offerId} />}
-    </div>
+    <>
+      <Header />
+      <Loader />
+      <ProductDetailSection id={id} />
+    </>
   );
 };
 

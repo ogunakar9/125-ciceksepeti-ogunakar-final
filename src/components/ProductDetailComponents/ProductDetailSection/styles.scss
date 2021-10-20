@@ -1,0 +1,115 @@
+.products_detail_wrapper {
+  background-color: #F2F2F2;
+  width: 100%;
+  height: 100vh;
+  padding: 1.25rem 13.75rem;
+}
+
+.products_detail_main-container {
+  background-color: #FFFFFF;
+  border-radius: 0.5rem;
+  display: flex;
+  column-gap: 3.5rem;
+  padding: 1rem 0.95rem;
+  width: 100%;
+  height: 80vh;
+}
+
+.products_detail_image-container {
+  border-radius: 0.5rem;
+  position: relative;
+  max-width: 43.75rem;
+  height: auto;
+  flex: 0.95;
+
+  img {
+    border-radius: 0.5rem;
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+  }
+}
+
+//.products_detail_text-info-wrapper {
+//  display: flex;
+//  flex-direction: column;
+//}
+
+.products_detail_text-container {
+  padding-top: 1.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+
+  span {
+    width: 100%;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    color: #555555;
+  }
+}
+
+.products_detail_text-title {
+  font-size: 2.125rem;
+  line-height: 1.44rem;
+  margin-bottom: 1.56rem;
+}
+
+.products_detail_text-info-container{
+  display: flex;
+  gap: 1.25rem;
+}
+
+.products_detail_text-info-container-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.products_detail_text-info-static {
+  font-size: 0.94rem ;
+  line-height: 1.25rem;
+  font-weight: bold;
+}
+
+.products_detail_text-info-dynamic {
+  font-size: 0.94rem ;
+  line-height: 1.25rem;
+}
+
+.products_detail_text-price {
+  font-weight: bold;
+  font-size: 1.56rem ;
+  line-height: 2rem;
+  margin: 1.875rem 0;
+}
+
+.products_detail_text-info_description-title {
+  font-weight: bold;
+  font-size: 1.125rem ;
+  line-height: 1.5rem;
+  margin-bottom: 0.625rem;
+}
+
+.products_detail_text-info_description {
+  font-size: 0.937rem ;
+  line-height: 1.437rem;
+}
+
+.product_sold_button {
+  color: #FAAD60;
+  background-color: #FFF0E2;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  text-transform: capitalize;
+  border: none;
+  padding: 0.6875rem 1.75rem ;
+  margin: 0 auto 1.875rem;
+}
+

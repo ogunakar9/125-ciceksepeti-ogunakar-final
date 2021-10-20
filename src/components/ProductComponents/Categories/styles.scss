@@ -1,0 +1,27 @@
+.category-container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  gap: 0.5rem 3.3rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+  border-bottom: 1px solid #E0E0E0;
+  //active
+  //border-bottom: 2px solid #4B9CE2;
+  //TODO: set active link border-bottom
+
+}
+
+.category-link {
+  font: normal normal 600 1.125rem/1.5rem Nunito;
+  color: #525252;
+  text-transform: capitalize;
+  height: 1.5rem;
+
+  padding-bottom: 2rem;
+  &:focus {
+    border-bottom: 1px solid #4B9CE2;
+    color: #4B9CE2;
+  }
+}

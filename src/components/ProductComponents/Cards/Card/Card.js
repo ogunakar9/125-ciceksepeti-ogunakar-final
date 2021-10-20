@@ -1,20 +1,25 @@
 import React from "react";
+import "./styles.scss";
 import { Link } from "react-router-dom";
 
 const Card = ({ img, price, brand, color, description, id, title }) => {
   return (
-    <div style={{ maxWidth: "250px", height: "100%", position: "relative" }}>
-      <Link to={`/productdetails/${id}`}>
-        <img
-          style={{ width: "100%", objectFit: "contain" }}
-          src={img}
-          alt={description}
-        />
-      </Link>
-      <span>{price}</span>
-      <span>{brand}</span>
-      <span>{color}</span>
-      <span>{title}</span>
+    <div className="card_item-background">
+      <div className="card_item-inner">
+        <div className="card_item-inner-wrapper">
+          <Link className="card_item-link" to={`/productdetails/${id}`}>
+            <div className="card_item-image-wrapper">
+              <img className="card_item-image" src={img} alt={description} />
+            </div>
+          </Link>
+        </div>
+      </div>
+      <div className="card_item-detail">
+        <span>{price}</span>
+        <span>{brand}</span>
+        <span>{color}</span>
+        <span>{title}</span>
+      </div>
     </div>
   );
 };

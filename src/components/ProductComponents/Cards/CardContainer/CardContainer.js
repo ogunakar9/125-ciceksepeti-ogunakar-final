@@ -1,5 +1,6 @@
 import React from "react";
-import Card from "./Card/Card";
+import "./styles.scss";
+import Card from "../Card/Card";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 const CardContainer = () => {
@@ -9,18 +10,11 @@ const CardContainer = () => {
   let filtered = items;
 
   if (categoryQuery) {
-    filtered = items.filter((item) => item.category.id === categoryQuery);
+    filtered = items.filter((item) => item.category.title === categoryQuery);
   }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div className="cards-container">
       {filtered.map((item) => (
         <Card
           key={item.id}

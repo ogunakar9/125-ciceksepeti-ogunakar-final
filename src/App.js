@@ -25,26 +25,26 @@ export default function App() {
 
   useEffect(() => {
     dispatch(checkUserSession());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchColors());
     dispatch(fetchBrands());
     dispatch(fetchStatuses());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchGivenOffers());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchReceivedOffers());
-  }, []);
+  }, [dispatch]);
 
   //TODO: introduce private routes & lazy load & suspense
 

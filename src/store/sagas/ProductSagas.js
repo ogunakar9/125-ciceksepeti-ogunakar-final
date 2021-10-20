@@ -171,8 +171,9 @@ function* sgGiveOffer(action) {
     if (!isSignedIn) {
       return;
     }
+    //TODO: accept offeredPrice from component
     const price = {
-      offeredPrice: 0,
+      offeredPrice: 50,
     };
     const response = yield call(API.post, `/product/offer/${id}`, price, {
       headers: {

@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import CardContainer from "../Cards/CardContainer";
+import CardContainer from "../Cards/CardContainer/CardContainer";
 import CategoryContainer from "../Categories/CategoryContainer";
 import Loader from "../../shared/Loader/Loader";
 import bannerImage from "../../../assets/homepage/Banner1/Banner1@2x.png";
