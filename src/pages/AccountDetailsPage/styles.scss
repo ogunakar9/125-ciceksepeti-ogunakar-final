@@ -3,7 +3,92 @@
   height: calc(100vh - 5rem);
   background-color: #F2F2F2;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   padding: 1.125rem 13.75rem;
 }
+
+.account-details_mail-wrapper {
+  width: 100%;
+  height: 4.375rem;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.5rem;
+  padding-left: 1.625rem;
+
+  img {
+    height: 2.375rem;
+    width: auto;
+  }
+
+  span {
+    font-weight: bold;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+  }
+}
+
+.account-details_list-container {
+  border-radius: 0.5rem;
+  margin-top: 0.625rem;
+  min-height: 65.6vh;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+.account-details_list_button-container {
+  display: flex;
+  padding-left: 1.625rem;
+  //height: 2.9375rem;
+  width: 100%;
+  border-bottom: 1px solid #F2F2F2;
+  column-gap: 2.125rem;
+  margin-bottom: 1.1875rem;
+
+  button {
+    color: #B1B1B1;
+    border: none;
+    background-color: #FFFFFF;
+    height: 2.9375rem;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+.account-details_list_selected-button {
+  color: #4B9CE2 !important;
+  border-bottom: 1px solid #4B9CE2 !important;
+}
+
+.account-details_list-box_wrapper {
+  padding-left: 1.625rem;
+  display: flex;
+}
+
+.account-details_list-box_wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-right: 2.3125rem;
+
+  //TODO: check if more items are added whether they fit here or not
+
+}
+
+.account-details_list-box_card {
+  background-color: red;
+  display: flex;
+  width: 100%;
+  border-radius: 0.5rem;
+  //padding: 1.25rem 0 1.25rem 1.875rem;
+  border: 1px solid black;
+  margin-bottom: 1.25rem;
+  padding: 0 0.625rem 0 1.875rem;
+  //
+  //&:not(:first-of-type) {
+  //  //margin: 1.25rem 2.3125rem 1.25rem 1.875rem;
+  //
+  //}
+}
+
