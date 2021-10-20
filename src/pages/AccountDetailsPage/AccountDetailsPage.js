@@ -77,51 +77,82 @@ const AccountDetailsPage = () => {
           <div className="account-details_list-box_wrapper">
             {activeTab === "received" &&
               receivedOffers.map((item) => (
-                <div key={item.id} className="account-details_list-box_card">
-                  <div>
-                    <img
-                      src={item.product.imageUrl}
-                      style={{ height: 100, width: 100 }}
-                      alt={item.product.title}
-                    />
-                    <p>{item.product.price}</p>
+                <div key={item?.id} className="account-details_list-box_card">
+                  <div className="account-details_list_left-section">
+                    <div>
+                      <img
+                        className="account-details_list-box_image"
+                        src={item?.product.imageUrl}
+                        alt={item?.product.title}
+                      />
+                    </div>
+                    <div className="account-details_list-box_info-container">
+                      <div>
+                        <span>{item?.product.title}</span>
+                      </div>
+                      <div className="account-details_list-box_info-price">
+                        <span>Alınan Teklif:</span>
+                        <span>{item?.offeredPrice} TL</span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
+                  <div className="account-details_list_right-section">
                     {!item.product.isSold && (
                       <div>
-                        <button onClick={() => handleAcceptOffer(item.id)}>
+                        <button
+                          className="account-details_list_right_section_buy-button"
+                          onClick={() => handleAcceptOffer(item?.id)}
+                        >
                           Onayla
                         </button>
-                        <button onClick={() => handleRejectOffer(item.id)}>
+                        <button
+                          className="account-details_list_right_section_reject-button"
+                          onClick={() => handleRejectOffer(item?.id)}
+                        >
                           Reddet
                         </button>
                       </div>
                     )}
+                    {/*TODO: find out how things get listed as accepted or denied*/}
+                    <div className="account-details_list_right_section_status">
+                      <span>{item?.status}</span>
+                    </div>
                   </div>
                 </div>
               ))}
 
             {activeTab === "given" &&
               givenOffers.map((item) => (
-                <div key={item.id} className="account-details_list-box_card">
-                  <div>
-                    <img
-                      src={item.product.imageUrl}
-                      style={{ height: 100, width: 100 }}
-                      alt={item.product.title}
-                    />
-                    <p>{item.product.price}</p>
-                  </div>
-                  <div>
+                <div key={item?.id} className="account-details_list-box_card">
+                  <div className="account-details_list_left-section">
                     <div>
-                      {/*{!item.product.isSold && (*/}
+                      <img
+                        className="account-details_list-box_image"
+                        src={item?.product.imageUrl}
+                        alt={item?.product.title}
+                      />
+                    </div>
+                    <div className="account-details_list-box_info-container">
+                      <div className="account-details_list-box_info-title">
+                        {item?.product.title}
+                      </div>
+                      <div className="account-details_list-box_info-price">
+                        <span>Alınan Teklif:</span>
+                        <span>{item?.offeredPrice} TL</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="account-details_list_right-section">
+                    {!item?.product.isSold && (
                       <button
-                        onClick={() => handlePurchaseOffered(item.product.id)}
+                        className="account-details_list_right_section_buy-button"
+                        onClick={() => handlePurchaseOffered(item?.product.id)}
                       >
-                        Satin al
+                        Satın Al
                       </button>
-                      {/*)}*/}
-                      <span>{item.status}</span>
+                    )}
+                    <div className="account-details_list_right_section_status">
+                      <span>{item?.status}</span>
                     </div>
                   </div>
                 </div>
