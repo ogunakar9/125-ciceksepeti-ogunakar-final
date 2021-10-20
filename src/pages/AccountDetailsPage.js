@@ -12,7 +12,7 @@ const AccountDetailsPage = () => {
     if (!isSignedIn) {
       history.push("/signin");
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, history]);
 
   const { email } = useSelector((state) => state.auth);
   const { givenOffers } = useSelector((state) => state.account);

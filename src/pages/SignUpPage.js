@@ -13,7 +13,7 @@ const SignUpPage = () => {
     if (isSignedIn) {
       history.push("/");
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, history]);
 
   return <UserAuthForm action={signUp} />;
 };

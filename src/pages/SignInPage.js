@@ -13,7 +13,7 @@ const SignInPage = () => {
     if (isSignedIn) {
       history.push("/");
     }
-  }, [isSignedIn]);
+  }, [isSignedIn, history]);
 
   return (
     <div>
