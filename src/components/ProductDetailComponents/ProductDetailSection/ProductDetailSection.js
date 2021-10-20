@@ -39,6 +39,24 @@ const ProductDetailSection = ({ id }) => {
     );
   };
 
+  const ProductsDetailStaticInfo = ({ staticInfo }) => {
+    return (
+      <div className="products_detail_text-info-static">
+        <span>{staticInfo}</span>
+      </div>
+    );
+  };
+
+  const ProductsDetailStaticInfoWrapper = () => {
+    return (
+      <div className="products_detail_text-info-container-item">
+        <ProductsDetailStaticInfo staticInfo={"marka:"} />
+        <ProductsDetailStaticInfo staticInfo={"renk:"} />
+        <ProductsDetailStaticInfo staticInfo={"kullanım durumu:"} />
+      </div>
+    );
+  };
+
   return (
     <div className="products_detail_wrapper">
       <div className="products_detail_main-container">
@@ -50,17 +68,7 @@ const ProductDetailSection = ({ id }) => {
             <span className="products_detail_text-title">{title}</span>
           </div>
           <div className="products_detail_text-info-container">
-            <div className="products_detail_text-info-container-item">
-              <div className="products_detail_text-info-static">
-                <span>marka:</span>
-              </div>
-              <div className="products_detail_text-info-static">
-                <span>renk:</span>
-              </div>
-              <div className="products_detail_text-info-static">
-                <span>kullanım durumu:</span>
-              </div>
-            </div>
+            <ProductsDetailStaticInfoWrapper />
             <div className="products_detail_text-info-container-item">
               <div className="products_detail_text-info-dynamic">
                 <span>{brand?.title}</span>
