@@ -20,8 +20,9 @@
   height: 1.5rem;
 
   padding-bottom: 2rem;
-  &:focus {
-    border-bottom: 1px solid #4B9CE2;
-    color: #4B9CE2;
-  }
+}
+
+.category-selected {
+  border-bottom: 1px solid #4B9CE2;
+  color: #4B9CE2;
 }

@@ -1,26 +1,38 @@
 import React from "react";
 import "./styles.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const CategoryContainer = () => {
   const categories = useSelector((state) => state.products.categories);
 
+  let query = new URLSearchParams(useLocation().search);
+  const categoryQuery = query.get("category");
+
   return (
-    <div className="category-container">
-      <Link className="category-link" to="/">
+    <nav className="category-container" aria-labelledby="category-container">
+      <Link
+        className={
+          categoryQuery ? "category-link" : "category-link category-selected"
+        }
+        to="/"
+      >
         Hepsi
       </Link>
       {categories.map((item) => (
         <Link
-          className="category-link"
+          className={
+            categoryQuery === item.title
+              ? "category-link category-selected"
+              : "category-link"
+          }
           key={item.id}
           to={`/?category=${item.title}`}
         >
           {item.title}
         </Link>
       ))}
-    </div>
+    </nav>
   );
 };
 
