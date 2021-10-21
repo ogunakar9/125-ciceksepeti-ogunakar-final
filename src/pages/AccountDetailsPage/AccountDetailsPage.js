@@ -45,7 +45,6 @@ const AccountDetailsPage = () => {
     console.log("purchase id", id);
     dispatch(purchaseProduct(id));
   };
-
   return (
     <>
       <Header />

@@ -32,6 +32,7 @@
   border-radius: 0.5rem;
   width: 7.75rem;
   padding: 0;
+  cursor: pointer;
 
   img {
     margin: 0.81rem;
@@ -41,6 +42,9 @@
 
   span {
     color: #4B9CE2;
-    font: normal normal bold 1rem/1.25rem Nunito;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0;
   }
 }
