@@ -3,8 +3,8 @@ import "./style/default.scss";
 import Index from "./pages";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SignUpPage from "./pages/SignUpPage";
-import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage/SignUpPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
 import AccountDetailsPage from "./pages/AccountDetailsPage/AccountDetailsPage";
 import ProductDetails from "./pages/ProductDetails";
 import {

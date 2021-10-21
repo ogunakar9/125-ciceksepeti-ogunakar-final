@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
+import "./styles.scss";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import UserAuthForm from "../components/User/UserAuthForm";
-import { signIn } from "../store/actions";
+import UserAuthForm from "../../components/User/UserAuthForm";
+import { signIn } from "../../store/actions";
 
 const SignInPage = () => {
   const history = useHistory();
