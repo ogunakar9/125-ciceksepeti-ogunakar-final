@@ -18,7 +18,7 @@ import {
   fetchStatuses,
 } from "./store/actions";
 import Header2 from "./components/Header2";
-import CreateProduct from "./pages/CreateProduct";
+import CreateProduct from "./pages/CreateProduct/CreateProduct";
 
 export default function App() {
   const dispatch = useDispatch();
