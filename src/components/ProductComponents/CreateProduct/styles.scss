@@ -1,0 +1,117 @@
+//input[type=file]::file-selector-button {
+//  display: none;
+//}
+
+input[type=file]::-webkit-file-upload-button {
+  display: none;
+}
+
+.product_image_title {
+  color: #525252;
+  margin: 1.875rem 0 1.5625rem 0;
+  font-weight: bold;
+  font-size: 1.5625rem;
+  line-height: 1.4375rem;
+  letter-spacing: 0;
+}
+
+.input-wrapper {
+  margin-top: 2rem;
+  position: relative;
+  width: 595px;
+  height: 164px;
+  border-radius: 0.5rem;
+  //background-color: #FFFFFF;
+  //background-color: transparent;
+
+  input {
+    border: 1px dashed black;
+    color:transparent;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    z-index: 1;
+  }
+}
+
+.input_info-overlay {
+  position: absolute;
+}
+
+.input_info-image {
+    position: absolute;
+    top: 1.1875rem;
+    left: 17.625rem;
+    width: 1.875rem;
+    height: 1.8125rem;
+}
+
+.input_info-overlay-drag {
+  left: 13.375rem;
+  top: 3.0625rem;
+  position: absolute;
+  font-size: 0.875rem;
+  line-height: 0.9375rem;
+  letter-spacing: 0;
+  color: #525252;
+  width: 10.375rem;
+  height: 2.125rem;
+  text-align: center;
+}
+
+.input_info-overlay-choose {
+  top: 5.5rem;
+  border: none;
+  //top: 11.0625rem;
+  left: 14.75rem;
+  position: absolute;
+  border-radius: 0.5rem;
+  background-color: #F4F4F4;
+  color: #B1B1B1;
+  letter-spacing: 0;
+  width: 7.625rem;
+  height: 1.875rem;
+  //padding: 0.3125rem 1.1875rem;
+  text-transform: capitalize;
+  text-align: center;
+  cursor: pointer;
+
+  span {
+    //font-size: 0.9375rem;
+    font-size: 15px;
+    line-height: 1.4375rem;
+  }
+
+}
+
+.input_info-overlay-max {
+  top: 8rem;
+  left: 11.75rem;
+  position: absolute;
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+  width: 13.625rem;
+  height: 1rem;
+}
+
+.uploaded_image_container {
+  position: relative;
+  display: inline-block;
+
+  img {
+    width: 7.0625rem;
+    height: 7.0625rem;
+    border-radius: 1rem;
+  }
+}
+
+.delete_btn_uploaded_image{
+  position: absolute;
+  cursor: pointer;
+  height: 1.2rem;
+  width: 1.2rem;
+  top: -0.35rem;
+  right: -0.15rem;
+}
+
+

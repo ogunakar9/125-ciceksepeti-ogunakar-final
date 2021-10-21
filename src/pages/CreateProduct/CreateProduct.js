@@ -163,7 +163,6 @@ const CreateProduct = () => {
                   />
                 </div>
               </div>
-              {/*<div className="create-product-detail_input-section"></div>*/}
             </div>
           </div>
           <div className="create-product-detail_upload-wrapper">

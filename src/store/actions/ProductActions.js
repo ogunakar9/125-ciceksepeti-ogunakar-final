@@ -6,6 +6,7 @@ import {
   SG_CREATE_PRODUCT,
   SG_UPLOAD_NEW_PRODUCT_IMAGE,
   SG_PURCHASE_PRODUCT,
+  SET_NEW_IMAGE_URL,
 } from "../types/ProductTypes";
 
 export const fetchProducts = () => ({
@@ -39,6 +40,11 @@ export const purchaseProduct = (id) => ({
 export const uploadNewProductImage = (image) => ({
   type: SG_UPLOAD_NEW_PRODUCT_IMAGE,
   payload: image,
+});
+
+export const removeImage = () => ({
+  type: SET_NEW_IMAGE_URL,
+  payload: "",
 });
 
 //TODO: do i need this action or can i just use saga to manipulate store after i receive url
