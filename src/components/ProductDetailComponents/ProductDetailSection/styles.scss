@@ -18,15 +18,14 @@
 .products_detail_image-container {
   border-radius: 0.5rem;
   position: relative;
-  max-width: 43.75rem;
-  height: auto;
-  flex: 0.95;
+  //
+  //flex: 0.95;
 
   img {
+    max-width: 43.75rem;
+    height: 46.0625rem;
     border-radius: 0.5rem;
-    width: 100%;
     object-fit: contain;
-    height: 100%;
   }
 }
 

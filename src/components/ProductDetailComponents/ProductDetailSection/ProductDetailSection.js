@@ -14,21 +14,20 @@ const ProductDetailSection = ({ id }) => {
     dispatch(cancelOffer(id, offerId));
   };
 
+  const { productDetails } = useSelector((state) => state.products);
   const {
-    productDetails: {
-      isOfferable,
-      offerId,
-      isSold,
-      imageUrl,
-      title,
-      brand,
-      color,
-      status,
-      price,
-      description,
-      // offeredPrice,
-    },
-  } = useSelector((state) => state.products);
+    isOfferable,
+    offerId,
+    isSold,
+    imageUrl,
+    title,
+    brand,
+    color,
+    status,
+    price,
+    description,
+    // offeredPrice,
+  } = productDetails;
   // console.log("offeredPrice", offeredPrice);
   const OfferButtons = ({ offerId }) => {
     //offerId = true ==>> offer exists
@@ -38,6 +37,7 @@ const ProductDetailSection = ({ id }) => {
       <button onClick={give}>Teklif Ver</button>
     );
   };
+  //TODO: find out how image load bug makes previous image show before loading new
 
   const ProductsDetailStaticInfo = ({ staticInfo }) => {
     return (
