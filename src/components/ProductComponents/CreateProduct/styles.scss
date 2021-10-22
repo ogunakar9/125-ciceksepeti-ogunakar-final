@@ -18,8 +18,8 @@ input[type=file]::-webkit-file-upload-button {
 .input-wrapper {
   margin-top: 2rem;
   position: relative;
-  width: 595px;
-  height: 164px;
+  width: 37.1875rem;
+  height: 10.25rem;
   border-radius: 0.5rem;
   //background-color: #FFFFFF;
   //background-color: transparent;
@@ -114,4 +114,9 @@ input[type=file]::-webkit-file-upload-button {
   right: -0.15rem;
 }
 
+.loader {
+  position: absolute;
+  left: calc(37.1875rem - 60%);
+  top: calc(10.25rem - 85%);
+}
 

@@ -4,11 +4,13 @@ import { removeImage, uploadNewProductImage } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import uploadIcon from "../../../assets/upload-products/Group 6911/Group 6911@2x.png";
 import { IoMdCloseCircle } from "react-icons/io";
+import Loader from "react-loader-spinner";
 
 const UploadImageInput = () => {
   const dispatch = useDispatch();
   const fileInputField = useRef(null);
   const uploadedImage = useSelector((state) => state.products.newImageUrl);
+  const { loading } = useSelector((state) => state.main);
 
   const handleImageChange = (e) => {
     dispatch(uploadNewProductImage(e.target.files[0]));
@@ -25,34 +27,46 @@ const UploadImageInput = () => {
       {!uploadedImage && (
         <div>
           <div className="input-wrapper">
-            <div className="input_info-overlay">
-              <div className="input_info-image">
-                <img src={uploadIcon} alt="upload-icon" />
-              </div>
-              <div className="input_info-overlay-drag">
-                <span>Sürükleyip bırakarak yükle veya</span>
-              </div>
-              <div>
-                <button
-                  className="input_info-overlay-choose"
-                  onClick={() => {
-                    document.getElementById("new-image").click();
-                  }}
-                >
-                  Görsel Seçin
-                </button>
-              </div>
-              <div className="input_info-overlay-max">
-                <span>PNG ve JPEG Dosya boyutu: max. 100kb</span>
-              </div>
-            </div>
-            <input
-              ref={fileInputField}
-              type="file"
-              id="new-image"
-              name="new-image"
-              title=""
-              onChange={handleImageChange}
+            {!loading && (
+              <>
+                <div className="input_info-overlay">
+                  <div className="input_info-image">
+                    <img src={uploadIcon} alt="upload-icon" />
+                  </div>
+                  <div className="input_info-overlay-drag">
+                    <span>Sürükleyip bırakarak yükle veya</span>
+                  </div>
+                  <div>
+                    <button
+                      className="input_info-overlay-choose"
+                      onClick={() => {
+                        document.getElementById("new-image").click();
+                      }}
+                    >
+                      Görsel Seçin
+                    </button>
+                  </div>
+                  <div className="input_info-overlay-max">
+                    <span>PNG ve JPEG Dosya boyutu: max. 100kb</span>
+                  </div>
+                </div>
+                <input
+                  ref={fileInputField}
+                  type="file"
+                  id="new-image"
+                  name="new-image"
+                  title=""
+                  onChange={handleImageChange}
+                />
+              </>
+            )}
+            <Loader
+              className="loader"
+              type="Oval"
+              color="black"
+              height={100}
+              width={100}
+              visible={loading}
             />
           </div>
         </div>
