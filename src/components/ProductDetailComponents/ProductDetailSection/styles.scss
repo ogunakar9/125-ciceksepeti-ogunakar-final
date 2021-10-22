@@ -87,6 +87,29 @@
   margin: 1.875rem 0;
 }
 
+.products_detail_text_offered-price {
+  border-radius: 0.5rem;
+  background-color: #F2F2F2;
+  height: 2.25rem;
+  padding: 0 3.625rem 0.5rem 0.625rem;
+  margin: -1.8749rem 0 1.875rem;
+
+  span:first-child{
+    color: #B1B1B1;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    letter-spacing: 0;
+  }
+  span:last-child{
+    color: #525252;
+    margin-left: 0.4375rem;
+    font-size: 0.9375rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0;
+  }
+}
+
 .products_detail_text-info_description-title {
   font-weight: bold;
   font-size: 1.125rem ;

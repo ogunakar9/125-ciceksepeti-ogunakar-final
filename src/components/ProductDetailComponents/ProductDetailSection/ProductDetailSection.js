@@ -26,9 +26,10 @@ const ProductDetailSection = ({ id }) => {
     status,
     price,
     description,
-    // offeredPrice,
   } = productDetails;
-  // console.log("offeredPrice", offeredPrice);
+  const { givenOffers } = useSelector((state) => state.account);
+  const offer = givenOffers?.filter((item) => item.id === offerId)[0];
+
   const OfferButtons = ({ offerId }) => {
     //offerId = true ==>> offer exists
     return offerId ? (
@@ -86,10 +87,13 @@ const ProductDetailSection = ({ id }) => {
           <div className="products_detail_text-price">
             <span>{price} TL</span>
           </div>
-          {/*TODO: display offeredPrice here*/}
-          {/*{offerId ? <span>*/}
-          {/*  {}*/}
-          {/*</span>}*/}
+          {offer && (
+            <div className="products_detail_text_offered-price">
+              <span>Verilen Teklif:</span>
+              <span>{offer.offeredPrice} TL</span>
+            </div>
+          )}
+
           <div>
             {isSold && (
               <button className="product_sold_button" disabled>
