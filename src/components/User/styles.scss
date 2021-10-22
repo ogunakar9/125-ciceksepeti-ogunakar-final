@@ -1,0 +1,109 @@
+.user_main-container {
+  background-color: #FBFBFB;
+  //TODO: bu sayfanin widthi nedense sacmaliyo, temp fix yaptim
+
+  width: 100%;
+  display: flex;
+  //overflow: hidden;
+  //justify-content: space-between;
+}
+
+.user_image-container {
+  width: 43.49%;
+  height: 100vh;
+  object-fit: contain;
+
+  @media only screen and (max-width: 1200px) {
+    object-fit: cover;
+  }
+}
+
+.user_right_side-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 8.375rem 16.625rem 16.4375rem 15.625rem;
+  align-items: center;
+
+
+
+  img {
+    width: 14rem;
+    height: 4.5625rem;
+  }
+}
+
+.user_form-lower-container {
+  margin-top: 3.469rem;
+  background-color: #FFFFFF;
+  height: 34.625rem;
+  box-shadow: 0 3px 12px #1E36480A;
+  border-radius: 8px;
+  width: 35.5625rem;
+
+  form {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 4.375rem 5.625rem;
+  }
+}
+
+.form-input {
+  width: 100%;
+}
+
+.user_form_title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2.6875;
+  letter-spacing: 0;
+  color: #525252;
+  margin-bottom: -1rem;
+  //width: 6.125rem;
+  //height: 2.6875rem;
+}
+
+.user_form_suggestion {
+  color: #525252;
+  text-align: center;
+  font: normal normal normal 0.9375rem/1.25 Nunito;
+  letter-spacing: 0;
+  margin-bottom: 3.125rem;
+}
+
+.user_form_input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 0.3125rem;
+  margin-bottom: 0.9375rem;
+}
+
+.user_form_label {
+  font: normal normal normal 0.9375rem/1.25 Nunito;
+  letter-spacing: 0;
+  color: #525252;
+}
+
+.user_form_button {
+  width: 100%;
+  margin: 0.9375rem 0 2.5625rem 0;
+  background-color: #4B9CE2;
+  border-radius: 0.5rem;
+  border: none;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+  color: #FFFFFF;
+  padding: 0.6875rem 10.375rem;
+}
+
+.user_form_got-account {
+  text-align: center;
+  font: normal normal normal 0.9375rem/1.25 Nunito;
+  letter-spacing: 0;
+}
