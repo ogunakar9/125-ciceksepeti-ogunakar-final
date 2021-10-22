@@ -278,7 +278,6 @@ function* sgPurchaseProduct(action) {
       return;
     }
     const id = action.payload;
-    console.log("id saga", id);
     const response = yield call(
       API.put,
       `/product/purchase/${id}`,
@@ -295,6 +294,12 @@ function* sgPurchaseProduct(action) {
     yield put({
       type: SG_FETCH_GIVEN_OFFERS,
     });
+
+    yield put({
+      type: SG_FETCH_PRODUCT_DETAIL,
+      payload: id,
+    });
+
     yield put({
       type: SET_LOADING,
       payload: { loading: false },

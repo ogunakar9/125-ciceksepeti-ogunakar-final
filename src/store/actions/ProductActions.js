@@ -46,9 +46,3 @@ export const removeImage = () => ({
   type: SET_NEW_IMAGE_URL,
   payload: "",
 });
-
-//TODO: do i need this action or can i just use saga to manipulate store after i receive url
-// export const setNewImageUrl = (url) => ({
-//   type: SET_NEW_IMAGE_URL,
-//   payload: url,
-// });

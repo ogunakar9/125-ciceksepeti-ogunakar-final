@@ -1,10 +1,18 @@
 import React from "react";
 import "./styles.scss";
-import { cancelOffer, giveOffer } from "../../../store/actions";
+import {
+  cancelOffer,
+  giveOffer,
+  purchaseProduct,
+} from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetailSection = ({ id }) => {
   const dispatch = useDispatch();
+
+  const handleBuy = () => {
+    dispatch(purchaseProduct(id));
+  };
 
   const give = () => {
     dispatch(giveOffer(id));
@@ -33,9 +41,13 @@ const ProductDetailSection = ({ id }) => {
   const OfferButtons = ({ offerId }) => {
     //offerId = true ==>> offer exists
     return offerId ? (
-      <button onClick={cancel}>Teklifi Geri Cek</button>
+      <button className="product_offer_button" onClick={cancel}>
+        Teklifi Geri Cek
+      </button>
     ) : (
-      <button onClick={give}>Teklif Ver</button>
+      <button className="product_offer_button" onClick={give}>
+        Teklif Ver
+      </button>
     );
   };
   //TODO: find out how image load bug makes previous image show before loading new
@@ -87,7 +99,7 @@ const ProductDetailSection = ({ id }) => {
           <div className="products_detail_text-price">
             <span>{price} TL</span>
           </div>
-          {offer && (
+          {offer && !isSold && (
             <div className="products_detail_text_offered-price">
               <span>Verilen Teklif:</span>
               <span>{offer.offeredPrice} TL</span>
@@ -100,9 +112,17 @@ const ProductDetailSection = ({ id }) => {
                 bu ürün satışta değil
               </button>
             )}
-            {!isSold && isOfferable && <OfferButtons offerId={offerId} />}
+            {!isSold && isOfferable && (
+              <div>
+                <button onClick={handleBuy} className="product_buy_button">
+                  Satın Al
+                </button>
+                <OfferButtons offerId={offerId} />
+              </div>
+            )}
           </div>
           <div>
+            {/*TODO: burda aciklama saga sonsuz uzaniyo, buttonlarla aligned wraple*/}
             <div className="products_detail_text-info_description-title">
               <span>açıklama</span>
             </div>

@@ -135,3 +135,32 @@
   margin: 0 auto 1.875rem;
 }
 
+.product_buy_button {
+  color: #FFFFFF;
+  background-color: #4B9CE2;
+  border-radius: 0.5rem;
+  //font-weight: bold;
+  //font-size: 1.125rem;
+  //line-height: 1.5rem;
+  text-transform: capitalize;
+  border: none;
+  padding: 0.6875rem 0 0.6875rem;
+  margin: 0 0.625rem 1.875rem auto;
+  width: 14.6875rem;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+}
+
+.product_offer_button {
+  color: #4B9CE2;
+  background-color: #F0F8FF;
+  border-radius: 0.5rem;
+  width: 14.6875rem;
+  //font-weight: bold;
+  //font-size: 1.125rem;
+  //line-height: 1.5rem;
+  text-transform: capitalize;
+  border: none;
+  padding: 0.6875rem 0 0.6875rem;
+  margin: 0 auto 1.875rem;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+}
