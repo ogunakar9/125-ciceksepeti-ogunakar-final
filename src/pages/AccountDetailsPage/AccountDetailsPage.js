@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { acceptOffer, purchaseProduct, rejectOffer } from "../../store/actions";
 import profileIconBig from "../../assets/account-details/profile-icons/profile-icon-big.png";
 
 const AccountDetailsPage = () => {
-  // const history = useHistory();
-  // const isSignedIn = useSelector((state) => state.auth.isSignedIn);
+  const history = useHistory();
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
   //TODO: think about whether you want to redirect to main page when page refreshes
-  // useEffect(() => {
-  //   if (!isSignedIn) {
-  //     history.push("/signin");
-  //   }
-  // }, [isSignedIn, history]);
+  useEffect(() => {
+    if (!isSignedIn) {
+      history.push("/signin");
+    }
+  }, [isSignedIn, history]);
 
   const dispatch = useDispatch();
   const { email } = useSelector((state) => state.auth);

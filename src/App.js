@@ -7,6 +7,7 @@ import SignUpPage from "./pages/SignUpPage/SignUpPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import AccountDetailsPage from "./pages/AccountDetailsPage/AccountDetailsPage";
 import ProductDetails from "./pages/ProductDetails";
+import CreateProduct from "./pages/CreateProduct/CreateProduct";
 import {
   checkUserSession,
   fetchCategories,
@@ -17,7 +18,6 @@ import {
   fetchBrands,
   fetchStatuses,
 } from "./store/actions";
-import CreateProduct from "./pages/CreateProduct/CreateProduct";
 
 export default function App() {
   const dispatch = useDispatch();
