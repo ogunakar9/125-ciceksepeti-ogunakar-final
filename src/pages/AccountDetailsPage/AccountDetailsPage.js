@@ -40,7 +40,7 @@ const AccountDetailsPage = () => {
   const handleRejectOffer = (id) => {
     dispatch(rejectOffer(id));
   };
-
+  //TODO: item satin alindiktan sonra asagidaki listboxta gosterilmeli mi find out
   const handlePurchaseOffered = (id) => {
     console.log("purchase id", id);
     dispatch(purchaseProduct(id));
