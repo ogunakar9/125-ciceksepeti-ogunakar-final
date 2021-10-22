@@ -5,6 +5,7 @@ import { fetchProductsDetail } from "../store/actions";
 import Header from "../components/Header/Header";
 import ProductDetailSection from "../components/ProductDetailComponents/ProductDetailSection/ProductDetailSection";
 import Loader from "../components/shared/Loader/Loader";
+import Modal from "../components/shared/Modal/Modal";
 
 const ProductDetails = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const ProductDetails = () => {
     <>
       <Header />
       <Loader />
+      <Modal />
       <ProductDetailSection id={id} />
     </>
   );

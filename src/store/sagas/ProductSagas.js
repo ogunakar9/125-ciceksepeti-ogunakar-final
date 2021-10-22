@@ -15,7 +15,7 @@ import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
 import { sgFetchGivenOffers } from "./AccountSagas";
 import { SG_FETCH_GIVEN_OFFERS } from "../types/AccountTypes";
-import { SET_LOADING } from "../types/MainTypes";
+import { SET_LOADING, SET_MODAL } from "../types/MainTypes";
 
 function* sgFetchProducts() {
   console.log("Products Saga");
@@ -304,12 +304,21 @@ function* sgPurchaseProduct(action) {
       type: SET_LOADING,
       payload: { loading: false },
     });
+
+    yield put({
+      type: SET_MODAL,
+      payload: { isModalOpen: false, modalContent: null, productId: null },
+    });
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
+    });
+    yield put({
+      type: SET_MODAL,
+      payload: { isModalOpen: false, modalContent: null, productId: null },
     });
     // put({
     //   type: SET_SNACKBAR_OPEN,

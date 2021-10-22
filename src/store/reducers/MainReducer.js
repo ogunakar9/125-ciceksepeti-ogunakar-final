@@ -4,12 +4,16 @@ import {
   SET_COLOR,
   SET_COLORS,
   SET_LOADING,
+  SET_MODAL,
   SET_STATUS,
   SET_STATUSES,
 } from "../types/MainTypes";
 
 const INIT_STATE = {
   loading: false,
+  isModalOpen: false,
+  modalContent: null,
+  productId: null,
   colors: [],
   brands: [],
   statuses: [],
@@ -24,6 +28,13 @@ export default function mainReducer(state = INIT_STATE, action) {
       return {
         ...state,
         loading: action.payload.loading,
+      };
+    case SET_MODAL:
+      return {
+        ...state,
+        isModalOpen: action.payload.isModalOpen,
+        modalContent: action.payload.modalContent,
+        productId: action.payload.productId,
       };
     case SET_COLORS:
       return {

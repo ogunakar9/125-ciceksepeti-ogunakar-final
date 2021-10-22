@@ -1,31 +1,65 @@
 import React from "react";
 import "./styles.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReactDOM from "react-dom";
+import { IoMdCloseCircle } from "react-icons/io";
+import { purchaseProduct, setModal } from "../../../store/actions";
 
 const Modal = () => {
-  const { loading } = useSelector((state) => state.main);
-  console.log(loading);
+  const dispatch = useDispatch();
+  const { isModalOpen, modalContent, productId } = useSelector(
+    (state) => state.main
+  );
+  console.log(isModalOpen);
 
-  // if (!props.show) {
-  //   return null;
-  // }
-
-  if (!loading) {
+  if (!isModalOpen) {
     return null;
   }
+
+  const handleModalClose = () => {
+    dispatch(
+      setModal({
+        isModalOpen: false,
+        modalContent: null,
+        productId: null,
+      })
+    );
+  };
+
+  const handleBuy = () => {
+    dispatch(purchaseProduct(productId));
+  };
+
+  const buyModalContent = () => {
+    return (
+      <div className="modal_buy_container">
+        <span className="modal_buy_title">Satın Al</span>
+        <span className="modal_buy_warning">Satın Almak istiyor musunuz?</span>
+        <div>
+          <button className="modal_buy_cancel" onClick={handleModalClose}>
+            Vazgeç
+          </button>
+          <button className="modal_buy_accept" onClick={handleBuy}>
+            Satın Al
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  const offerModalContent = () => {
+    return <p>Got a really good offer</p>;
+  };
 
   return ReactDOM.createPortal(
     <div className="modal">
       <div className="modal-content">
-        {/*<div className="modal-header">*/}
-        {/*  <h4 className="modal-title">Modal title</h4>*/}
-        {/*</div>*/}
-        {/*<Loader className="modal-loader" loading={loading} />*/}
-        {/*<div className="modal-body">This is modal content</div>*/}
-        {/*<div className="modal-footer">*/}
-        {/*  <button className="button">Close</button>*/}
-        {/*</div>*/}
+        <IoMdCloseCircle
+          className="modal_close_button"
+          onClick={handleModalClose}
+        />
+        {modalContent && modalContent === "buy" && buyModalContent()}
+        {modalContent && modalContent === "offer" && offerModalContent()}
       </div>
     </div>,
     document.getElementById("root")

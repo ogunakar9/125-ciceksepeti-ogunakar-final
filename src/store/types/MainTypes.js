@@ -1,4 +1,5 @@
 export const SET_LOADING = "SET_LOADING";
+export const SET_MODAL = "SET_MODAL";
 export const SET_COLORS = "SET_COLORS";
 export const SET_BRANDS = "SET_BRANDS";
 export const SET_STATUSES = "SET_STATUSES";

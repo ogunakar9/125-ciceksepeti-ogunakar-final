@@ -4,28 +4,70 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background: #4B9CE2;
-  opacity: 0.7;
+  background: #4B9CE2B3;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .modal-content {
-  width: 500px;
-  //background-color: #fff;
+  position: relative;
+  transform: translateY(-1.2rem);
+  //TODO: calc viewheight something here to move modal upwards
 }
 
-.modal-header, .modal-footer {
-  padding: 10px;
+.modal_close_button {
+  position: absolute;
+  cursor: pointer;
+  height: 1.2rem;
+  width: 1.2rem;
+  top: 0;
+  right: 0;
+  color: #525252;
 }
 
-.modal-title {
-  margin: 0;
+.modal_buy_container {
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 22.1875rem;
+  height: 10.6875rem;
+  box-shadow: 0 3px 12px #1E36482E;
+  border-radius: 0.5rem;
 }
 
-.modal-body {
-  padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+.modal_buy_title {
+  font: normal normal bold 1.5625rem/1.4375 Nunito;
+  letter-spacing: 0;
+  color: #525252;
+}
+
+.modal_buy_warning {
+  font: normal normal 0.9375rem/1.4375 Nunito;
+  letter-spacing: 0;
+  color: #555555;
+  margin: 0.75rem auto 1.25rem;
+}
+
+.modal_buy_cancel {
+  background-color: #F0F8FF;
+  color: #4B9CE2;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+  letter-spacing: 0;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.6875rem 2.625rem;
+  margin-right: 0.625rem;
+}
+
+.modal_buy_accept {
+  color: #FFFFFF;
+  background-color: #4B9CE2;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+  letter-spacing: 0;
+  border-radius: 0.5rem;
+  border: none;
+  padding: 0.6875rem 2.625rem;
 }

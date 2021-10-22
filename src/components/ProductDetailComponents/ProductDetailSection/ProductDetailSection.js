@@ -1,20 +1,21 @@
 import React from "react";
 import "./styles.scss";
-import {
-  cancelOffer,
-  giveOffer,
-  purchaseProduct,
-} from "../../../store/actions";
+import { cancelOffer, giveOffer, setModal } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetailSection = ({ id }) => {
   const dispatch = useDispatch();
 
   const handleBuy = () => {
-    dispatch(purchaseProduct(id));
+    dispatch(
+      setModal({ isModalOpen: true, modalContent: "buy", productId: id })
+    );
   };
 
   const give = () => {
+    dispatch(
+      setModal({ isModalOpen: true, modalContent: "offer", productId: id })
+    );
     dispatch(giveOffer(id));
   };
 
@@ -132,8 +133,6 @@ const ProductDetailSection = ({ id }) => {
           </div>
         </div>
       </div>
-
-      {/*<p>{id}</p>*/}
     </div>
   );
 };
