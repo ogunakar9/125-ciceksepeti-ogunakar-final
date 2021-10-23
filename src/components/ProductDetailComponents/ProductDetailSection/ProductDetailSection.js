@@ -10,11 +10,11 @@ const ProductDetailSection = ({ productDetails, offer }) => {
     dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
 
-  const give = () => {
+  const handleGive = () => {
     dispatch(setModal({ isModalOpen: true, modalContent: "offer" }));
   };
 
-  const cancel = () => {
+  const handleCancel = () => {
     dispatch(cancelOffer(id, offerId));
   };
 
@@ -35,11 +35,11 @@ const ProductDetailSection = ({ productDetails, offer }) => {
   const OfferButtons = ({ offerId }) => {
     //offerId = true ==>> offer exists
     return offerId ? (
-      <button className="product_offer_button" onClick={cancel}>
+      <button className="product_offer_button" onClick={handleCancel}>
         Teklifi Geri Cek
       </button>
     ) : (
-      <button className="product_offer_button" onClick={give}>
+      <button className="product_offer_button" onClick={handleGive}>
         Teklif Ver
       </button>
     );

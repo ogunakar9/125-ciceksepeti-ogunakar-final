@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setNotification } from "../../../store/actions";
 import { timeout_delay } from "../../../utilities/Config";
 
-const Notification = () => {
+const Notification = ({ text, icon, type }) => {
   const dispatch = useDispatch();
   const { notificationOpen } = useSelector((state) => state.main);
   const [timer, setTimer] = useState(0);
@@ -26,8 +26,9 @@ const Notification = () => {
   }
 
   return ReactDOM.createPortal(
-    <div className="toaster-wrapper">
-      <p>MODAL ON FOR YA</p>
+    <div className={`toaster-wrapper toaster-${type}`}>
+      <img src={icon} alt="icon" />
+      <span>{text}</span>
     </div>,
     document.getElementById("root")
   );

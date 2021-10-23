@@ -18,10 +18,9 @@ const AccountDetailsPage = () => {
 
   const dispatch = useDispatch();
   const { email } = useSelector((state) => state.auth);
-  const { givenOffers } = useSelector((state) => state.account);
-  const { receivedOffers } = useSelector((state) => state.account);
+  const { givenOffers, receivedOffers } = useSelector((state) => state.account);
 
-  const [activeTab, setActiveTab] = useState("received");
+  const [activeTab, setActiveTab] = useState("given");
   console.log("given", givenOffers);
   console.log("received", receivedOffers);
 
@@ -45,6 +44,7 @@ const AccountDetailsPage = () => {
     console.log("purchase id", id);
     dispatch(purchaseProduct(id));
   };
+
   return (
     <>
       <Header />
@@ -56,19 +56,19 @@ const AccountDetailsPage = () => {
         <div className="account-details_list-container">
           <div className="account-details_list_button-container">
             <button
-              onClick={handleReceived}
-              className={
-                activeTab === "received" &&
-                "account-details_list_selected-button"
-              }
+              onClick={handleGiven}
+              className={`account-details_list-button ${
+                activeTab === "given" && "account-details_list_selected-button"
+              }`}
             >
               <p>Teklif Verdiklerim</p>
             </button>
             <button
-              onClick={handleGiven}
-              className={
-                activeTab === "given" && "account-details_list_selected-button"
-              }
+              onClick={handleReceived}
+              className={`account-details_list-button ${
+                activeTab === "received" &&
+                "account-details_list_selected-button"
+              }`}
             >
               <p>Teklif Aldıklarım</p>
             </button>
