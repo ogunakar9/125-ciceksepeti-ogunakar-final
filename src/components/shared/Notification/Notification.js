@@ -18,6 +18,7 @@ const Notification = () => {
       dispatch(setNotification(false));
     }, timeout_delay);
     setTimer(delay);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, notificationOpen]);
 
   if (!notificationOpen) {
