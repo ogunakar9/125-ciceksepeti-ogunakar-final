@@ -52,21 +52,28 @@ const Modal = ({ productDetails }) => {
   const OfferModalContent = () => {
     const [customOffer, setCustomOffer] = useState("");
     const [offerTogo, setOfferTogo] = useState(null);
+    const [checked, setCheckBoxChecked] = useState(false);
 
-    const calculatePercentage = (initialVal, percentage) => {
-      return (initialVal * percentage) / 100;
-    };
-
-    const twentyPercent = () => calculatePercentage(price, 20);
-    const thirtyPercent = () => calculatePercentage(price, 30);
-    const fortyPercent = () => calculatePercentage(price, 40);
-
-    // console.log(offerTogo);
+    const twentyPercent = (price * 20) / 100;
+    const thirtyPercent = (price * 30) / 100;
+    const fortyPercent = (price * 40) / 100;
 
     const handleCustomInput = (e) => {
       //TODO: handle input checks here
+      setCheckBoxChecked(false);
       setCustomOffer(e.target.value);
       setOfferTogo(parseInt(e.target.value));
+    };
+
+    const inputs = [
+      { label: "%20’si Kadar Teklif Ver", value: twentyPercent },
+      { label: "%30’u Kadar Teklif Ver", value: thirtyPercent },
+      { label: "%40’ı Kadar Teklif Ver", value: fortyPercent },
+    ];
+
+    const handleRadioInput = (value) => {
+      setCheckBoxChecked(value);
+      setOfferTogo(value);
     };
 
     return (
@@ -94,37 +101,22 @@ const Modal = ({ productDetails }) => {
           </div>
         </div>
         <div className="modal_offer_inputs-wrapper">
-          <div className="modal_offer_input-single-container">
-            {/*TODO: fix inputs not working */}
-            <input
-              type="radio"
-              id="twenty"
-              name="percentage-offer"
-              value={twentyPercent()}
-              onChange={() => setOfferTogo(twentyPercent)}
-            />
-            <label htmlFor="twenty">%20’si Kadar Teklif Ver</label>
-          </div>
-          <div className="modal_offer_input-single-container">
-            <input
-              type="radio"
-              id="thirty"
-              name="percentage-offer"
-              value={thirtyPercent()}
-              onChange={() => setOfferTogo(thirtyPercent)}
-            />
-            <label htmlFor="thirty">%30’u Kadar Teklif Ver</label>
-          </div>
-          <div className="modal_offer_input-single-container">
-            <input
-              type="radio"
-              id="forty"
-              name="percentage-offer"
-              value={fortyPercent()}
-              onChange={() => setOfferTogo(fortyPercent)}
-            />
-            <label htmlFor="forty">%40’ı Kadar Teklif Ver</label>
-          </div>
+          {inputs.map((input) => (
+            <div
+              className="modal_offer_input-single-container"
+              key={input["value"]}
+            >
+              <input
+                type="radio"
+                id={input["value"]}
+                checked={input["value"] === checked}
+                onChange={() => handleRadioInput(input["value"])}
+                value={input["value"]}
+                name="percentage-offer"
+              />
+              <label htmlFor={input["value"]}>{input["label"]}</label>
+            </div>
+          ))}
           <div className="modal_offer_input-custom-container">
             <input
               type="text"
