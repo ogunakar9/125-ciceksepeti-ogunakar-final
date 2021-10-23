@@ -54,12 +54,21 @@
 }
 
 .create-product-detail_input-section {
+  //margin-top: 1.5625rem;
   padding-top: 1.5625rem;
   display: flex;
   flex-direction: column;
   //background-color: red;
   width: 100%;
 
+  input {
+    font: normal normal normal 1rem/1.375 Nunito;
+    letter-spacing: 0;
+    &:focus {
+      color: #3E3E3E;
+      width: 24.3125rem;
+    }
+  }
   label {
     padding-bottom: 0.3125rem;
     font-size: 0.9375rem;
@@ -93,6 +102,8 @@ input, select {
   }
 }
 
+
+
 select {
   border-radius: 0.5rem;
   background-color: #F4F4F4;
@@ -101,9 +112,8 @@ select {
   height: 2.8125rem;
   border: none;
   font-size: 1rem;
-  line-height: 1.375rem;
+  line-height: 1.375;
   letter-spacing: 0;
-
 
   &:focus {
     //overflow: scroll;
@@ -137,11 +147,30 @@ select {
   }
 }
 
-.description-fixer {
-  input {
-    height: 5.75rem !important;
+  //TODO: active statelerine bak bu inputlarin textlerin, dropdown stateleri stillencek
+  textarea[name="description"] {
+    height: 5.75rem;
+    color: #99A0A7;
+    text-align: left;
+    font: normal normal normal 1rem/1.375 Nunito;
+    letter-spacing: 0;
+    word-wrap: break-word;
+    overflow:auto;
+    border-radius: 0.5rem;
+    background-color: #F4F4F4;
+    padding: 0.9375rem 0.75rem 0.9375rem 0.6875rem;
+    border: none;
+    font-size: 1rem;
+
+
+    &:focus {
+      background-color: #F0F8FF;
+      border: 1px solid #4B9CE2;
+      color: #3E3E3E;
+      width: 24.3125rem;
+    }
   }
-}
+
 
 .create_product-button {
   position: absolute;

@@ -62,6 +62,7 @@ const CreateProduct = () => {
               <div className="create-product-detail_input-section">
                 <label htmlFor="title">Ürün Adı</label>
                 <input
+                  placeholder="Örnek: Iphone 12 Pro Max"
                   name="title"
                   type="text"
                   id="new-product-name"
@@ -69,11 +70,11 @@ const CreateProduct = () => {
                   onChange={handleProductDetailChange}
                 />
               </div>
-              <div className="create-product-detail_input-section description-fixer">
+              <div className="create-product-detail_input-section">
                 <label htmlFor="description">Açıklama</label>
-                <input
+                <textarea
+                  placeholder="Ürün açıklaması girin"
                   name="description"
-                  type="text"
                   id="description"
                   value={newProduct.description}
                   onChange={handleProductDetailChange}
@@ -168,7 +169,6 @@ const CreateProduct = () => {
           <div className="create-product-detail_upload-wrapper">
             <UploadImageInput />
           </div>
-
           <div>
             <button
               className="create_product-button"
