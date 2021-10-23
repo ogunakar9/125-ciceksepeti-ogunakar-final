@@ -6,6 +6,7 @@ import {
   SG_FETCH_BRAND,
   SG_FETCH_STATUS,
   SET_MODAL,
+  SET_NOTIFICATION,
 } from "../types/MainTypes";
 
 export const fetchColors = () => ({
@@ -38,4 +39,9 @@ export const fetchStatus = (id) => ({
 export const setModal = ({ isModalOpen, modalContent }) => ({
   type: SET_MODAL,
   payload: { isModalOpen, modalContent },
+});
+
+export const setNotification = (notificationVisibility) => ({
+  type: SET_NOTIFICATION,
+  payload: notificationVisibility,
 });

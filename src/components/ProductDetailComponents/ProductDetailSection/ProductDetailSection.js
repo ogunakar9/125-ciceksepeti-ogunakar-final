@@ -7,15 +7,11 @@ const ProductDetailSection = ({ productDetails, offer }) => {
   const dispatch = useDispatch();
 
   const handleBuy = () => {
-    dispatch(
-      setModal({ isModalOpen: true, modalContent: "buy", productId: id })
-    );
+    dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
 
   const give = () => {
-    dispatch(
-      setModal({ isModalOpen: true, modalContent: "offer", productId: id })
-    );
+    dispatch(setModal({ isModalOpen: true, modalContent: "offer" }));
   };
 
   const cancel = () => {
@@ -67,7 +63,7 @@ const ProductDetailSection = ({ productDetails, offer }) => {
       </div>
     );
   };
-
+  //TODO: image ustten ve alttan biraz marginli olsun
   return (
     <div className="products_detail_wrapper">
       <div className="products_detail_main-container">

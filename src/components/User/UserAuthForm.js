@@ -81,7 +81,7 @@ const UserAuthForm = ({ action }) => {
             <div className="user_form_got-account">
               <span>
                 {/*TODO: reroute to signin or signout*/}
-                Hesabın var mı? <Link>Giriş Yap</Link>
+                Hesabın var mı? <Link to={"/signin"}>Giriş Yap</Link>
               </span>
             </div>
           </form>

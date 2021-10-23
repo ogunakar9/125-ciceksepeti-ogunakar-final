@@ -101,6 +101,7 @@ const Modal = ({ productDetails }) => {
           </div>
         </div>
         <div className="modal_offer_inputs-wrapper">
+          {/*TODO: change style of div if input is selected*/}
           {inputs.map((input) => (
             <div
               className="modal_offer_input-single-container"

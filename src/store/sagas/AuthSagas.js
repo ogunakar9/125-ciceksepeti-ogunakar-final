@@ -9,7 +9,7 @@ import {
 } from "../types/AuthTypes";
 import API from "../../services/api";
 import { user_token, user_mail } from "../../utilities/Constants";
-import { SET_LOADING } from "../types/MainTypes";
+import { SET_LOADING, SET_NOTIFICATION } from "../types/MainTypes";
 
 function* sgSignUp(action) {
   console.log("Sign Up Saga");
@@ -86,6 +86,10 @@ function* sgSignIn(action) {
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
+    });
+    yield put({
+      type: SET_NOTIFICATION,
+      payload: true,
     });
   }
 }
