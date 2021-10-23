@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { acceptOffer, purchaseProduct, rejectOffer } from "../../store/actions";
 import profileIconBig from "../../assets/account-details/profile-icons/profile-icon-big.png";
+import Notification from "../../components/shared/Notification/Notification";
+import successIcon from "../../assets/auth/successIcon/successIcon@2x.png";
 
 const AccountDetailsPage = () => {
   const history = useHistory();
@@ -45,9 +47,12 @@ const AccountDetailsPage = () => {
     dispatch(purchaseProduct(id));
   };
 
+  const text = "Satın Alındı";
+
   return (
     <>
       <Header />
+      <Notification text={text} icon={successIcon} type={"success"} />
       <div className="account-details_container">
         <div className="account-details_mail-wrapper">
           <img src={profileIconBig} alt="profile-icon" />
