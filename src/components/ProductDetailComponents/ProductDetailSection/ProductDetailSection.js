@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.scss";
-import { cancelOffer, giveOffer, setModal } from "../../../store/actions";
+import { cancelOffer, setModal } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductDetailSection = ({ id }) => {
@@ -16,7 +16,6 @@ const ProductDetailSection = ({ id }) => {
     dispatch(
       setModal({ isModalOpen: true, modalContent: "offer", productId: id })
     );
-    dispatch(giveOffer(id));
   };
 
   const cancel = () => {

@@ -16,16 +16,6 @@
   //TODO: calc viewheight something here to move modal upwards
 }
 
-.modal_close_button {
-  position: absolute;
-  cursor: pointer;
-  height: 1.2rem;
-  width: 1.2rem;
-  top: 0;
-  right: 0;
-  color: #525252;
-}
-
 .modal_buy_container {
   background-color: #FFFFFF;
   display: flex;
@@ -71,3 +61,94 @@
   border: none;
   padding: 0.6875rem 2.625rem;
 }
+
+.modal_offer_container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 1.25rem;
+  height: 28.8125rem;
+  width: 30rem;
+  background-color: #FFFFFF;
+  border-radius: 0.625rem;
+  box-shadow: 0 3px 12px #1E36482E;
+}
+
+.modal_close_offer_button {
+  position: absolute;
+  cursor: pointer;
+  height: 1.5rem;
+  width: 1.5rem;
+  top: 1.25rem;
+  right: 1.25rem;
+  color: #525252;
+}
+
+.modal_offer_title {
+  color: #525252;
+  font: normal normal bold 1.5625rem/1.4375 Nunito;
+  letter-spacing: 0;
+  display: flex;
+}
+
+.modal_offer_info {
+  margin-bottom: 1.25rem;
+}
+
+.modal_offer_inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+}
+
+.modal_offer_input-single-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.3125rem;
+  padding-left: 0.625rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+
+  input {
+
+  }
+
+}
+
+.modal_offer_input-custom-container {
+  display: flex;
+  align-items: center;
+  background-color: #F4F4F4;
+  color: #99A0A7;
+  border-radius: 0.5rem;
+  position: relative;
+  font: normal normal normal 1rem/1.375 Nunito;
+  letter-spacing: 0;
+  input {
+    width: 100%;
+
+    &:focus {
+      color: #3E3E3E;
+    }
+  }
+
+  span {
+    position: absolute;
+    right: 0.625rem;
+  }
+}
+
+.modal_offer_submit-button {
+  background-color: #4B9CE2;
+  color: #FFFFFF;
+  width: 19.6875rem;
+  height: 2.8125rem;
+  margin: auto;
+  padding: 0.6875rem 8rem;
+  font: normal normal bold 1.125rem/1.5 Nunito;
+  letter-spacing: 0;
+  border: none;
+  border-radius: 0.5rem;
+}
+
