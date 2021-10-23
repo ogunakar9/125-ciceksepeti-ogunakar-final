@@ -1,9 +1,9 @@
 import React from "react";
 import "./styles.scss";
 import { cancelOffer, setModal } from "../../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-const ProductDetailSection = ({ id }) => {
+const ProductDetailSection = ({ productDetails, offer }) => {
   const dispatch = useDispatch();
 
   const handleBuy = () => {
@@ -22,7 +22,6 @@ const ProductDetailSection = ({ id }) => {
     dispatch(cancelOffer(id, offerId));
   };
 
-  const { productDetails } = useSelector((state) => state.products);
   const {
     isOfferable,
     offerId,
@@ -34,9 +33,8 @@ const ProductDetailSection = ({ id }) => {
     status,
     price,
     description,
+    id,
   } = productDetails;
-  const { givenOffers } = useSelector((state) => state.account);
-  const offer = givenOffers?.filter((item) => item.id === offerId)[0];
 
   const OfferButtons = ({ offerId }) => {
     //offerId = true ==>> offer exists

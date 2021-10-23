@@ -34,7 +34,6 @@ export default function mainReducer(state = INIT_STATE, action) {
         ...state,
         isModalOpen: action.payload.isModalOpen,
         modalContent: action.payload.modalContent,
-        productId: action.payload.productId,
       };
     case SET_COLORS:
       return {

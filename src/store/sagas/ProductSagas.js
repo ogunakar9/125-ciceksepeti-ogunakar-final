@@ -165,16 +165,17 @@ function* sgGiveOffer(action) {
       type: SET_LOADING,
       payload: { loading: true },
     });
-    const id = action.payload;
+    const { id, customerOffer } = action.payload;
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
       return;
     }
-    //TODO: accept offeredPrice from component
+
     const price = {
-      offeredPrice: 50,
+      offeredPrice: customerOffer,
     };
+
     const response = yield call(API.post, `/product/offer/${id}`, price, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -189,12 +190,21 @@ function* sgGiveOffer(action) {
     });
 
     yield put({
+      type: SET_MODAL,
+      payload: { isModalOpen: false, modalContent: null },
+    });
+
+    yield put({
       type: SET_LOADING,
       payload: { loading: false },
     });
   } catch (error) {
     console.error("ProductDetail Saga", error.code, error.message);
     //TODO: show error message here
+    yield put({
+      type: SET_MODAL,
+      payload: { isModalOpen: false, modalContent: null },
+    });
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -307,7 +317,7 @@ function* sgPurchaseProduct(action) {
 
     yield put({
       type: SET_MODAL,
-      payload: { isModalOpen: false, modalContent: null, productId: null },
+      payload: { isModalOpen: false, modalContent: null },
     });
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
@@ -318,7 +328,7 @@ function* sgPurchaseProduct(action) {
     });
     yield put({
       type: SET_MODAL,
-      payload: { isModalOpen: false, modalContent: null, productId: null },
+      payload: { isModalOpen: false, modalContent: null },
     });
     // put({
     //   type: SET_SNACKBAR_OPEN,

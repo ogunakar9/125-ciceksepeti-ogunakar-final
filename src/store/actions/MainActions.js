@@ -35,7 +35,7 @@ export const fetchStatus = (id) => ({
   payload: id,
 });
 
-export const setModal = ({ isModalOpen, modalContent, productId }) => ({
+export const setModal = ({ isModalOpen, modalContent }) => ({
   type: SET_MODAL,
-  payload: { isModalOpen, modalContent, productId },
+  payload: { isModalOpen, modalContent },
 });

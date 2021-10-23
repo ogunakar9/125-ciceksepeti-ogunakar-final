@@ -22,9 +22,9 @@ export const fetchProductsDetail = (id) => ({
   payload: id,
 });
 
-export const giveOffer = (id) => ({
+export const giveOffer = (id, customerOffer) => ({
   type: SG_GIVE_OFFER,
-  payload: id,
+  payload: { id, customerOffer },
 });
 
 export const createProduct = (newProduct) => ({

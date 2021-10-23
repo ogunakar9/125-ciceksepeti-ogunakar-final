@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsDetail } from "../store/actions";
 import Header from "../components/Header/Header";
 import ProductDetailSection from "../components/ProductDetailComponents/ProductDetailSection/ProductDetailSection";
@@ -15,12 +15,17 @@ const ProductDetails = () => {
     dispatch(fetchProductsDetail(id));
   }, [dispatch, id]);
 
+  const { productDetails } = useSelector((state) => state.products);
+  const { givenOffers } = useSelector((state) => state.account);
+  const { offerId } = productDetails;
+  const offer = givenOffers?.filter((item) => item.id === offerId)[0];
+
   return (
     <>
       <Header />
       <Loader />
-      <Modal />
-      <ProductDetailSection id={id} />
+      <Modal productDetails={productDetails} />
+      <ProductDetailSection productDetails={productDetails} offer={offer} />
     </>
   );
 };
