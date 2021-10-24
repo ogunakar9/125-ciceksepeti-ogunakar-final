@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../store/actions";
 import UploadImageInput from "../../components/ProductComponents/CreateProduct/UploadImageInput";
 import Header from "../../components/Header/Header";
+import { is_number } from "../../utilities/Constants";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -17,23 +18,54 @@ const CreateProduct = () => {
     price: 0,
   });
 
+  const [titleWarning, setTitleWarning] = useState(false);
+  const [descriptionWarning, setDescriptionWarning] = useState(false);
+  const [numberWarning, setNumberWarning] = useState(false);
+
   const handleProductOfferable = () => {
     setNewProduct({ ...newProduct, isOfferable: !newProduct["isOfferable"] });
   };
 
-  const handleProductDetailChange = (e) => {
-    if (e.target.name === "price") {
+  const handleTitleChange = (e) => {
+    if (e.target.value.length > 100) {
+      setTitleWarning(true);
+    } else {
+      setTitleWarning(false);
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const handleDescriptionChange = (e) => {
+    if (e.target.value.length > 500) {
+      setDescriptionWarning(true);
+    } else {
+      setDescriptionWarning(false);
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const handlePriceChange = (e) => {
+    if (!e.target.value?.match(is_number)) {
+      setNumberWarning(true);
+      setNewProduct({
+        ...newProduct,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setNumberWarning(false);
       setNewProduct({
         ...newProduct,
         [e.target.name]: parseInt(e.target.value),
       });
-      return;
     }
-    setNewProduct({
-      ...newProduct,
-      [e.target.name]: e.target.value,
-    });
   };
+
   const handleSelectChange = (e, valueType) => {
     setNewProduct({
       ...newProduct,
@@ -60,23 +92,43 @@ const CreateProduct = () => {
               <div className="create-product-detail_input-section">
                 <label htmlFor="title">Ürün Adı</label>
                 <input
+                  required
+                  className={
+                    titleWarning ? "create-product-detail_input-wrong" : ""
+                  }
                   placeholder="Örnek: Iphone 12 Pro Max"
                   name="title"
                   type="text"
                   id="new-product-name"
                   value={newProduct.title}
-                  onChange={handleProductDetailChange}
+                  onChange={handleTitleChange}
                 />
+                {titleWarning && (
+                  <span className="create-product-detail_input_section-warning">
+                    En fazla 100 karakter kullanabilirsiniz.
+                  </span>
+                )}
               </div>
               <div className="create-product-detail_input-section">
                 <label htmlFor="description">Açıklama</label>
                 <textarea
+                  required
+                  className={
+                    descriptionWarning
+                      ? "create-product-detail_input-wrong"
+                      : ""
+                  }
                   placeholder="Ürün açıklaması girin"
                   name="description"
                   id="description"
                   value={newProduct.description}
-                  onChange={handleProductDetailChange}
+                  onChange={handleDescriptionChange}
                 />
+                {descriptionWarning && (
+                  <span className="create-product-detail_input_section-warning">
+                    En fazla 500 karakter kullanabilirsiniz.
+                  </span>
+                )}
               </div>
               <div className="create-product-detail_double_input-section">
                 <div className="create-product-detail_input-section">
@@ -156,18 +208,28 @@ const CreateProduct = () => {
                   </select>
                 </div>
               </div>
-              {/*TODO: Change css if input is wrong! Add indicators for user*/}
               <div className="create-product-detail_input-section-price">
                 <div className="create-product-detail_input-section">
                   <label htmlFor="price">Fiyat</label>
+                  {/*TODO: belki bu inputun sonuna absolute bir "TL" yazisi*/}
+                  {/*eklenebilir.*/}
+                  {/*TODO: sayi sifirlaninca style degismiyo, belki onu sifirlayabilirsin*/}
                   <input
-                    placeholder="Bir fiyat girin TL"
+                    placeholder="Bir fiyat girin"
                     name="price"
-                    type="number"
+                    type="text"
                     id="price"
                     value={newProduct.price}
-                    onChange={handleProductDetailChange}
+                    onChange={handlePriceChange}
+                    className={
+                      numberWarning ? "create-product-detail_input-wrong" : ""
+                    }
                   />
+                  {numberWarning && (
+                    <span className="create-product-detail_input_section-warning">
+                      0-9 Arasında Bir Rakam Girin
+                    </span>
+                  )}
                 </div>
                 <div className="create-product-detail_input-section offer-fixer">
                   <label htmlFor="isOfferable">Teklif opsiyonu</label>

@@ -64,7 +64,7 @@
   input {
     font: normal normal normal 1rem/1.375 Nunito;
     letter-spacing: 0;
-    //TODO: change only for checkbox
+
     &:focus {
       color: #3E3E3E;
     }
@@ -75,6 +75,23 @@
     line-height: 1.25rem;
     letter-spacing: 0;
   }
+}
+
+.create-product-detail_input-wrong {
+  background-color: #FFF2F2 !important;
+  color: #F77474 !important;
+  border-color: #F77474 !important;
+
+  &[id=price]::placeholder {
+    color: #F77474 !important;
+  }
+}
+
+.create-product-detail_input_section-warning {
+  color: #F77474;
+  font: normal normal normal 0.75rem/1 Nunito;
+  letter-spacing: 0;
+  margin-top: 0.125rem;
 }
 
 .create-product-detail_upload-wrapper {

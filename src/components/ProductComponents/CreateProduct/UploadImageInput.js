@@ -14,7 +14,13 @@ const UploadImageInput = () => {
   const [warningMsgVisible, setWarningMsgVisible] = useState(false);
 
   const handleImageChange = (e) => {
-    if (e.target.files[0].size / 1024 > 400) {
+    if (e.target.files[0]?.size / 1024 > 400) {
+      setWarningMsgVisible(true);
+    } else if (
+      e.target.files[0]?.type !== "image/png" ||
+      e.target.files[0]?.type !== "image/jpg" ||
+      e.target.files[0]?.type !== "image/jpeg"
+    ) {
       setWarningMsgVisible(true);
     } else {
       setWarningMsgVisible(false);
@@ -66,6 +72,7 @@ const UploadImageInput = () => {
                   id="new-image"
                   name="new-image"
                   title=""
+                  accept="image/png, image/jpg, image/jpeg"
                   onChange={handleImageChange}
                 />
               </>
