@@ -5,7 +5,13 @@ import authImage from "../../assets/auth/leftSection/leftSectionSm.png";
 import handIcon from "../../assets/auth/handIcon/handIcon.png";
 import { Link } from "react-router-dom";
 
-const UserAuthForm = ({ action }) => {
+const UserAuthForm = ({
+  action,
+  forwardLocation,
+  helperText,
+  linkText,
+  generalText,
+}) => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [isPassValid, setIsPassValid] = useState(null);
@@ -41,10 +47,16 @@ const UserAuthForm = ({ action }) => {
         <div className="user_form-lower-container">
           <form>
             <div className="user_form_title">
-              <span>Üye Ol</span>
+              <span>{generalText}</span>
             </div>
             <div className="user_form_suggestion">
-              <span>Fırsatlardan yararlanmak için üye ol!</span>
+              <span>
+                Fırsatlardan yararlanmak için{" "}
+                <span style={{ textTransform: "lowercase" }}>
+                  {generalText}
+                </span>
+                !
+              </span>
             </div>
             <div className="user_form_input-box">
               <label className="user_form_label" htmlFor="email">
@@ -76,12 +88,17 @@ const UserAuthForm = ({ action }) => {
               />
             </div>
             <button className="user_form_button" onClick={handleFormSubmit}>
-              Submit
+              {generalText}
             </button>
-            <div className="user_form_got-account">
+            <div className="user_form_account-helper-text">
               <span>
-                {/*TODO: reroute to signin or signout*/}
-                Hesabın var mı? <Link to={"/signin"}>Giriş Yap</Link>
+                {helperText}{" "}
+                <Link
+                  className="user_form_account_helper-link"
+                  to={forwardLocation}
+                >
+                  {linkText}
+                </Link>
               </span>
             </div>
           </form>

@@ -17,8 +17,8 @@ const UploadImageInput = () => {
     if (e.target.files[0]?.size / 1024 > 400) {
       setWarningMsgVisible(true);
     } else if (
-      e.target.files[0]?.type !== "image/png" ||
-      e.target.files[0]?.type !== "image/jpg" ||
+      e.target.files[0]?.type !== "image/png" &&
+      e.target.files[0]?.type !== "image/jpg" &&
       e.target.files[0]?.type !== "image/jpeg"
     ) {
       setWarningMsgVisible(true);

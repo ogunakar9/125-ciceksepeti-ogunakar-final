@@ -100,10 +100,15 @@
   color: #FFFFFF;
   padding: 0.6875rem 10.375rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
-.user_form_got-account {
+.user_form_account-helper-text {
   text-align: center;
   font: normal normal normal 0.9375rem/1.25 Nunito;
   letter-spacing: 0;
+}
+
+.user_form_account_helper-link {
+  color: #4B9CE2;
 }

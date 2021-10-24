@@ -6,6 +6,13 @@ import UserAuthForm from "../../components/User/UserAuthForm";
 import { signIn } from "../../store/actions";
 import Notification from "../../components/shared/Notification/Notification";
 import errorIcon from "../../assets/auth/errorIcon/errorIcon@2x.png";
+import {
+  urlSignIn,
+  signingInText,
+  errorText,
+  linkTextSignIn,
+  generalTextSignIn,
+} from "../../utilities/Constants";
 
 const SignInPage = () => {
   const history = useHistory();
@@ -18,15 +25,16 @@ const SignInPage = () => {
     }
   }, [isSignedIn, history]);
 
-  const text = "Emailinizi veya şifreniz hatalı.";
-  // {/*<div>*/}
-  // {/*  <p>Dont have an account?</p>*/}
-  // {/*  <Link to="signup">Signup here</Link>*/}
-  // {/*</div>*/}
   return (
     <>
-      <Notification text={text} icon={errorIcon} type={"error"} />
-      <UserAuthForm action={signIn} />
+      <Notification text={errorText} icon={errorIcon} type={"error"} />
+      <UserAuthForm
+        action={signIn}
+        forwardLocation={urlSignIn}
+        helperText={signingInText}
+        linkText={linkTextSignIn}
+        generalText={generalTextSignIn}
+      />
     </>
   );
 };
