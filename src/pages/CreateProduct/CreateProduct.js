@@ -8,7 +8,7 @@ import { is_number } from "../../utilities/Constants";
 
 const CreateProduct = () => {
   const dispatch = useDispatch();
-  const { categories } = useSelector((state) => state.products);
+  const { categories, newImageUrl } = useSelector((state) => state.products);
 
   const { colors, statuses, brands } = useSelector((state) => state.main);
   const [newProduct, setNewProduct] = useState({
@@ -73,8 +73,25 @@ const CreateProduct = () => {
     });
   };
   console.log(newProduct);
+  //All the validations before creation.
   const handleCreateProduct = () => {
-    dispatch(createProduct(newProduct));
+    if (
+      newImageUrl !== "" &&
+      !titleWarning &&
+      !descriptionWarning &&
+      !numberWarning &&
+      newProduct.description.length > 0 &&
+      newProduct.title.length > 0 &&
+      newProduct.price > 0 &&
+      newProduct.brand &&
+      newProduct.color &&
+      newProduct.category &&
+      newProduct.status
+    ) {
+      dispatch(createProduct(newProduct));
+    } else {
+      window.alert("Lutfen tum degerleri gecerli doldurun.");
+    }
   };
 
   //TODO: redirect after save
