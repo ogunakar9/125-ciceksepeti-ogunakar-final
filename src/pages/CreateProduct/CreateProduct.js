@@ -29,13 +29,6 @@ const CreateProduct = () => {
       });
       return;
     }
-    // if (e.target.name === "isOfferable") {
-    //   setNewProduct({
-    //     ...newProduct,
-    //     [e.target.name]: (e.target.value = !e.target.value),
-    //   });
-    //   return;
-    // }
     setNewProduct({
       ...newProduct,
       [e.target.name]: e.target.value,
@@ -56,6 +49,7 @@ const CreateProduct = () => {
   return (
     <>
       <Header />
+      {/*TODO: create product error handler popup*/}
       <div className="create-product_wrapper">
         <div className="create-product_content-wrapper">
           <div className="create-product-detail_wrapper">

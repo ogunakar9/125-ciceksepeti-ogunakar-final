@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles.scss";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import bannerLogo from "../../assets/header/hand-signSM.svg";
 import plusIcon from "../../assets/header/plus-icon.svg";
 import profileIcon from "../../assets/header/profile-icon.svg";
@@ -35,9 +35,9 @@ const Header = () => {
 
   return (
     <header className="header-wrapper">
-      <div className="banner-logo_container">
+      <Link className="banner-logo_container" to={"/"}>
         <img src={bannerLogo} alt="ikinci-el" />
-      </div>
+      </Link>
       <div className="header_button-wrapper">
         <div>
           <button className="header-button" onClick={handleProducts}>

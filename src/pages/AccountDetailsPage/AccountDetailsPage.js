@@ -3,10 +3,16 @@ import "./styles.scss";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { acceptOffer, purchaseProduct, rejectOffer } from "../../store/actions";
+import {
+  acceptOffer,
+  purchaseProduct,
+  rejectOffer,
+  setModal,
+} from "../../store/actions";
 import profileIconBig from "../../assets/account-details/profile-icons/profile-icon-big.png";
 import Notification from "../../components/shared/Notification/Notification";
 import successIcon from "../../assets/auth/successIcon/successIcon@2x.png";
+import Modal from "../../components/shared/Modal/Modal";
 
 const AccountDetailsPage = () => {
   const history = useHistory();
@@ -44,8 +50,8 @@ const AccountDetailsPage = () => {
   //TODO: item satin alindiktan sonra asagidaki listboxta gosterilmeli mi find out
   const handlePurchaseOffered = (id) => {
     console.log("purchase id", id);
-    //TODO: burda direk satin almak yerine modal gosterceksin
-    dispatch(purchaseProduct(id));
+    // dispatch(purchaseProduct(id));
+    dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
   //TODO: satildiysa nasil gostercen dikkat et
   const text = "Satın Alındı";
@@ -85,19 +91,6 @@ const AccountDetailsPage = () => {
   };
 
   const GivenOfferSection = ({ item }) => {
-    // {!item?.product.isSold && item?.status !== "rejected" && (
-    //
-    // )}
-    // {item?.status !== "offered" && (
-    //   <div
-    //     className={`account-details_list_right_section_status offer_status-${item?.status}`}
-    //   />
-    // )}
-    // {item?.status === "offered" && (
-    //   <div className="account-details_list_right_section_status offer_status-waiting">
-    //     Beklemede
-    //   </div>
-    // )}
     if (item.product.isSold) {
       return (
         <div className="account-details_list_right_section_status offer_isSold" />
@@ -106,6 +99,7 @@ const AccountDetailsPage = () => {
       if (item?.status === "accepted") {
         return (
           <>
+            <Modal productId={item?.product.id} />
             <button
               className="account-details_list_right_section_buy-button"
               onClick={() => handlePurchaseOffered(item?.product.id)}

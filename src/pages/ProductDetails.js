@@ -28,7 +28,7 @@ const ProductDetails = () => {
     <>
       <Header />
       <Loader />
-      <Modal productDetails={productDetails} />
+      <Modal productDetails={productDetails} productId={id} />
       <Notification text={text} icon={successIcon} type={"success"} />
       <ProductDetailSection productDetails={productDetails} offer={offer} />
     </>

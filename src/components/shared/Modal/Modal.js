@@ -5,15 +5,13 @@ import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
 import { giveOffer, purchaseProduct, setModal } from "../../../store/actions";
 
-const Modal = ({ productDetails }) => {
+const Modal = ({ productDetails, productId }) => {
   const dispatch = useDispatch();
   const { isModalOpen, modalContent } = useSelector((state) => state.main);
 
   if (!isModalOpen) {
     return null;
   }
-
-  const { imageUrl, title, price, id: productId } = productDetails;
 
   const handleModalClose = () => {
     dispatch(
@@ -24,15 +22,12 @@ const Modal = ({ productDetails }) => {
     );
   };
 
-  const handleBuy = () => {
-    dispatch(purchaseProduct(productId));
-  };
+  const BuyModalContent = ({ productId }) => {
+    console.log(productId);
+    const handleBuy = () => {
+      dispatch(purchaseProduct(productId));
+    };
 
-  const handleOffer = (customerOffer) => {
-    dispatch(giveOffer(productId, customerOffer));
-  };
-
-  const BuyModalContent = () => {
     return (
       <div className="modal_buy_container">
         <span className="modal_buy_title">Satın Al</span>
@@ -50,6 +45,12 @@ const Modal = ({ productDetails }) => {
   };
 
   const OfferModalContent = () => {
+    const handleOffer = (customerOffer) => {
+      dispatch(giveOffer(productId, customerOffer));
+    };
+
+    const { imageUrl, title, price, id: productId } = productDetails;
+
     const [customOffer, setCustomOffer] = useState("");
     const [offerTogo, setOfferTogo] = useState(null);
     const [checked, setCheckBoxChecked] = useState(false);
@@ -143,7 +144,9 @@ const Modal = ({ productDetails }) => {
   return ReactDOM.createPortal(
     <div className="modal">
       <div className="modal-content">
-        {modalContent && modalContent === "buy" && <BuyModalContent />}
+        {modalContent && modalContent === "buy" && (
+          <BuyModalContent productId={productId} />
+        )}
         {modalContent && modalContent === "offer" && <OfferModalContent />}
       </div>
     </div>,

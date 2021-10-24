@@ -288,6 +288,7 @@ function* sgPurchaseProduct(action) {
       return;
     }
     const id = action.payload;
+    console.log(id);
     const response = yield call(
       API.put,
       `/product/purchase/${id}`,
@@ -326,7 +327,6 @@ function* sgPurchaseProduct(action) {
     });
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
-    //TODO: show error message here
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -335,18 +335,11 @@ function* sgPurchaseProduct(action) {
       type: SET_MODAL,
       payload: { isModalOpen: false, modalContent: null },
     });
-    yield put({
-      type: SET_NOTIFICATION,
-      payload: true,
-    });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
+    //TODO: show error message here
+    // yield put({
+    //   type: SET_NOTIFICATION,
     //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
+    // });
   }
 }
 
