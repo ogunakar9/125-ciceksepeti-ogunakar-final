@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import authImage from "../../assets/auth/leftSection/leftSectionSm.png";
 import handIcon from "../../assets/auth/handIcon/handIcon.png";
 import { Link } from "react-router-dom";
+import { setNotification } from "../../store/actions";
 
 const UserAuthForm = ({
   action,
@@ -14,18 +15,28 @@ const UserAuthForm = ({
 }) => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [isPassValid, setIsPassValid] = useState(null);
+
+  const [isPassValid, setIsPassValid] = useState(false);
+  const [isMailValid, setIsMailValid] = useState(false);
+  const [seeUIChange, setSeeUIChange] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleEmail = (e) => {
     setMail(e.target.value);
+    setSeeUIChange(false);
+    if (e.target.value.includes("@") && e.target.value.includes(".")) {
+      setIsMailValid(true);
+    } else {
+      setIsMailValid(false);
+    }
   };
 
   const handlePassword = (e) => {
     const passwordLength = e.target.value.length;
-
-    //check if password is of desired length
     setPassword(e.target.value);
+    setSeeUIChange(false);
+    //check if password is of desired length
     if (passwordLength > 7 && passwordLength < 21) {
       setIsPassValid(true);
     } else if (passwordLength > 0) {
@@ -36,7 +47,12 @@ const UserAuthForm = ({
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(action(mail, password));
+    if (!isPassValid || !isMailValid) {
+      setSeeUIChange(true);
+      dispatch(setNotification(true));
+    } else {
+      dispatch(action(mail, password));
+    }
   };
 
   return (
@@ -63,7 +79,9 @@ const UserAuthForm = ({
                 Email:
               </label>
               <input
-                className="form-input"
+                className={`form-input ${
+                  seeUIChange && !isMailValid && "form_input-wrong"
+                }`}
                 type="email"
                 name="email"
                 placeholder="Email"
@@ -76,9 +94,10 @@ const UserAuthForm = ({
               <label className="user_form_label" htmlFor="password">
                 Password:
               </label>
-              {isPassValid === false && <p>Please enter a valid password</p>}
               <input
-                className="form-input"
+                className={`form-input ${
+                  seeUIChange && !isPassValid && "form_input-wrong"
+                }`}
                 type="password"
                 name="password"
                 placeholder="Password"

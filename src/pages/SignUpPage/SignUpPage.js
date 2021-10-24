@@ -9,7 +9,10 @@ import {
   signingUpText,
   urlSignUp,
   generalTextSignUp,
+  errorText,
 } from "../../utilities/Constants";
+import errorIcon from "../../assets/auth/errorIcon/errorIcon@2x.png";
+import Notification from "../../components/shared/Notification/Notification";
 
 const SignUpPage = () => {
   const history = useHistory();
@@ -23,13 +26,16 @@ const SignUpPage = () => {
 
   //TODO: formun sayfanin ortasina gecmesine dikkat et center alignla
   return (
-    <UserAuthForm
-      action={signUp}
-      forwardLocation={urlSignUp}
-      helperText={signingUpText}
-      linkText={linkTextSignUp}
-      generalText={generalTextSignUp}
-    />
+    <>
+      <Notification text={errorText} icon={errorIcon} type={"error"} />
+      <UserAuthForm
+        action={signUp}
+        forwardLocation={urlSignUp}
+        helperText={signingUpText}
+        linkText={linkTextSignUp}
+        generalText={generalTextSignUp}
+      />
+    </>
   );
 };
 

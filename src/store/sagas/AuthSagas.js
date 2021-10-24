@@ -40,19 +40,14 @@ function* sgSignUp(action) {
     });
   } catch (error) {
     console.error("Sign Up Saga", error.code, error.message);
-    //TODO: show error message here
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
     });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
-    //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
+    yield put({
+      type: SET_NOTIFICATION,
+      payload: true,
+    });
   }
 }
 
