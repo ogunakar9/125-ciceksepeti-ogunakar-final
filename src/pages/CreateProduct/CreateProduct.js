@@ -230,7 +230,6 @@ const CreateProduct = () => {
                   <label htmlFor="price">Fiyat</label>
                   {/*TODO: belki bu inputun sonuna absolute bir "TL" yazisi*/}
                   {/*eklenebilir.*/}
-                  {/*TODO: sayi sifirlaninca style degismiyo, belki onu sifirlayabilirsin*/}
                   <input
                     placeholder="Bir fiyat girin"
                     name="price"

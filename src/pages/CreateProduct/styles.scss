@@ -123,9 +123,9 @@ select {
   border-radius: 0.5rem;
   background-color: #F4F4F4;
   color: #99A0A7;
-  padding: 0.9375rem 0.75rem 0.9375rem 0.6875rem;
+  padding: 0 0.75rem 0 0.6875rem;
   height: 2.8125rem;
-  border: none;
+  //border: none;
   font-size: 1rem;
   line-height: 1.375;
   letter-spacing: 0;
@@ -136,12 +136,14 @@ select {
     background-color: #FFFFFF;
     border: 1px solid #4B9CE2;
     box-shadow: 0 3px 12px #1E36482E;
+    border-radius: 0.5rem 0.5rem 0 0;
+    //TODO: maybe arrange some select style here
+    //border-bottom: none;
   }
 }
 
 .create-product-detail_input-section-price {
   width: 14.75rem;
-  //background-color: red;
   row-gap: 0.6875rem;
 
   label[for="isOfferable"] {
