@@ -10,6 +10,7 @@ import {
 import API from "../../services/api";
 import { user_token, user_mail } from "../../utilities/Constants";
 import { SET_LOADING, SET_NOTIFICATION } from "../types/MainTypes";
+import { sgFetchGivenOffers, sgFetchReceivedOffers } from "./AccountSagas";
 
 function* sgSignUp(action) {
   console.log("Sign Up Saga");
@@ -76,6 +77,8 @@ function* sgSignIn(action) {
       type: SET_USER,
       payload: { token, email, isSignedIn: true },
     });
+    yield call(sgFetchReceivedOffers);
+    yield call(sgFetchGivenOffers);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },

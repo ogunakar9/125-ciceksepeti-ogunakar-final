@@ -203,7 +203,15 @@
   content: "Reddedildi";
   }
 }
+
 .offer_status-waiting {
   color: #b1b1b1;
+}
+
+.offer_isSold {
+  color: #46AF32;
+  &:before {
+    content: "Satın Alındı";
+  }
 }
 

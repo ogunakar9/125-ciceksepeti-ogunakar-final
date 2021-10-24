@@ -13,10 +13,13 @@ const CreateProduct = () => {
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
-    isOfferable: true,
+    isOfferable: false,
     price: 0,
   });
-  //TODO: change input selector to custom css and enable it through click event
+
+  const handleProductOfferable = () => {
+    setNewProduct({ ...newProduct, isOfferable: !newProduct["isOfferable"] });
+  };
 
   const handleProductDetailChange = (e) => {
     if (e.target.name === "price") {
@@ -26,13 +29,13 @@ const CreateProduct = () => {
       });
       return;
     }
-    if (e.target.name === "isOfferable") {
-      setNewProduct({
-        ...newProduct,
-        [e.target.name]: e.target.value === "true",
-      });
-      return;
-    }
+    // if (e.target.name === "isOfferable") {
+    //   setNewProduct({
+    //     ...newProduct,
+    //     [e.target.name]: (e.target.value = !e.target.value),
+    //   });
+    //   return;
+    // }
     setNewProduct({
       ...newProduct,
       [e.target.name]: e.target.value,
@@ -49,6 +52,7 @@ const CreateProduct = () => {
     dispatch(createProduct(newProduct));
   };
 
+  //TODO: redirect after save
   return (
     <>
       <Header />
@@ -160,7 +164,7 @@ const CreateProduct = () => {
                     type="checkbox"
                     id="isOfferable"
                     value={newProduct.isOfferable}
-                    onChange={handleProductDetailChange}
+                    onChange={handleProductOfferable}
                   />
                 </div>
               </div>

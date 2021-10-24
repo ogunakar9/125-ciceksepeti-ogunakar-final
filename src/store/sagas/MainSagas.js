@@ -19,7 +19,7 @@ export function* sgFetchColors() {
   console.log("fetch color Saga");
   try {
     const response = yield call(API.get, "/detail/color/all");
-    console.log("account response", response);
+    console.log("color", response);
 
     yield put({
       type: SET_COLORS,
@@ -32,10 +32,10 @@ export function* sgFetchColors() {
 }
 
 export function* sgFetchBrands() {
-  console.log("fetch color Saga");
+  console.log("fetch brand Saga");
   try {
     const response = yield call(API.get, "/detail/brand/all");
-    console.log("account response", response);
+    console.log("brand", response);
 
     yield put({
       type: SET_BRANDS,
@@ -51,7 +51,7 @@ export function* sgFetchStatuses() {
   console.log("fetch status Saga");
   try {
     const response = yield call(API.get, "/detail/status/all");
-    console.log("account response", response);
+    console.log("status response", response);
 
     yield put({
       type: SET_STATUSES,
@@ -68,7 +68,7 @@ export function* sgFetchColor(action) {
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/color/${id}`);
-    console.log("account response", response);
+    console.log("color", response);
 
     yield put({
       type: SET_COLOR,
@@ -81,11 +81,11 @@ export function* sgFetchColor(action) {
 }
 
 export function* sgFetchBrand(action) {
-  console.log("fetch color Saga");
+  console.log("fetch brand Saga");
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/brand/${id}`);
-    console.log("account response", response);
+    console.log("brand", response);
 
     yield put({
       type: SET_BRAND,
@@ -102,7 +102,7 @@ export function* sgFetchStatus(action) {
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/status/${id}`);
-    console.log("account response", response);
+    console.log("status", response);
 
     yield put({
       type: SET_STATUS,

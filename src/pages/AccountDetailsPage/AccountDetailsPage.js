@@ -22,7 +22,7 @@ const AccountDetailsPage = () => {
   const { email } = useSelector((state) => state.auth);
   const { givenOffers, receivedOffers } = useSelector((state) => state.account);
 
-  const [activeTab, setActiveTab] = useState("given");
+  const [activeTab, setActiveTab] = useState("received");
   console.log("given", givenOffers);
   console.log("received", receivedOffers);
 
@@ -50,6 +50,89 @@ const AccountDetailsPage = () => {
   //TODO: satildiysa nasil gostercen dikkat et
   const text = "Satın Alındı";
   //TODO: item satin aldiginda notification sonrasi satin alindi diye listede status belirtcen
+
+  const ReceivedOfferSection = ({ item }) => {
+    if (!item.product.isSold) {
+      if (item?.status === "offered") {
+        return (
+          <div>
+            <button
+              className="account-details_list_right_section_buy-button"
+              onClick={() => handleAcceptOffer(item?.id)}
+            >
+              Onayla
+            </button>
+            <button
+              className="account-details_list_right_section_reject-button"
+              onClick={() => handleRejectOffer(item?.id)}
+            >
+              Reddet
+            </button>
+          </div>
+        );
+      } else {
+        return (
+          <div
+            className={`account-details_list_right_section_status offer_status-${item?.status}`}
+          />
+        );
+      }
+    } else {
+      return (
+        <div className="account-details_list_right_section_status offer_isSold" />
+      );
+    }
+  };
+
+  const GivenOfferSection = ({ item }) => {
+    // {!item?.product.isSold && item?.status !== "rejected" && (
+    //
+    // )}
+    // {item?.status !== "offered" && (
+    //   <div
+    //     className={`account-details_list_right_section_status offer_status-${item?.status}`}
+    //   />
+    // )}
+    // {item?.status === "offered" && (
+    //   <div className="account-details_list_right_section_status offer_status-waiting">
+    //     Beklemede
+    //   </div>
+    // )}
+    if (item.product.isSold) {
+      return (
+        <div className="account-details_list_right_section_status offer_isSold" />
+      );
+    } else {
+      if (item?.status === "accepted") {
+        return (
+          <>
+            <button
+              className="account-details_list_right_section_buy-button"
+              onClick={() => handlePurchaseOffered(item?.product.id)}
+            >
+              Satın Al
+            </button>
+            <div
+              className={`account-details_list_right_section_status offer_status-${item?.status}`}
+            />
+          </>
+        );
+      } else if (item?.status === "rejected") {
+        return (
+          <div
+            className={`account-details_list_right_section_status offer_status-${item?.status}`}
+          />
+        );
+      } else if (item?.status === "offered") {
+        return (
+          <div className="account-details_list_right_section_status offer_status-waiting">
+            Beklemede
+          </div>
+        );
+      }
+    }
+  };
+
   return (
     <>
       <Header />
@@ -102,27 +185,7 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    {!item.product.isSold && item?.status === "offered" && (
-                      <div>
-                        <button
-                          className="account-details_list_right_section_buy-button"
-                          onClick={() => handleAcceptOffer(item?.id)}
-                        >
-                          Onayla
-                        </button>
-                        <button
-                          className="account-details_list_right_section_reject-button"
-                          onClick={() => handleRejectOffer(item?.id)}
-                        >
-                          Reddet
-                        </button>
-                      </div>
-                    )}
-                    {item?.status !== "offered" && (
-                      <div
-                        className={`account-details_list_right_section_status offer_status-${item?.status}`}
-                      />
-                    )}
+                    <ReceivedOfferSection item={item} />
                   </div>
                 </div>
               ))}
@@ -149,24 +212,7 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    {!item?.product.isSold && item?.status !== "rejected" && (
-                      <button
-                        className="account-details_list_right_section_buy-button"
-                        onClick={() => handlePurchaseOffered(item?.product.id)}
-                      >
-                        Satın Al
-                      </button>
-                    )}
-                    {item?.status !== "offered" && (
-                      <div
-                        className={`account-details_list_right_section_status offer_status-${item?.status}`}
-                      />
-                    )}
-                    {item?.status === "offered" && (
-                      <div className="account-details_list_right_section_status offer_status-waiting">
-                        Beklemede
-                      </div>
-                    )}
+                    <GivenOfferSection item={item} />
                   </div>
                 </div>
               ))}

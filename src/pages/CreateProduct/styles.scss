@@ -64,9 +64,9 @@
   input {
     font: normal normal normal 1rem/1.375 Nunito;
     letter-spacing: 0;
+    //TODO: change only for checkbox
     &:focus {
       color: #3E3E3E;
-      width: 24.3125rem;
     }
   }
   label {
@@ -166,7 +166,6 @@ select {
       background-color: #F0F8FF;
       border: 1px solid #4B9CE2;
       color: #3E3E3E;
-      width: 24.3125rem;
     }
   }
 
