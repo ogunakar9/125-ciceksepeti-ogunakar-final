@@ -102,8 +102,6 @@ input, select {
   }
 }
 
-
-
 select {
   border-radius: 0.5rem;
   background-color: #F4F4F4;
@@ -114,6 +112,7 @@ select {
   font-size: 1rem;
   line-height: 1.375;
   letter-spacing: 0;
+  cursor: pointer;
 
   &:focus {
     //overflow: scroll;
@@ -173,6 +172,7 @@ select {
 
 
 .create_product-button {
+  cursor: pointer;
   position: absolute;
   bottom: 1.875rem;
   right: 1.875rem;

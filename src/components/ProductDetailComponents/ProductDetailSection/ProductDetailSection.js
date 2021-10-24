@@ -54,6 +54,9 @@ const ProductDetailSection = ({ productDetails, offer }) => {
     );
   };
 
+  //TODO: cannot offer to your own product (or buy) duzenlemek lazim,
+  // error falan ya da gosterme hic almayi
+
   const ProductsDetailStaticInfoWrapper = () => {
     return (
       <div className="products_detail_text-info-container-item">

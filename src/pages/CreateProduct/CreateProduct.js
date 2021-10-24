@@ -13,7 +13,7 @@ const CreateProduct = () => {
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
-    isOfferable: false,
+    isOfferable: true,
     price: 0,
   });
   //TODO: change input selector to custom css and enable it through click event

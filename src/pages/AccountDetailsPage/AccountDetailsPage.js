@@ -44,11 +44,12 @@ const AccountDetailsPage = () => {
   //TODO: item satin alindiktan sonra asagidaki listboxta gosterilmeli mi find out
   const handlePurchaseOffered = (id) => {
     console.log("purchase id", id);
+    //TODO: burda direk satin almak yerine modal gosterceksin
     dispatch(purchaseProduct(id));
   };
-
+  //TODO: satildiysa nasil gostercen dikkat et
   const text = "Satın Alındı";
-
+  //TODO: item satin aldiginda notification sonrasi satin alindi diye listede status belirtcen
   return (
     <>
       <Header />
@@ -61,14 +62,6 @@ const AccountDetailsPage = () => {
         <div className="account-details_list-container">
           <div className="account-details_list_button-container">
             <button
-              onClick={handleGiven}
-              className={`account-details_list-button ${
-                activeTab === "given" && "account-details_list_selected-button"
-              }`}
-            >
-              <p>Teklif Verdiklerim</p>
-            </button>
-            <button
               onClick={handleReceived}
               className={`account-details_list-button ${
                 activeTab === "received" &&
@@ -76,6 +69,14 @@ const AccountDetailsPage = () => {
               }`}
             >
               <p>Teklif Aldıklarım</p>
+            </button>
+            <button
+              onClick={handleGiven}
+              className={`account-details_list-button ${
+                activeTab === "given" && "account-details_list_selected-button"
+              }`}
+            >
+              <p>Teklif Verdiklerim</p>
             </button>
           </div>
           <div className="account-details_list-box_wrapper">
@@ -91,7 +92,7 @@ const AccountDetailsPage = () => {
                       />
                     </div>
                     <div className="account-details_list-box_info-container">
-                      <div>
+                      <div className="account-details_list-box_info-title">
                         <span>{item?.product.title}</span>
                       </div>
                       <div className="account-details_list-box_info-price">
@@ -101,7 +102,7 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    {!item.product.isSold && (
+                    {!item.product.isSold && item?.status === "offered" && (
                       <div>
                         <button
                           className="account-details_list_right_section_buy-button"
@@ -117,10 +118,11 @@ const AccountDetailsPage = () => {
                         </button>
                       </div>
                     )}
-                    {/*TODO: find out how things get listed as accepted or denied*/}
-                    <div className="account-details_list_right_section_status">
-                      <span>{item?.status}</span>
-                    </div>
+                    {item?.status !== "offered" && (
+                      <div
+                        className={`account-details_list_right_section_status offer_status-${item?.status}`}
+                      />
+                    )}
                   </div>
                 </div>
               ))}
@@ -147,7 +149,7 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    {!item?.product.isSold && (
+                    {!item?.product.isSold && item?.status !== "rejected" && (
                       <button
                         className="account-details_list_right_section_buy-button"
                         onClick={() => handlePurchaseOffered(item?.product.id)}
@@ -155,9 +157,16 @@ const AccountDetailsPage = () => {
                         Satın Al
                       </button>
                     )}
-                    <div className="account-details_list_right_section_status">
-                      <span>{item?.status}</span>
-                    </div>
+                    {item?.status !== "offered" && (
+                      <div
+                        className={`account-details_list_right_section_status offer_status-${item?.status}`}
+                      />
+                    )}
+                    {item?.status === "offered" && (
+                      <div className="account-details_list_right_section_status offer_status-waiting">
+                        Beklemede
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

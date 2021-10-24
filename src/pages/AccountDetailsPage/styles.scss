@@ -168,6 +168,7 @@
   border-radius: 0.5rem;
   color: #FFFFFF;
   margin-right: 1.875rem;
+  cursor: pointer;
 }
 
 .account-details_list_right_section_accept-button {
@@ -187,5 +188,22 @@
   line-height: 1.25rem;
   letter-spacing: 0;
   text-transform: capitalize;
-  color: #F77474;
 }
+
+.offer_status-accepted {
+  color: #4B9CE2;
+  &:before {
+  content: "Onaylandı";
+  }
+}
+
+.offer_status-rejected {
+  color: #F77474;
+  &:before {
+  content: "Reddedildi";
+  }
+}
+.offer_status-waiting {
+  color: #b1b1b1;
+}
+
