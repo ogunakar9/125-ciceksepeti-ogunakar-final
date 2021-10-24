@@ -94,6 +94,10 @@ input[type=file]::-webkit-file-upload-button {
   height: 1rem;
 }
 
+.input_info-overlay-warning {
+  color: #F77474;
+}
+
 .uploaded_image_container {
   position: relative;
   display: inline-block;

@@ -3,12 +3,7 @@ import "./styles.scss";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import {
-  acceptOffer,
-  purchaseProduct,
-  rejectOffer,
-  setModal,
-} from "../../store/actions";
+import { acceptOffer, rejectOffer, setModal } from "../../store/actions";
 import profileIconBig from "../../assets/account-details/profile-icons/profile-icon-big.png";
 import Notification from "../../components/shared/Notification/Notification";
 import successIcon from "../../assets/auth/successIcon/successIcon@2x.png";

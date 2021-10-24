@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./styles.scss";
 import { removeImage, uploadNewProductImage } from "../../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,9 +11,15 @@ const UploadImageInput = () => {
   const fileInputField = useRef(null);
   const uploadedImage = useSelector((state) => state.products.newImageUrl);
   const { loading } = useSelector((state) => state.main);
+  const [warningMsgVisible, setWarningMsgVisible] = useState(false);
 
   const handleImageChange = (e) => {
-    dispatch(uploadNewProductImage(e.target.files[0]));
+    if (e.target.files[0].size / 1024 > 400) {
+      setWarningMsgVisible(true);
+    } else {
+      setWarningMsgVisible(false);
+      dispatch(uploadNewProductImage(e.target.files[0]));
+    }
   };
 
   const handleRemoveImage = () => {
@@ -46,8 +52,12 @@ const UploadImageInput = () => {
                       Görsel Seçin
                     </button>
                   </div>
-                  <div className="input_info-overlay-max">
-                    <span>PNG ve JPEG Dosya boyutu: max. 100kb</span>
+                  <div
+                    className={`input_info-overlay-max ${
+                      warningMsgVisible && "input_info-overlay-warning"
+                    }`}
+                  >
+                    <span>PNG ve JPEG Dosya boyutu: max. 400kb</span>
                   </div>
                 </div>
                 <input

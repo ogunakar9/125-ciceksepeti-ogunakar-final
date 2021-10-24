@@ -84,8 +84,13 @@ const CreateProduct = () => {
                   <select
                     id="category"
                     name="category"
+                    required
+                    defaultValue={""}
                     onChange={(e) => handleSelectChange(e, categories)}
                   >
+                    <option value="" disabled hidden>
+                      Kategori seç
+                    </option>
                     {categories.map((item, idx) => (
                       <option value={idx} key={item.id}>
                         {item.title}
@@ -98,8 +103,13 @@ const CreateProduct = () => {
                   <select
                     id="brand"
                     name="brand"
+                    required
+                    defaultValue={""}
                     onChange={(e) => handleSelectChange(e, brands)}
                   >
+                    <option value="" disabled hidden>
+                      Marka seç
+                    </option>
                     {brands.map((item, idx) => (
                       <option value={idx} key={item.id}>
                         {item.title}
@@ -114,8 +124,12 @@ const CreateProduct = () => {
                   <select
                     id="color"
                     name="color"
+                    defaultValue={""}
                     onChange={(e) => handleSelectChange(e, colors)}
                   >
+                    <option value="" disabled hidden>
+                      Renk seç
+                    </option>
                     {colors.map((item, idx) => (
                       <option value={idx} key={item.id}>
                         {item.title}
@@ -128,8 +142,12 @@ const CreateProduct = () => {
                   <select
                     id="status"
                     name="status"
+                    defaultValue={""}
                     onChange={(e) => handleSelectChange(e, statuses)}
                   >
+                    <option value="" disabled hidden>
+                      Kullanım durumu seç
+                    </option>
                     {statuses.map((item, idx) => (
                       <option value={idx} key={item.id}>
                         {item.title}
