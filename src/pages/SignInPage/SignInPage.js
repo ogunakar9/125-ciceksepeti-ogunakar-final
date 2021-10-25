@@ -6,13 +6,7 @@ import UserAuthForm from "../../components/User/UserAuthForm";
 import { signIn } from "../../store/actions";
 import Notification from "../../components/shared/Notification/Notification";
 import errorIcon from "../../assets/auth/errorIcon/errorIcon@2x.png";
-import {
-  urlSignIn,
-  signingInText,
-  errorText,
-  linkTextSignIn,
-  generalTextSignIn,
-} from "../../utilities/Constants";
+import { errorText, signInFormContent } from "../../utilities/Constants";
 
 const SignInPage = () => {
   const history = useHistory();
@@ -28,13 +22,7 @@ const SignInPage = () => {
   return (
     <>
       <Notification text={errorText} icon={errorIcon} type={"error"} />
-      <UserAuthForm
-        action={signIn}
-        forwardLocation={urlSignIn}
-        helperText={signingInText}
-        linkText={linkTextSignIn}
-        generalText={generalTextSignIn}
-      />
+      <UserAuthForm action={signIn} formContent={signInFormContent} />
     </>
   );
 };

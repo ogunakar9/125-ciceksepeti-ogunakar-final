@@ -8,10 +8,13 @@ import { setNotification } from "../../store/actions";
 
 const UserAuthForm = ({
   action,
-  forwardLocation,
-  helperText,
-  linkText,
-  generalText,
+  formContent: {
+    forwardLocation,
+    helperText,
+    linkText,
+    generalText,
+    buttonText,
+  },
 }) => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -107,7 +110,7 @@ const UserAuthForm = ({
               />
             </div>
             <button className="user_form_button" onClick={handleFormSubmit}>
-              {generalText}
+              {buttonText}
             </button>
             <div className="user_form_account-helper-text">
               <span>

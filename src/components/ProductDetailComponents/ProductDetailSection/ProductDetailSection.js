@@ -17,7 +17,7 @@ const ProductDetailSection = ({ productDetails, offer }) => {
   const handleCancel = () => {
     dispatch(cancelOffer(id, offerId));
   };
-
+  //TODO: resize image properly
   const {
     isOfferable,
     offerId,

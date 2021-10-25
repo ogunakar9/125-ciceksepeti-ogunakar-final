@@ -4,13 +4,7 @@ import { signUp } from "../../store/actions";
 import UserAuthForm from "../../components/User/UserAuthForm";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-  linkTextSignUp,
-  signingUpText,
-  urlSignUp,
-  generalTextSignUp,
-  errorText,
-} from "../../utilities/Constants";
+import { signUpFormContent, errorText } from "../../utilities/Constants";
 import errorIcon from "../../assets/auth/errorIcon/errorIcon@2x.png";
 import Notification from "../../components/shared/Notification/Notification";
 
@@ -28,13 +22,7 @@ const SignUpPage = () => {
   return (
     <>
       <Notification text={errorText} icon={errorIcon} type={"error"} />
-      <UserAuthForm
-        action={signUp}
-        forwardLocation={urlSignUp}
-        helperText={signingUpText}
-        linkText={linkTextSignUp}
-        generalText={generalTextSignUp}
-      />
+      <UserAuthForm action={signUp} formContent={signUpFormContent} />
     </>
   );
 };
