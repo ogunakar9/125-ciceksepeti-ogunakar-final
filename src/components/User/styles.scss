@@ -3,15 +3,26 @@
 
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1rem;
+
+  @media only screen and (max-width: 768px) {
+    padding: 2.8rem 1rem 3rem 1rem;
+    height: 100vh;
+  }
 }
 
 .user_image-container {
   width: 43.49%;
   height: 100vh;
-  object-fit: contain;
-
-  @media only screen and (max-width: 1200px) {
-    object-fit: cover;
+  object-fit: cover;
+  //
+  //@media only screen and (max-width: 1200px) {
+  //  object-fit: cover;
+  //}
+  @media only screen and (max-width: 768px) {
+    display: none;
   }
 }
 
@@ -19,12 +30,15 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  @media only screen and (min-width: 1023px) {
-   padding-right: 1rem;
-  }
+  //@media only screen and (min-width: 1023px) {
+  // padding-right: 1rem;
+  //}
   margin: auto;
   align-items: center;
-
+  padding-bottom: 2.8rem;
+  @media only screen and (max-width: 768px) {
+    margin-top: 0;
+  }
 
   img {
     width: 14rem;
@@ -40,6 +54,11 @@
   border-radius: 8px;
   width: 35.5625rem;
 
+  @media only screen and (max-width: 768px) {
+    margin-top: 2.4rem;
+    height: 43.5rem;
+  }
+
   form {
 
     display: flex;
@@ -48,11 +67,22 @@
     justify-content: center;
     width: 100%;
     padding: 4.375rem 5.625rem;
+
+    @media only screen and (max-width: 768px) {
+      padding: 2.2rem 2rem 0 2rem;
+      justify-content: flex-start;
+      height: 100%;
+    }
   }
 }
 
 .form-input {
   width: 100%;
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.6rem/2.2 Nunito;
+    padding: 1.2rem 0 1.1rem 1.5rem;
+    height: 4.5rem;
+  }
 }
 
 .form_input-wrong {
@@ -60,6 +90,7 @@
   border: 1px solid #F77474;
   color: #F77474;
 }
+
 .user_form_title {
   text-align: center;
   font-size: 2rem;
@@ -68,8 +99,15 @@
   letter-spacing: 0;
   color: #525252;
   margin-bottom: -1rem;
-  //width: 6.125rem;
-  //height: 2.6875rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 3.2rem/4.3 Nunito;
+    height: 4.3rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
 }
 
 .user_form_suggestion {
@@ -78,6 +116,12 @@
   font: normal normal normal 0.9375rem/1.25 Nunito;
   letter-spacing: 0;
   margin-bottom: 3.125rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2 Nunito;
+    margin-bottom: 2.6rem;
+  }
+
 }
 
 .user_form_input-box {
@@ -87,12 +131,24 @@
   align-items: flex-start;
   row-gap: 0.3125rem;
   margin-bottom: 0.9375rem;
+  @media only screen and (max-width: 768px) {
+    row-gap: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.user_form_input-box_fixer {
+  margin-top: -0.6rem
 }
 
 .user_form_label {
   font: normal normal normal 0.9375rem/1.25 Nunito;
   letter-spacing: 0;
   color: #525252;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2 Nunito;
+  }
 }
 
 .user_form_button {
@@ -106,12 +162,27 @@
   padding: 0.6875rem 10.375rem;
   cursor: pointer;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.6rem/2.2 Nunito;
+    //margin: 0.9375rem 0 2.5625rem 0;
+    margin: 0.5rem 0 3rem 0;
+    padding: 1.1rem 12.9rem 1rem 12.9rem;
+    height: 4.5rem;
+  }
 }
 
 .user_form_account-helper-text {
   text-align: center;
   font: normal normal normal 0.9375rem/1.25 Nunito;
   letter-spacing: 0;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2 Nunito;
+  }
+
 }
 
 .user_form_account_helper-link {

@@ -79,7 +79,7 @@ const UserAuthForm = ({
             </div>
             <div className="user_form_input-box">
               <label className="user_form_label" htmlFor="email">
-                Email:
+                Email
               </label>
               <input
                 className={`form-input ${
@@ -93,9 +93,9 @@ const UserAuthForm = ({
                 onChange={handleEmail}
               />
             </div>
-            <div className="user_form_input-box">
+            <div className="user_form_input-box user_form_input-box_fixer">
               <label className="user_form_label" htmlFor="password">
-                Password:
+                Şifre
               </label>
               <input
                 className={`form-input ${
@@ -110,7 +110,7 @@ const UserAuthForm = ({
               />
             </div>
             <button className="user_form_button" onClick={handleFormSubmit}>
-              {buttonText}
+              <span>{buttonText}</span>
             </button>
             <div className="user_form_account-helper-text">
               <span>

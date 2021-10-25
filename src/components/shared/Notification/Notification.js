@@ -26,7 +26,7 @@ const Notification = ({ text, icon, type }) => {
   }
 
   return ReactDOM.createPortal(
-    <div className={`toaster-wrapper toaster-${type}`}>
+    <div className={`toaster-wrapper  toaster-${type}`}>
       <img src={icon} alt="icon" />
       <span>{text}</span>
     </div>,
