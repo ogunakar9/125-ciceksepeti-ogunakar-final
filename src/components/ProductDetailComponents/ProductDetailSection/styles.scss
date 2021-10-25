@@ -7,7 +7,7 @@
   @media only screen and (max-width: 768px) {
     height: 100%;
     width: 100vw;
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 1rem 1rem 1rem;
   }
 }
 
@@ -27,6 +27,7 @@
     padding: 0.6rem 0.6rem 0 0.6rem;
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 }
 
@@ -148,6 +149,8 @@
   font-size: 1.56rem ;
   line-height: 2rem;
   margin: 1.875rem 0;
+
+
 }
 
 .products_detail_text_offered-price {
@@ -171,6 +174,25 @@
     font-weight: bold;
     letter-spacing: 0;
   }
+
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+    height: 3rem;
+    padding: 0.5rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span:first-child {
+      display: flex;
+      font: normal normal normal 1.2rem/1.6 Nunito;
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+    span:last-child {
+      font: normal normal bold 1.5rem/2 Nunito;
+    }
+  }
 }
 
 .products_detail_text-info_description-title {
@@ -178,6 +200,10 @@
   font-size: 1.125rem ;
   line-height: 1.5rem;
   margin-bottom: 0.625rem;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .products_detail_text-info_description {
@@ -187,6 +213,10 @@
   //max-width: 68%;
   text-align: left;
   margin-right: 14.0625rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+  }
 }
 
 .product_sold_button {
@@ -215,6 +245,14 @@
   margin: 0 0.625rem 1.875rem auto;
   width: 14.6875rem;
   font: normal normal bold 1.125rem/1.5 Nunito;
+
+  @media only screen and (max-width: 767px) {
+    margin: 0 1rem 0 0;
+    width: calc(50vw - 1.5rem);
+    height: 4.5rem;
+    font: normal normal bold 1.8rem/2.4 Nunito;
+    line-height: 0;
+  }
 }
 
 .product_offer_button {
@@ -230,6 +268,15 @@
   padding: 0.6875rem 0 0.6875rem;
   margin: 0 auto 1.875rem;
   font: normal normal bold 1.125rem/1.5 Nunito;
+
+  @media only screen and (max-width: 767px) {
+    margin: 0;
+    width: calc(50vw - 1.5rem);
+    height: 4.5rem;
+    font: normal normal bold 1.8rem/2.4 Nunito;
+    text-align: center;
+    line-height: 0;
+  }
 }
 
 .products_price_big {
@@ -239,7 +286,26 @@
 }
 
 .products_price_small {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
   @media only screen and (min-width: 768px) {
     display: none;
+  }
+}
+
+.product_button_container {
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: calc(100% + 8rem);
+    margin-left: -4rem;
+    margin-top: 0.3rem;
+    box-shadow: 0px -3px 8px #1E364814;
+    padding: 1rem;
+    background-color: #FFFFFF;
   }
 }

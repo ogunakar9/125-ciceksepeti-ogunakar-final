@@ -111,17 +111,8 @@ const ProductDetailSection = ({ productDetails, offer }) => {
               </div>
             </div>
           </div>
-          {/*<div className="products_detail_text-price">*/}
-          {/*  <span>{price} TL</span>*/}
-          {/*</div>*/}
-          {/*{offer && !isSold && (*/}
-          {/*  <div className="products_detail_text_offered-price">*/}
-          {/*    <span>Verilen Teklif:</span>*/}
-          {/*    <span>{offer.offeredPrice} TL</span>*/}
-          {/*  </div>*/}
-          {/*)}*/}
           <PriceInfoWrapper className={`products_price_big`} />
-          <div>
+          <div className="product_button_container">
             {isSold && (
               <button className="product_sold_button" disabled>
                 bu ürün satışta değil
