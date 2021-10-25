@@ -23,7 +23,7 @@ const ProductDetails = () => {
   const offer = givenOffers?.filter((item) => item.id === offerId)[0];
 
   const text = "Satın Alındı";
-
+  //TODO: burada noti type i texti ve iconu reduxtan gonderilebilir
   return (
     <>
       <Header />

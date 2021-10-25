@@ -39,14 +39,19 @@ const Header = () => {
         <img src={bannerLogo} alt="ikinci-el" />
       </Link>
       <div className="header_button-wrapper">
-        <div>
-          <button className="header-button" onClick={handleProducts}>
+        <div className="header_button_width-fixer">
+          <button
+            className="header-button header_button_create-btn-sm"
+            onClick={handleProducts}
+          >
             <img src={plusIcon} alt="plus-icon" />
-            <span>Ürün Ekle</span>
+            <span className="header_plus-only">Ürün Ekle</span>
           </button>
         </div>
         <div>
-          <ProfileButton className="header-button" />
+          <ProfileButton
+            className={`header-button header_button_profile-btn-sm`}
+          />
         </div>
       </div>
     </header>

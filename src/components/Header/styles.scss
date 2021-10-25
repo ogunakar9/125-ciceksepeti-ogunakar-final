@@ -6,12 +6,25 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.125rem 13.75rem;
+
+
+  @media only screen and (max-width: 768px) {
+    padding: 2px 1rem 0 1rem;
+    height: 6rem;
+  }
 }
 
 .banner-logo_container {
   max-width: 130px;
   height: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 9.9rem;
+    height: 3.2rem;
+  }
 
    img {
     width: 100%;
@@ -22,6 +35,10 @@
 .header_button-wrapper {
   display: flex;
   gap: 1.189rem;
+
+  @media only screen and (max-width: 768px) {
+    gap: 1rem
+  }
 }
 
 .header-button {
@@ -35,7 +52,7 @@
   cursor: pointer;
 
   img {
-    margin: 0.81rem;
+    margin: 0.81rem 0.3125rem 0.81rem 1.1875rem;
     width: 0.7rem;
     height: 0.7rem;
   }
@@ -47,5 +64,51 @@
     font-weight: bold;
     font-family: 'Nunito', sans-serif;
     letter-spacing: 0;
+  }
+}
+
+.header_plus-only {
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.header_button_width-fixer {
+  @media only screen and (max-width: 768px) {
+      width: 4rem;
+      height: 4rem;
+  }
+}
+
+.header_button_create-btn-sm {
+  @media only screen and (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+      width: 1.1rem;
+      height: 1.1rem;
+      margin: auto;
+    }
+  }
+}
+
+.header_button_profile-btn-sm {
+  @media only screen and (max-width: 768px) {
+    width: 11.6rem;
+    height: 4rem;
+    color: red !important;
+    justify-content: center;
+    align-items: center;
+    img {
+      width: 1.2rem;
+      height: 1.3rem;
+      margin-left: 0;
+      margin-top: 0.6rem;
+    }
+
+    span {
+      font: normal normal bold 1.5rem/2 Nunito;
+    }
   }
 }
