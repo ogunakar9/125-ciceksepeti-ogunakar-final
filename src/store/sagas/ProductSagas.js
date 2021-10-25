@@ -251,6 +251,8 @@ function* sgCreateProduct(action) {
       type: SET_LOADING,
       payload: { loading: false },
     });
+    //TODO: show notification here for creation success
+    // and redirect to index page
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
