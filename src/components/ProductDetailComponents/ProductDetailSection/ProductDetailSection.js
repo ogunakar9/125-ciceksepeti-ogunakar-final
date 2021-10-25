@@ -66,6 +66,23 @@ const ProductDetailSection = ({ productDetails, offer }) => {
       </div>
     );
   };
+
+  const PriceInfoWrapper = ({ className }) => {
+    return (
+      <div className={className}>
+        <div className="products_detail_text-price">
+          <span>{price} TL</span>
+        </div>
+        {offer && !isSold && (
+          <div className="products_detail_text_offered-price">
+            <span>Verilen Teklif:</span>
+            <span>{offer.offeredPrice} TL</span>
+          </div>
+        )}
+      </div>
+    );
+  };
+
   //TODO: image ustten ve alttan biraz marginli olsun
   return (
     <div className="products_detail_wrapper">
@@ -77,6 +94,7 @@ const ProductDetailSection = ({ productDetails, offer }) => {
           <div className="products_detail_text-title">
             <span className="products_detail_text-title">{title}</span>
           </div>
+          <PriceInfoWrapper className={`products_price_small`} />
           <div className="products_detail_text-info-container">
             <ProductsDetailStaticInfoWrapper />
             <div className="products_detail_text-info-container-item">
@@ -93,16 +111,16 @@ const ProductDetailSection = ({ productDetails, offer }) => {
               </div>
             </div>
           </div>
-          <div className="products_detail_text-price">
-            <span>{price} TL</span>
-          </div>
-          {offer && !isSold && (
-            <div className="products_detail_text_offered-price">
-              <span>Verilen Teklif:</span>
-              <span>{offer.offeredPrice} TL</span>
-            </div>
-          )}
-
+          {/*<div className="products_detail_text-price">*/}
+          {/*  <span>{price} TL</span>*/}
+          {/*</div>*/}
+          {/*{offer && !isSold && (*/}
+          {/*  <div className="products_detail_text_offered-price">*/}
+          {/*    <span>Verilen Teklif:</span>*/}
+          {/*    <span>{offer.offeredPrice} TL</span>*/}
+          {/*  </div>*/}
+          {/*)}*/}
+          <PriceInfoWrapper className={`products_price_big`} />
           <div>
             {isSold && (
               <button className="product_sold_button" disabled>
