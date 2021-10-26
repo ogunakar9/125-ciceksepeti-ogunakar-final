@@ -32,7 +32,7 @@ const Modal = ({ productDetails, productId }) => {
       <div className="modal_buy_container">
         <span className="modal_buy_title">Satın Al</span>
         <span className="modal_buy_warning">Satın Almak istiyor musunuz?</span>
-        <div>
+        <div className="modal_sm_btn-width-fixer">
           <button className="modal_buy_cancel" onClick={handleModalClose}>
             Vazgeç
           </button>
@@ -144,7 +144,11 @@ const Modal = ({ productDetails, productId }) => {
   };
 
   return ReactDOM.createPortal(
-    <div className="modal">
+    <div
+      className={`modal ${
+        modalContent && modalContent === "buy" && "modal_content_aligner"
+      }`}
+    >
       <div className="modal-content">
         {modalContent && modalContent === "buy" && (
           <BuyModalContent productId={productId} />

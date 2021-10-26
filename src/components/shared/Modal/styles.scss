@@ -12,11 +12,17 @@
 
   @media only screen and (max-width: 768px) {
     width: 100vw;
-    background-color: red;
     align-items: flex-start;
-
   }
 }
+
+.modal_content_aligner {
+  @media only screen and (max-width: 768px) {
+    align-items: center;
+    height: 100vh;
+  }
+}
+
 
 .modal-content {
   position: relative;
@@ -40,12 +46,24 @@
   height: 10.6875rem;
   box-shadow: 0 3px 12px #1E36482E;
   border-radius: 0.5rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    height: 25.63vh;
+    transform: translateY(-1rem);
+    justify-content: space-between;
+    padding: 1rem 2.2rem 2rem 2.2rem;
+  }
 }
 
 .modal_buy_title {
   font: normal normal bold 1.5625rem/1.4375 Nunito;
   letter-spacing: 0;
   color: #525252;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 2.5rem/2.3 Nunito;
+  }
 }
 
 .modal_buy_warning {
@@ -53,6 +71,26 @@
   letter-spacing: 0;
   color: #555555;
   margin: 0.75rem auto 1.25rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+    margin-top: 0;
+  }
+}
+
+.modal_sm_btn-width-fixer {
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      flex: 1;
+      height: 4.5rem;
+      font: normal normal bold 1.8rem/2.4 Nunito;
+      line-height: 0;
+    }
+  }
 }
 
 .modal_buy_cancel {
