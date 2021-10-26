@@ -71,6 +71,7 @@
   @media only screen and (max-width: 768px) {
     justify-content: space-between;
     padding: 0 3.2rem 0 3.2rem;
+    margin-bottom: 0;
   }
 }
 
@@ -101,7 +102,11 @@
   padding-right: 2.3125rem;
 
   //TODO: check if more items are added whether they fit here or not
-
+  @media only screen and (max-width: 768px) {
+    padding: 1rem;
+    height: auto;
+    gap: 1rem;
+  }
 }
 
 .account-details_list-box_card {
@@ -115,16 +120,23 @@
   padding-right: 1.875rem;
   justify-content: space-between;
 
-  //
-  //&:not(:first-of-type) {
-  //  //margin: 1.25rem 2.3125rem 1.25rem 1.875rem;
-  //
-  //}
+  @media only screen and (max-width: 768px) {
+    height: 13.4rem;
+    padding: 1rem;
+    flex-direction: column;
+    margin: 0 1rem 0 0;
+    //gap: 1rem;
+  }
 }
 
 .account-details_list_left-section {
   display: flex;
   justify-content: flex-start;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    gap: 1rem;
+  }
 }
 
 .account-details_list-box_image {
@@ -133,6 +145,12 @@
   margin: 0.625rem;
   border-radius: 0.5rem;
   object-fit: contain;
+
+  @media only screen and (max-width: 768px) {
+    height: 8.4rem;
+    min-width: 7.8rem;
+    margin: 0;
+  }
 }
 
 .account-details_list-box_info-container {
@@ -140,11 +158,24 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.4375rem;
+
+  @media only screen and (max-width: 768px) {
+    margin: 0;
+    width: 100%;
+    gap: 1rem;
+  }
 }
 
 .account-details_list_right-section {
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    height: 100%;
+    padding-bottom: 1.5rem;
+    width: calc(100% - 8.8rem);
+    margin-left: 8.8rem;
+  }
 }
 
 .account-details_list-box_info-title {
@@ -152,6 +183,18 @@
   font-size: 1.125rem;
   line-height: 1.4375rem;
   letter-spacing: 0;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    font: normal normal normal 1.8rem/2.3 Nunito;
+    text-overflow: ellipsis;
+    align-items: flex-start;
+    width: 100%;
+
+    span {
+      line-height: 1;
+    }
+  }
 }
 
 .account-details_list-box_info-price {
@@ -174,6 +217,16 @@
     font-weight: bold;
     letter-spacing: 0;
   }
+
+  @media only screen and (max-width: 768px) {
+    padding: 0.6rem 1rem;
+    span:first-child{
+      font: normal normal normal 1.5rem/2 Nunito;
+    }
+    span:last-child{
+      font: normal normal bold 1.5rem/2 Nunito;
+    }
+  }
 }
 
 .account-details_list_right_section_buy-button {
@@ -186,6 +239,27 @@
   color: #FFFFFF;
   margin-right: 0.625rem;
   cursor: pointer;
+  white-space: nowrap;
+
+  @media only screen and (min-width: 769px) and (max-width: 1200px) {
+    padding: 0.5rem;
+    line-height: 0;
+    width: 10.8rem;
+    height: 3rem;
+  }
+
+  @media only screen and (min-width: 1201px) and (max-width: 1500px) {
+    line-height: 0;
+    padding: 1rem;
+  }
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+    height: 3rem;
+    width: 10.8rem;
+    line-height: 0;
+    margin-right: 0;
+  }
 }
 
 .account-details_list_right_section_reject-button {
@@ -197,6 +271,13 @@
   border-radius: 0.5rem;
   color: #FFFFFF;
   cursor: pointer;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+    height: 3rem;
+    width: 10.8rem;
+    line-height: 0;
+  }
 }
 
 .account-details_list_right_section_accept-button {
@@ -208,6 +289,22 @@
   border-radius: 0.5rem;
   color: #FFFFFF;
   margin-right: 1.875rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+    height: 3rem;
+    width: 10.8rem;
+    line-height: 0;
+  }
+}
+
+.details_list_right_section_status_btn-fixer {
+  display: flex;
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .account-details_list_right_section_status {
@@ -216,6 +313,23 @@
   line-height: 1.25rem;
   letter-spacing: 0;
   text-transform: capitalize;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.5rem/2.3 Nunito;
+    margin-right: 2rem;
+    //margin-top: 0;
+    line-height: 0;
+  }
+}
+
+.account-details_list_right-section_mobile-fixer {
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 .offer_status-accepted {

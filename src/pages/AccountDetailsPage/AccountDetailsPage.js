@@ -54,7 +54,7 @@ const AccountDetailsPage = () => {
     if (!item.product.isSold) {
       if (item?.status === "offered") {
         return (
-          <div>
+          <div className="details_list_right_section_status_btn-fixer">
             <button
               className="account-details_list_right_section_buy-button"
               onClick={() => handleAcceptOffer(item?.id)}
@@ -91,10 +91,10 @@ const AccountDetailsPage = () => {
     } else {
       if (item?.status === "accepted") {
         return (
-          <>
+          <div className="details_list_right_section_status_btn-fixer">
             <Modal productId={item?.product.id} />
             <button
-              className="account-details_list_right_section_buy-button"
+              className="account-details_list_right_section_accept-button"
               onClick={() => handlePurchaseOffered(item?.product.id)}
             >
               Satın Al
@@ -102,7 +102,7 @@ const AccountDetailsPage = () => {
             <div
               className={`account-details_list_right_section_status offer_status-${item?.status}`}
             />
-          </>
+          </div>
         );
       } else if (item?.status === "rejected") {
         return (
@@ -172,7 +172,9 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    <ReceivedOfferSection item={item} />
+                    <div className="account-details_list_right-section_mobile-fixer">
+                      <ReceivedOfferSection item={item} />
+                    </div>
                   </div>
                 </div>
               ))}
@@ -190,7 +192,7 @@ const AccountDetailsPage = () => {
                     </div>
                     <div className="account-details_list-box_info-container">
                       <div className="account-details_list-box_info-title">
-                        {item?.product.title}
+                        <span>{item?.product.title}</span>
                       </div>
                       <div className="account-details_list-box_info-price">
                         <span>Alınan Teklif:</span>
@@ -199,7 +201,9 @@ const AccountDetailsPage = () => {
                     </div>
                   </div>
                   <div className="account-details_list_right-section">
-                    <GivenOfferSection item={item} />
+                    <div className="account-details_list_right-section_mobile-fixer">
+                      <GivenOfferSection item={item} />
+                    </div>
                   </div>
                 </div>
               ))}
