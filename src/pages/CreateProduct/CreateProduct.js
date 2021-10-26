@@ -96,7 +96,6 @@ const CreateProduct = () => {
     }
   };
 
-  //TODO: redirect after save
   return (
     <>
       <Header />

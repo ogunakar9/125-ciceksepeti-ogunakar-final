@@ -18,6 +18,7 @@ import {
   fetchBrands,
   fetchStatuses,
 } from "./store/actions";
+import PrivateRoute from "./components/shared/Auth/ProtectedRoute";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -60,12 +61,8 @@ export default function App() {
           <Route path="/signin">
             <SignInPage />
           </Route>
-          <Route path="/account">
-            <AccountDetailsPage />
-          </Route>
-          <Route path="/createproduct">
-            <CreateProduct />
-          </Route>
+          <PrivateRoute component={AccountDetailsPage} path="/account" exact />
+          <PrivateRoute component={CreateProduct} path="/createproduct" exact />
           <Route path="/productdetails/:id">
             <ProductDetails />
           </Route>
