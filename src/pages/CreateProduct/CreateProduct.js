@@ -15,7 +15,7 @@ const CreateProduct = () => {
     title: "",
     description: "",
     isOfferable: false,
-    price: 0,
+    price: "",
   });
 
   const [titleWarning, setTitleWarning] = useState(false);

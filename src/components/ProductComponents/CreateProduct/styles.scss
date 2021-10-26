@@ -13,6 +13,11 @@ input[type=file]::-webkit-file-upload-button {
   font-size: 1.5625rem;
   line-height: 1.4375rem;
   letter-spacing: 0;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 2rem/1.35 Nunito;
+    margin: 2.2rem 0 1.5rem 0;
+  }
 }
 
 .input-wrapper {
@@ -32,18 +37,38 @@ input[type=file]::-webkit-file-upload-button {
     background-color: #FFFFFF;
     z-index: 1;
   }
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 0;
+    width: 100%;
+    height: 11.3rem;
+  }
 }
 
 .input_info-overlay {
   position: absolute;
+
+  //@media only screen and (max-width: 768px) {
+  //  display: flex;
+  //  flex-direction: column;
+  //  align-items: center;
+  //  justify-content: center;
+  //}
 }
 
 .input_info-image {
-    position: absolute;
-    top: 1.1875rem;
-    left: 17.625rem;
-    width: 1.875rem;
-    height: 1.8125rem;
+  position: absolute;
+  top: 1.1875rem;
+  left: 17.625rem;
+  width: 1.875rem;
+  height: 1.8125rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 3rem;
+    height: 2.9rem;
+    top: 0.93rem;
+    left: calc((100vw - 7rem) / 2);
+  }
 }
 
 .input_info-overlay-drag {
@@ -57,6 +82,10 @@ input[type=file]::-webkit-file-upload-button {
   width: 10.375rem;
   height: 2.125rem;
   text-align: center;
+
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
 }
 
 .input_info-overlay-choose {
@@ -82,6 +111,16 @@ input[type=file]::-webkit-file-upload-button {
     line-height: 1.4375rem;
   }
 
+  @media only screen and (max-width: 768px) {
+    left: calc((100vw - 16.2rem) / 2);
+    top: 4.76rem;
+    width: 12.2rem;
+    height: 3rem;
+    white-space: nowrap;
+    span {
+      font: normal normal normal 1.5rem/2.3 Nunito;
+    }
+  }
 }
 
 .input_info-overlay-max {
@@ -92,6 +131,15 @@ input[type=file]::-webkit-file-upload-button {
   line-height: 0.875rem;
   width: 13.625rem;
   height: 1rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.2rem/1.4 Nunito;
+    color: #B1B1B1;
+    white-space: nowrap;
+    top: 8.74rem;
+    width: 21.8rem;
+    left: calc((100vw - 25.8rem) / 2);
+  }
 }
 
 .input_info-overlay-warning {
@@ -107,6 +155,14 @@ input[type=file]::-webkit-file-upload-button {
     height: 7.0625rem;
     border-radius: 1rem;
   }
+
+  @media only screen and (max-width: 768px) {
+    img {
+      width: 10.8rem;
+      height: 10.8rem;
+      //object-fit: scale-down;
+    }
+  }
 }
 
 .delete_btn_uploaded_image{
@@ -116,11 +172,23 @@ input[type=file]::-webkit-file-upload-button {
   width: 1.2rem;
   top: -0.35rem;
   right: -0.15rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 2.2rem;
+    height: 2.2rem;
+    top: -0.6rem;
+    right: -0.3rem;
+  }
 }
 
 .loader {
   position: absolute;
   left: calc(37.1875rem - 60%);
   top: calc(10.25rem - 85%);
+
+  @media only screen and (max-width: 768px) {
+    left: calc((100vw - 14rem) / 2);
+    top: 0.65rem;
+  }
 }
 
