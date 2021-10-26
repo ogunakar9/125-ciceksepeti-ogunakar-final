@@ -48,9 +48,7 @@ const AccountDetailsPage = () => {
     // dispatch(purchaseProduct(id));
     dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
-  //TODO: satildiysa nasil gostercen dikkat et
   const text = "Satın Alındı";
-  //TODO: item satin aldiginda notification sonrasi satin alindi diye listede status belirtcen
 
   const ReceivedOfferSection = ({ item }) => {
     if (!item.product.isSold) {
