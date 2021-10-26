@@ -102,10 +102,12 @@ const Modal = ({ productDetails, productId }) => {
           </div>
         </div>
         <div className="modal_offer_inputs-wrapper">
-          {/*TODO: change style of div if input is selected*/}
           {inputs.map((input) => (
             <div
-              className="modal_offer_input-single-container"
+              className={`modal_offer_input-single-container ${
+                input["value"] === checked &&
+                "modal_offer_input-single-container_selected"
+              }`}
               key={input["value"]}
             >
               <input

@@ -9,12 +9,25 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+
+  @media only screen and (max-width: 768px) {
+    width: 100vw;
+    background-color: red;
+    align-items: flex-start;
+
+  }
 }
 
 .modal-content {
   position: relative;
   transform: translateY(-1.2rem);
   //TODO: calc viewheight something here to move modal upwards
+
+  @media only screen and (max-width: 768px) {
+    width: 100vw;
+    transform: translateY(0);
+    padding: 1rem 1rem 0 1rem;
+  }
 }
 
 .modal_buy_container {
@@ -75,6 +88,13 @@
   background-color: #FFFFFF;
   border-radius: 0.625rem;
   box-shadow: 0 3px 12px #1E36482E;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    padding: 1.3rem 2rem 2rem 2rem;
+    height: auto;
+
+  }
 }
 
 .modal_close_offer_button {
@@ -85,6 +105,13 @@
   top: 1.25rem;
   right: 1.25rem;
   color: #525252;
+
+  @media only screen and (max-width: 768px) {
+    top: 1.7rem;
+    right: 1.9rem;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
 }
 
 .modal_offer_title {
@@ -93,6 +120,10 @@
   letter-spacing: 0;
   display: flex;
   margin-bottom: 1.0625rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 1.8rem/2.3 Nunito;
+  }
 }
 
 .modal_offer_info {
@@ -103,6 +134,12 @@
   height: 3.75rem;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    //padding: 0.4rem;
+    height: 4.5rem;
+  }
 }
 
 .modal_offer_info_left-section {
@@ -116,6 +153,11 @@
   height: 3.125rem;
   margin-left: 0.375rem;
   margin-right: 0.4375rem;
+
+  @media only screen and (max-width: 768px) {
+    height: 3.7rem;
+    width: 3.6rem;
+  }
 }
 
 .modal_offer_info_title {
@@ -126,7 +168,12 @@
   width: 8.5rem;
   display: flex;
   align-items: flex-start;
-  margin-top: 0.5rem
+  margin-top: 0.5rem;
+  text-transform: capitalize;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.3rem/1.6 Nunito;
+  }
 }
 
 .modal_offer_info_price {
@@ -152,14 +199,32 @@
   border: 1px solid #E0E0E0;
   border-radius: 8px;
 
-  input {
-
-  }
-
   label {
     font: normal normal normal 0.9375rem/1.25 Nunito;
     letter-spacing: 0;
     color: #525252 !important;
+  }
+
+  @media only screen and (max-width: 768px) {
+    padding: 1rem 0 1rem 1rem;
+    input {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.7rem;
+    }
+    label {
+      font: normal normal normal 1.5rem/2 Nunito;
+    }
+  }
+}
+
+.modal_offer_input-single-container_selected {
+  background-color: #F0F8FF;
+  color: #4B9CE2;
+  border-color: #4B9CE2;
+
+  label {
+    color: #4B9CE2 !important;
   }
 }
 
@@ -184,6 +249,17 @@
     position: absolute;
     right: 0.625rem;
   }
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal normal 1.6rem/2.2 Nunito;
+    letter-spacing: 0;
+    height: auto !important;
+    input {
+      height: 5rem;
+      font: normal normal normal 1.6rem/2.2 Nunito;
+      padding: 1rem 0 1rem 1rem !important;
+    }
+  }
 }
 
 .modal_offer_submit-button {
@@ -197,5 +273,13 @@
   letter-spacing: 0;
   border: none;
   border-radius: 0.5rem;
+
+  @media only screen and (max-width: 768px) {
+    height: 4.5rem;
+    width: 100%;
+    font: normal normal bold 1.8rem/2.4 Nunito;
+    line-height: 0;
+    text-align: center;
+  }
 }
 
