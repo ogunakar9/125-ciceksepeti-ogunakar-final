@@ -234,8 +234,10 @@ function* sgCreateProduct(action) {
       return;
     }
 
+    const { history, newProduct } = action.payload;
+
     const { newImageUrl } = yield select((state) => state.products);
-    const data = { ...action.payload, imageUrl: newImageUrl };
+    const data = { ...newProduct, imageUrl: newImageUrl };
     const response = yield call(API.post, "/product/create", data, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -244,15 +246,13 @@ function* sgCreateProduct(action) {
 
     console.log(response);
 
-    // yield put({
-    //   type: SG_FETCH_PRODUCT_DETAIL,
-    // });
+    yield call(sgFetchProducts);
+    history.push("/");
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
     });
     //TODO: show notification here for creation success
-    // and redirect to index page
   } catch (error) {
     console.error("Create product Saga", error.code, error.message);
     //TODO: show error message here
@@ -260,14 +260,6 @@ function* sgCreateProduct(action) {
       type: SET_LOADING,
       payload: { loading: false },
     });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
-    //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
   }
 }
 

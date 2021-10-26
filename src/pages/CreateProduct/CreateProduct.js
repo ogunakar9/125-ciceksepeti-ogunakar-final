@@ -5,8 +5,10 @@ import { createProduct } from "../../store/actions";
 import UploadImageInput from "../../components/ProductComponents/CreateProduct/UploadImageInput";
 import Header from "../../components/Header/Header";
 import { is_number } from "../../utilities/Constants";
+import { useHistory } from "react-router-dom";
 
 const CreateProduct = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { categories, newImageUrl } = useSelector((state) => state.products);
 
@@ -17,7 +19,7 @@ const CreateProduct = () => {
     isOfferable: false,
     price: "",
   });
-
+  console.log(typeof newProduct.price);
   const [titleWarning, setTitleWarning] = useState(false);
   const [descriptionWarning, setDescriptionWarning] = useState(false);
   const [numberWarning, setNumberWarning] = useState(false);
@@ -88,7 +90,7 @@ const CreateProduct = () => {
       newProduct.category &&
       newProduct.status
     ) {
-      dispatch(createProduct(newProduct));
+      dispatch(createProduct(newProduct, history));
     } else {
       window.alert("Lutfen tum degerleri gecerli doldurun.");
     }

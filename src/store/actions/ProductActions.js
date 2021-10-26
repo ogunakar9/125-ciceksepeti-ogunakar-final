@@ -27,9 +27,9 @@ export const giveOffer = (id, customerOffer) => ({
   payload: { id, customerOffer },
 });
 
-export const createProduct = (newProduct) => ({
+export const createProduct = (newProduct, history) => ({
   type: SG_CREATE_PRODUCT,
-  payload: newProduct,
+  payload: { newProduct, history },
 });
 
 export const purchaseProduct = (id) => ({
