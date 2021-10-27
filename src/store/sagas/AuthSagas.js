@@ -79,8 +79,6 @@ function* sgSignIn(action) {
       payload: { loading: false },
     });
   } catch (error) {
-    console.error("Sign In Saga", error.code, error.message);
-    //TODO: show error message here
     yield put({
       type: SET_LOADING,
       payload: { loading: false },

@@ -117,7 +117,6 @@ const CreateProduct = () => {
   return (
     <>
       <Header />
-      {/*TODO: create product error handler popup*/}
       <div className="create-product_wrapper">
         <div className="create-product_content-wrapper">
           <div className="create-product-detail_wrapper">

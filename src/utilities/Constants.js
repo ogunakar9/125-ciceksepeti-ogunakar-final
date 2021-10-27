@@ -3,6 +3,7 @@ export const user_mail = "user_mail";
 export const is_number = /^[0-9]+$/;
 export const linkTextSignUp = "Giriş Yap";
 export const errorText = "Emailiniz veya şifreniz hatalı.";
+export const text = "Satın Alındı";
 
 export const signInFormContent = {
   forwardLocation: "/signup",

@@ -40,8 +40,6 @@ export default function App() {
     dispatch(fetchReceivedOffers());
   }, [dispatch]);
 
-  //TODO: introduce private routes & lazy load & suspense
-
   return (
     <Router>
       <div>
