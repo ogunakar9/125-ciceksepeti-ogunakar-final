@@ -27,7 +27,6 @@
 .modal-content {
   position: relative;
   transform: translateY(-1.2rem);
-  //TODO: calc viewheight something here to move modal upwards
 
   @media only screen and (max-width: 768px) {
     width: 100vw;
