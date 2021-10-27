@@ -43,7 +43,6 @@ const ProductDetailSection = ({ productDetails, offer }) => {
       </button>
     );
   };
-  //TODO: find out how image load bug makes previous image show before loading new
 
   const ProductsDetailStaticInfo = ({ staticInfo }) => {
     return (
@@ -52,9 +51,6 @@ const ProductDetailSection = ({ productDetails, offer }) => {
       </div>
     );
   };
-
-  //TODO: cannot offer to your own product (or buy) duzenlemek lazim,
-  // error falan ya da gosterme hic almayi
 
   const ProductsDetailStaticInfoWrapper = () => {
     return (
