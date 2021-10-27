@@ -37,7 +37,6 @@
   padding: 1.875rem 0 0 1.875rem;
   align-items: flex-start;
   width: 100%;
-  //background-color: purple;
   flex: 1;
 
   @media only screen and (max-width: 768px) {
@@ -58,14 +57,11 @@
     margin-bottom: 2rem;
   }
 }
-//tum inputlara
-//padding-top: 1.5625rem;
 
 .create-product-detail_input-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  //background-color: yellow;
   width: 100%;
   padding-right: 2.9375rem;
   border-right: 1px solid #F4F4F4;
@@ -89,11 +85,9 @@
 }
 
 .create-product-detail_input-section {
-  //margin-top: 1.5625rem;
   padding-top: 1.5625rem;
   display: flex;
   flex-direction: column;
-  //background-color: red;
   width: 100%;
 
   input {
@@ -172,7 +166,6 @@ input, select {
 
 
   &:focus {
-    //overflow: scroll;
     background-color: #F0F8FF;
     border: 1px solid #4B9CE2;
     color: #3E3E3E;
@@ -185,7 +178,6 @@ select {
   color: #99A0A7;
   padding: 0 0.75rem 0 0.6875rem;
   height: 2.8125rem;
-  //border: none;
   font-size: 1rem;
   line-height: 1.375;
   letter-spacing: 0;
@@ -226,7 +218,6 @@ select {
 }
 
 .offer-fixer {
-  //flex-direction: column !important;
   justify-content: space-between;
   display: flex;
   flex-direction: row;
