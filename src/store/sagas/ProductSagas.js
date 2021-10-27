@@ -67,14 +67,9 @@ function* sgFetchCategories() {
       type: SET_LOADING,
       payload: { loading: true },
     });
-    // const data = { email, password };
     const response = yield call(API.get, "/detail/category/all");
     const data = response.data;
     console.log(data);
-
-    // //set local storage and cookie
-    // localStorage.setItem(user_token, token);
-    // localStorage.setItem(user_mail, email);
 
     yield put({
       type: SET_CATEGORIES,
@@ -92,14 +87,6 @@ function* sgFetchCategories() {
       type: SET_LOADING,
       payload: { loading: false },
     });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
-    //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
   }
 }
 
@@ -146,14 +133,6 @@ function* sgFetchProductDetail(action) {
       type: SET_LOADING,
       payload: { loading: false },
     });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
-    //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
   }
 }
 
@@ -209,14 +188,6 @@ function* sgGiveOffer(action) {
       type: SET_LOADING,
       payload: { loading: false },
     });
-    // put({
-    //   type: SET_SNACKBAR_OPEN,
-    //   payload: true,
-    // }),
-    // put({
-    //   type: SET_SNACKBAR_MESSAGE,
-    //   payload: error.message,
-    // }),
   }
 }
 

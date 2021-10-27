@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
 import { giveOffer, purchaseProduct, setModal } from "../../../store/actions";
+import { is_number } from "../../../utilities/Constants";
 
 const Modal = ({ productDetails, productId }) => {
   const dispatch = useDispatch();
@@ -46,7 +47,11 @@ const Modal = ({ productDetails, productId }) => {
 
   const OfferModalContent = () => {
     const handleOffer = (customerOffer) => {
-      dispatch(giveOffer(productId, customerOffer));
+      if (typeof customerOffer !== "number") {
+        window.alert("Lütfen geçerli bir sayı giriniz.");
+      } else {
+        dispatch(giveOffer(productId, customerOffer));
+      }
     };
 
     const { imageUrl, title, price, id: productId } = productDetails;
@@ -54,16 +59,23 @@ const Modal = ({ productDetails, productId }) => {
     const [customOffer, setCustomOffer] = useState("");
     const [offerTogo, setOfferTogo] = useState(null);
     const [checked, setCheckBoxChecked] = useState(false);
+    const [numberWarning, setNumberWarning] = useState(false);
 
     const twentyPercent = (price * 20) / 100;
     const thirtyPercent = (price * 30) / 100;
     const fortyPercent = (price * 40) / 100;
 
     const handleCustomInput = (e) => {
-      //TODO: handle input checks here
+      setNumberWarning(false);
       setCheckBoxChecked(false);
       setCustomOffer(e.target.value);
-      setOfferTogo(parseInt(e.target.value));
+
+      if (!e.target.value?.match(is_number)) {
+        setNumberWarning(true);
+      } else {
+        setNumberWarning(false);
+        setOfferTogo(parseInt(e.target.value));
+      }
     };
 
     const inputs = [
@@ -73,10 +85,11 @@ const Modal = ({ productDetails, productId }) => {
     ];
 
     const handleRadioInput = (value) => {
+      setNumberWarning(false);
       setCheckBoxChecked(value);
       setOfferTogo(value);
     };
-
+    console.log(offerTogo);
     return (
       <div className="modal_offer_container">
         <GrClose
@@ -121,7 +134,11 @@ const Modal = ({ productDetails, productId }) => {
               <label htmlFor={input["value"]}>{input["label"]}</label>
             </div>
           ))}
-          <div className="modal_offer_input-custom-container">
+          <div
+            className={`modal_offer_input-custom-container ${
+              numberWarning && "custom_container_warning"
+            }`}
+          >
             <input
               type="text"
               id="custom"
@@ -129,6 +146,7 @@ const Modal = ({ productDetails, productId }) => {
               value={customOffer}
               placeholder="Teklif Belirle"
               onChange={handleCustomInput}
+              onClick={() => setCheckBoxChecked(false)}
             />
             <span>TL</span>
           </div>

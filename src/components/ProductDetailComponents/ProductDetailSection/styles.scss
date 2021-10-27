@@ -77,10 +77,8 @@
   }
 
   @media only screen and (max-width: 768px) {
-    //TODO: decide margin or padding
     padding: 0 0.4rem 2rem 0.4rem;
     margin-top: 1rem;
-    //padding-top: 1rem;
   }
 }
 
@@ -209,7 +207,6 @@
 .products_detail_text-info_description {
   font-size: 0.937rem ;
   line-height: 1.437rem;
-  //TODO: fix right padding on description info, margin low res yemiyo
   //max-width: 68%;
   text-align: left;
   margin-right: 14.0625rem;

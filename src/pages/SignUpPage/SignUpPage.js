@@ -11,14 +11,12 @@ import Notification from "../../components/shared/Notification/Notification";
 const SignUpPage = () => {
   const history = useHistory();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  console.log(isSignedIn);
   useEffect(() => {
     if (isSignedIn) {
       history.push("/");
     }
   }, [isSignedIn, history]);
 
-  //TODO: formun sayfanin ortasina gecmesine dikkat et center alignla
   return (
     <>
       <Notification text={errorText} icon={errorIcon} type={"error"} />

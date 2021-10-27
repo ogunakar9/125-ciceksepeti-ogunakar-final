@@ -101,7 +101,6 @@
   flex-direction: column;
   padding-right: 2.3125rem;
 
-  //TODO: check if more items are added whether they fit here or not
   @media only screen and (max-width: 768px) {
     padding: 1rem;
     height: auto;
@@ -200,7 +199,6 @@
 .account-details_list-box_info-price {
   border-radius: 0.5rem;
   background-color: #F2F2F2;
-  //TODO: padding top should be 0.5rem here but it is not necessary for some reason?
   padding: 0 3.625rem 0.5rem 0.625rem;
 
   @media only screen and (min-width: 1200px) {

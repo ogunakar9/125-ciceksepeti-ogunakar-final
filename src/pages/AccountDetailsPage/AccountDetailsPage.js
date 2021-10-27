@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./styles.scss";
 import Header from "../../components/Header/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { acceptOffer, rejectOffer, setModal } from "../../store/actions";
 import profileIconBig from "../../assets/account-details/profile-icons/profile-icon-big.png";
 import Notification from "../../components/shared/Notification/Notification";
@@ -10,15 +9,6 @@ import successIcon from "../../assets/auth/successIcon/successIcon@2x.png";
 import Modal from "../../components/shared/Modal/Modal";
 
 const AccountDetailsPage = () => {
-  const history = useHistory();
-  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
-  //TODO: think about whether you want to redirect to main page when page refreshes
-  useEffect(() => {
-    if (!isSignedIn) {
-      history.push("/signin");
-    }
-  }, [isSignedIn, history]);
-
   const dispatch = useDispatch();
   const { email } = useSelector((state) => state.auth);
   const { givenOffers, receivedOffers } = useSelector((state) => state.account);
@@ -42,10 +32,8 @@ const AccountDetailsPage = () => {
   const handleRejectOffer = (id) => {
     dispatch(rejectOffer(id));
   };
-  //TODO: item satin alindiktan sonra asagidaki listboxta gosterilmeli mi find out
   const handlePurchaseOffered = (id) => {
     console.log("purchase id", id);
-    // dispatch(purchaseProduct(id));
     dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
   const text = "Satın Alındı";

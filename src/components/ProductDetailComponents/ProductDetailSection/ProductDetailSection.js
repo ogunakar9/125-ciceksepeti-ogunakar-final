@@ -17,7 +17,6 @@ const ProductDetailSection = ({ productDetails, offer }) => {
   const handleCancel = () => {
     dispatch(cancelOffer(id, offerId));
   };
-  //TODO: resize image properly
   const {
     isOfferable,
     offerId,
@@ -83,7 +82,6 @@ const ProductDetailSection = ({ productDetails, offer }) => {
     );
   };
 
-  //TODO: image ustten ve alttan biraz marginli olsun
   return (
     <div className="products_detail_wrapper">
       <div className="products_detail_main-container">
@@ -128,7 +126,6 @@ const ProductDetailSection = ({ productDetails, offer }) => {
             )}
           </div>
           <div>
-            {/*TODO: burda aciklama saga sonsuz uzaniyo, buttonlarla aligned wraple*/}
             <div className="products_detail_text-info_description-title">
               <span>açıklama</span>
             </div>

@@ -14,9 +14,6 @@ import {
   fetchProducts,
   fetchGivenOffers,
   fetchReceivedOffers,
-  fetchColors,
-  fetchBrands,
-  fetchStatuses,
 } from "./store/actions";
 import PrivateRoute from "./components/shared/Auth/ProtectedRoute";
 
@@ -33,18 +30,6 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchColors());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchBrands());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchStatuses());
   }, [dispatch]);
 
   useEffect(() => {

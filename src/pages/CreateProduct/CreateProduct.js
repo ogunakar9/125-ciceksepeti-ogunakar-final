@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { createProduct } from "../../store/actions";
+import {
+  createProduct,
+  fetchBrands,
+  fetchColors,
+  fetchStatuses,
+} from "../../store/actions";
 import UploadImageInput from "../../components/ProductComponents/CreateProduct/UploadImageInput";
 import Header from "../../components/Header/Header";
 import { is_number } from "../../utilities/Constants";
@@ -10,6 +15,19 @@ import { useHistory } from "react-router-dom";
 const CreateProduct = () => {
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchColors());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchBrands());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchStatuses());
+  }, [dispatch]);
+
   const { categories, newImageUrl } = useSelector((state) => state.products);
 
   const { colors, statuses, brands } = useSelector((state) => state.main);
@@ -229,8 +247,6 @@ const CreateProduct = () => {
               <div className="create-product-detail_input-section-price">
                 <div className="create-product-detail_input-section">
                   <label htmlFor="price">Fiyat</label>
-                  {/*TODO: belki bu inputun sonuna absolute bir "TL" yazisi*/}
-                  {/*eklenebilir.*/}
                   <input
                     placeholder="Bir fiyat girin"
                     name="price"
