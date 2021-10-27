@@ -4,23 +4,25 @@ import { Link } from "react-router-dom";
 
 const Card = ({ img, price, brand, color, description, id, title }) => {
   return (
-    <div className="card_item-background">
-      <div className="card_item-inner">
-        <div className="card_item-inner-wrapper">
-          <Link className="card_item-link" to={`/productdetails/${id}`}>
-            <div className="card_item-image-wrapper">
-              <img className="card_item-image" src={img} alt={description} />
-            </div>
-          </Link>
+    <Link to={`/productdetails/${id}`} className="card_item-background">
+      <div className="card_item-image-wrapper">
+        <img className="card_item-image" src={img} alt={description} />
+      </div>
+      <div className="card_item_detail">
+        <div className="card_item_minor-info">
+          <div className="card_item-brand">
+            <span>{brand}</span>
+          </div>
+          <div className="card_item_color">
+            <span className="card_item_color-title">Renk: </span>
+            <span className="card_item_color-value">{color}</span>
+          </div>
+        </div>
+        <div className="card_item_price">
+          <span>{price} TL</span>
         </div>
       </div>
-      <div className="card_item-detail">
-        <span>{price}</span>
-        <span>{brand}</span>
-        <span>{color}</span>
-        <span>{title}</span>
-      </div>
-    </div>
+    </Link>
   );
 };
 

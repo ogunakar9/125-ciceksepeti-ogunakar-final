@@ -12,7 +12,7 @@ const CardContainer = () => {
   if (categoryQuery) {
     filtered = items.filter((item) => item.category.title === categoryQuery);
   }
-
+  //TODO: add usecallbak here
   return (
     <div className="cards-container">
       {filtered.map((item) => (

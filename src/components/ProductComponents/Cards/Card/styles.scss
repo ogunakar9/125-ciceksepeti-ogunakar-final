@@ -1,67 +1,65 @@
-.card_item-detail {
-  height: 3rem;
-  font-size: 1rem;
-}
 .card_item-background {
-  flex: 0 0 20%;
-  //height: 24.5rem;
-  background-color: #F2F2F2;
-}
-
-.card_item-inner {
-  padding: 0 10px;
-  //background-color: #FFFFFF;
-  position: relative;
+  flex: 0 1 calc(20% - 1rem);
+  background-color: #FFFFFF;
+  padding: 0.625rem;
   border-radius: 0.5rem;
-  background-color: #F2F2F2;
-
-}
-//
-.card_item-inner-wrapper {
-  //border-radius: 0.5rem;
-  //padding: 10px 0px;
-  //background-color: #FFFFFF;
-}
-
-.card_item-link {
-
-  display: block;
-  border-radius: 0.5rem;
-  //border: 1px solid black;
-  position: relative;
-  background-color: #F2F2F2;
-  //text-decoration: none;
+  flex-direction: column;
+  color: #FFFFFF;
 }
 
 .card_item-image-wrapper {
-  overflow: hidden;
-  height: 0;
-  position: relative;
-  padding-top: 130%;
-}
-
-.card_item-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  display: flex;
+  height: 18.5625rem;
+  justify-content: center;
+  max-width: 100%;
   border-radius: 0.5rem;
 }
 
-//
-//.card-single-container {
-//  max-width: 17.5rem;
-//
-//  border-radius: 8px;
+.card_item-image {
+  min-height: 100%;
+  border-radius: 0.5rem;
+}
+
+.card_item_detail {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.625rem;
+  margin-top: 0.3125rem;
+}
+
+.card_item_minor-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_item-brand {
+  font: normal normal bold 0.9375rem/1.375 Nunito;
+  color: #4B9CE2;
+  text-transform: capitalize;
+}
+
+.card_item_color {
+  //color: #3E3E3E;
+  font: normal normal bold 0.8125rem/1.375 Nunito;
+  color: #3E3E3E;
+  text-transform: capitalize;
+  span:nth-child(2) {
+    font-weight: normal;
+  }
+}
+
+.card_item_price {
+  font: normal normal bold 1.125rem/1.375 Nunito;
+  color: #3E3E3E;
+}
+
+//.card_item_color-title {
+//  color: #3E3E3E;
+//  font: normal normal bold 0.8125rem/2.2 Nunito;
 //}
-////
-//.card-img-container {
-//  height: 100%;
-//}
 //
-//.card-image {
-//  //height: 100%;
-//  object-fit: contain;
+//.card_item_color-value {
+//  color: #3E3E3E;
+//  font: normal normal bold 0.8125rem/2.2 Nunito;
 //}
