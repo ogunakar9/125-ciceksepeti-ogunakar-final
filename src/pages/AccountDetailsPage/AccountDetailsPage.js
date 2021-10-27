@@ -14,8 +14,6 @@ const AccountDetailsPage = () => {
   const { givenOffers, receivedOffers } = useSelector((state) => state.account);
 
   const [activeTab, setActiveTab] = useState("received");
-  console.log("given", givenOffers);
-  console.log("received", receivedOffers);
 
   const handleReceived = () => {
     setActiveTab("received");
@@ -32,8 +30,7 @@ const AccountDetailsPage = () => {
   const handleRejectOffer = (id) => {
     dispatch(rejectOffer(id));
   };
-  const handlePurchaseOffered = (id) => {
-    console.log("purchase id", id);
+  const handlePurchaseOffered = () => {
     dispatch(setModal({ isModalOpen: true, modalContent: "buy" }));
   };
   const text = "Satın Alındı";

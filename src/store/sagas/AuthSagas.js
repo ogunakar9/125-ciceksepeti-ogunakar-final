@@ -13,8 +13,6 @@ import { SET_LOADING, SET_NOTIFICATION } from "../types/MainTypes";
 import { sgFetchGivenOffers, sgFetchReceivedOffers } from "./AccountSagas";
 
 function* sgSignUp(action) {
-  console.log("Sign Up Saga");
-
   try {
     yield put({
       type: SET_LOADING,
@@ -52,7 +50,6 @@ function* sgSignUp(action) {
 }
 
 function* sgSignIn(action) {
-  console.log("Sign in Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -114,7 +111,6 @@ export function* sgSignOut() {
 }
 
 export function* sgCheckUserSession() {
-  console.log("checking login");
   try {
     yield put({
       type: SET_LOADING,
@@ -140,7 +136,6 @@ export function* sgCheckUserSession() {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },

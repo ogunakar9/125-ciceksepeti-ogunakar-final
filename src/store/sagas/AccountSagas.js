@@ -13,7 +13,6 @@ import { SG_FETCH_PRODUCT_DETAIL } from "../types/ProductTypes";
 import { SET_LOADING } from "../types/MainTypes";
 
 export function* sgFetchGivenOffers() {
-  console.log("profile Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -34,7 +33,6 @@ export function* sgFetchGivenOffers() {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("account response", response);
 
     yield put({
       type: SET_GIVEN_OFFERS,
@@ -45,7 +43,6 @@ export function* sgFetchGivenOffers() {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -54,7 +51,6 @@ export function* sgFetchGivenOffers() {
 }
 
 export function* sgFetchReceivedOffers() {
-  console.log("received offer Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -76,7 +72,6 @@ export function* sgFetchReceivedOffers() {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log("account response", response);
 
     yield put({
       type: SET_RECEIVED_OFFERS,
@@ -87,7 +82,6 @@ export function* sgFetchReceivedOffers() {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -96,7 +90,6 @@ export function* sgFetchReceivedOffers() {
 }
 
 export function* sgRejectOffer(action) {
-  console.log("reject offer Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -115,7 +108,7 @@ export function* sgRejectOffer(action) {
 
     const id = action.payload;
 
-    const response = yield call(
+    yield call(
       API.post,
       `/account/reject-offer/${id}`,
       {},
@@ -125,7 +118,6 @@ export function* sgRejectOffer(action) {
         },
       }
     );
-    console.log(response);
 
     yield put({
       type: SG_FETCH_RECEIVED_OFFERS,
@@ -135,7 +127,6 @@ export function* sgRejectOffer(action) {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -144,7 +135,6 @@ export function* sgRejectOffer(action) {
 }
 
 export function* sgAcceptOffer(action) {
-  console.log("accept offer Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -162,7 +152,7 @@ export function* sgAcceptOffer(action) {
 
     const id = action.payload;
 
-    const response = yield call(
+    yield call(
       API.put,
       `/account/accept-offer/${id}`,
       {},
@@ -173,8 +163,6 @@ export function* sgAcceptOffer(action) {
       }
     );
 
-    console.log(response);
-
     yield put({
       type: SG_FETCH_RECEIVED_OFFERS,
     });
@@ -183,7 +171,6 @@ export function* sgAcceptOffer(action) {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -192,7 +179,6 @@ export function* sgAcceptOffer(action) {
 }
 
 export function* sgCancelOffer(action) {
-  console.log("cancel offer Saga");
   try {
     yield put({
       type: SET_LOADING,
@@ -209,16 +195,11 @@ export function* sgCancelOffer(action) {
       return;
     }
 
-    const response = yield call(
-      API.delete,
-      `/account/cancel-offer/${offerId}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-    console.log("account response", response);
+    yield call(API.delete, `/account/cancel-offer/${offerId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     yield put({
       type: SG_FETCH_PRODUCT_DETAIL,
@@ -229,7 +210,6 @@ export function* sgCancelOffer(action) {
       payload: { loading: false },
     });
   } catch (error) {
-    console.log(error);
     yield put({
       type: SET_LOADING,
       payload: { loading: false },

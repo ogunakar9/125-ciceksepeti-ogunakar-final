@@ -37,7 +37,6 @@ const CreateProduct = () => {
     isOfferable: false,
     price: "",
   });
-  console.log(typeof newProduct.price);
   const [titleWarning, setTitleWarning] = useState(false);
   const [descriptionWarning, setDescriptionWarning] = useState(false);
   const [numberWarning, setNumberWarning] = useState(false);
@@ -92,7 +91,6 @@ const CreateProduct = () => {
       [e.target.name]: valueType[e.target.value],
     });
   };
-  console.log(newProduct);
   //All the validations before creation.
   const handleCreateProduct = () => {
     if (

@@ -24,7 +24,6 @@ const Modal = ({ productDetails, productId }) => {
   };
 
   const BuyModalContent = ({ productId }) => {
-    console.log(productId);
     const handleBuy = () => {
       dispatch(purchaseProduct(productId));
     };
@@ -89,7 +88,7 @@ const Modal = ({ productDetails, productId }) => {
       setCheckBoxChecked(value);
       setOfferTogo(value);
     };
-    console.log(offerTogo);
+
     return (
       <div className="modal_offer_container">
         <GrClose

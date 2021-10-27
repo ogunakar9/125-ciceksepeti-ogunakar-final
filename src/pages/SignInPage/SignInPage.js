@@ -12,7 +12,6 @@ const SignInPage = () => {
   const history = useHistory();
   const isSignedIn = useSelector((state) => state.auth.isSignedIn);
 
-  console.log(isSignedIn);
   useEffect(() => {
     if (isSignedIn) {
       history.push("/");

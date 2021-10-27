@@ -16,100 +16,80 @@ import {
 } from "../types/MainTypes";
 
 export function* sgFetchColors() {
-  console.log("fetch color Saga");
   try {
     const response = yield call(API.get, "/detail/color/all");
-    console.log("color", response);
 
     yield put({
       type: SET_COLORS,
       payload: response.data,
     });
-  } catch (error) {
-    console.log(error);
-    yield all([]);
-  }
+  } catch (error) {}
 }
 
 export function* sgFetchBrands() {
-  console.log("fetch brand Saga");
   try {
     const response = yield call(API.get, "/detail/brand/all");
-    console.log("brand", response);
 
     yield put({
       type: SET_BRANDS,
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
     yield all([]);
   }
 }
 
 export function* sgFetchStatuses() {
-  console.log("fetch status Saga");
   try {
     const response = yield call(API.get, "/detail/status/all");
-    console.log("status response", response);
 
     yield put({
       type: SET_STATUSES,
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
     yield all([]);
   }
 }
 
 export function* sgFetchColor(action) {
-  console.log("fetch color Saga");
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/color/${id}`);
-    console.log("color", response);
 
     yield put({
       type: SET_COLOR,
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
     yield all([]);
   }
 }
 
 export function* sgFetchBrand(action) {
-  console.log("fetch brand Saga");
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/brand/${id}`);
-    console.log("brand", response);
 
     yield put({
       type: SET_BRAND,
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
     yield all([]);
   }
 }
 
 export function* sgFetchStatus(action) {
-  console.log("fetch status Saga");
   try {
     const id = action.payload;
     const response = yield call(API.get, `/detail/status/${id}`);
-    console.log("status", response);
 
     yield put({
       type: SET_STATUS,
       payload: response.data,
     });
   } catch (error) {
-    console.log(error);
     yield all([]);
   }
 }

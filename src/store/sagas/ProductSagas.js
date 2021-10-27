@@ -18,8 +18,6 @@ import { SG_FETCH_GIVEN_OFFERS } from "../types/AccountTypes";
 import { SET_LOADING, SET_MODAL, SET_NOTIFICATION } from "../types/MainTypes";
 
 function* sgFetchProducts() {
-  console.log("Products Saga");
-
   try {
     yield put({
       type: SET_LOADING,
@@ -27,11 +25,6 @@ function* sgFetchProducts() {
     });
     const response = yield call(API.get, "/product/all");
     const data = response.data;
-    console.log(data);
-
-    // //set local storage and cookie
-    // localStorage.setItem(user_token, token);
-    // localStorage.setItem(user_mail, email);
 
     yield put({
       type: SET_PRODUCTS,
@@ -50,8 +43,6 @@ function* sgFetchProducts() {
 }
 
 function* sgFetchCategories() {
-  console.log("Categories Saga");
-
   try {
     yield put({
       type: SET_LOADING,
@@ -59,7 +50,6 @@ function* sgFetchCategories() {
     });
     const response = yield call(API.get, "/detail/category/all");
     const data = response.data;
-    console.log(data);
 
     yield put({
       type: SET_CATEGORIES,
@@ -88,7 +78,6 @@ function* sgFetchProductDetail(action) {
 
     const response = yield call(API.get, `/product/${id}`);
     const data = response.data;
-    console.log(data);
 
     yield call(sgFetchGivenOffers);
     const { givenOffers } = yield select((state) => state.account);
@@ -137,13 +126,11 @@ function* sgGiveOffer(action) {
       offeredPrice: customerOffer,
     };
 
-    const response = yield call(API.post, `/product/offer/${id}`, price, {
+    yield call(API.post, `/product/offer/${id}`, price, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    console.log(response);
 
     yield put({
       type: SG_FETCH_PRODUCT_DETAIL,
@@ -173,8 +160,6 @@ function* sgGiveOffer(action) {
 }
 
 function* sgCreateProduct(action) {
-  console.log("Create Product Saga");
-
   try {
     yield put({
       type: SET_LOADING,
@@ -190,13 +175,11 @@ function* sgCreateProduct(action) {
 
     const { newImageUrl } = yield select((state) => state.products);
     const data = { ...newProduct, imageUrl: newImageUrl };
-    const response = yield call(API.post, "/product/create", data, {
+    yield call(API.post, "/product/create", data, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
-
-    console.log(response);
 
     yield call(sgFetchProducts);
     history.push("/");
@@ -213,15 +196,12 @@ function* sgCreateProduct(action) {
 }
 
 function* sgPurchaseProduct(action) {
-  console.log("Purchase Product Saga");
-
   try {
     yield put({
       type: SET_LOADING,
       payload: { loading: true },
     });
     const { isSignedIn, token } = yield select((state) => state.auth);
-    console.log(isSignedIn);
 
     if (!isSignedIn) {
       yield put({
@@ -231,8 +211,7 @@ function* sgPurchaseProduct(action) {
       return;
     }
     const id = action.payload;
-    console.log(id);
-    const response = yield call(
+    yield call(
       API.put,
       `/product/purchase/${id}`,
       {},
@@ -242,8 +221,6 @@ function* sgPurchaseProduct(action) {
         },
       }
     );
-
-    console.log(response);
 
     yield put({
       type: SG_FETCH_GIVEN_OFFERS,
@@ -282,8 +259,6 @@ function* sgPurchaseProduct(action) {
 }
 
 function* sgUploadNewProductImage(action) {
-  console.log("Upload New Product Image Saga");
-
   try {
     yield put({
       type: SET_LOADING,
@@ -300,18 +275,14 @@ function* sgUploadNewProductImage(action) {
     }
 
     const image = action.payload;
-    console.log("image saga", image);
     const formData = new FormData();
     formData.append("file", image);
-    console.log(formData);
     const response = yield call(API.post, "/file/upload/image", formData, {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-type": "multipart/form-data",
       },
     });
-
-    console.log("image upload url", response);
 
     yield put({
       type: SET_NEW_IMAGE_URL,
