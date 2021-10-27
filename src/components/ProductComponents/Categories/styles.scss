@@ -7,10 +7,20 @@
   flex-wrap: wrap;
   margin: 2rem 0;
   border-bottom: 1px solid #E0E0E0;
-  //active
-  //border-bottom: 2px solid #4B9CE2;
-  //TODO: set active link border-bottom
 
+  @media only screen and (max-width: 768px) {
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    height: 3.2rem;
+    margin-bottom: 0.7rem;
+    mix-blend-mode: normal;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .category-link {
@@ -18,8 +28,13 @@
   color: #525252;
   text-transform: capitalize;
   height: 1.5rem;
-
   padding-bottom: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal 600 1.8rem/1.2 Nunito;
+    padding-bottom: 0.7rem;
+    height: auto;
+  }
 }
 
 .category-selected {
