@@ -5,6 +5,10 @@
   border-radius: 0.5rem;
   flex-direction: column;
   color: #FFFFFF;
+
+  @media only screen and (max-width: 768px) {
+    flex: 0 1 calc(50% - 0.5rem);
+  }
 }
 
 .card_item-image-wrapper {
@@ -13,6 +17,10 @@
   justify-content: center;
   max-width: 100%;
   border-radius: 0.5rem;
+
+  @media only screen and (max-width: 768px) {
+    height: 18.4rem;
+  }
 }
 
 .card_item-image {
@@ -26,17 +34,30 @@
   width: 100%;
   gap: 1.625rem;
   margin-top: 0.3125rem;
+
+  @media only screen and (max-width: 768px) {
+    gap: 1.2rem;
+    margin-top: 0.5rem
+  }
 }
 
 .card_item_minor-info {
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 }
 
 .card_item-brand {
   font: normal normal bold 0.9375rem/1.375 Nunito;
   color: #4B9CE2;
   text-transform: capitalize;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 1.5rem/1.2 Nunito;
+  }
 }
 
 .card_item_color {
@@ -47,11 +68,19 @@
   span:nth-child(2) {
     font-weight: normal;
   }
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 1rem/1.4 Nunito;
+  }
 }
 
 .card_item_price {
   font: normal normal bold 1.125rem/1.375 Nunito;
   color: #3E3E3E;
+
+  @media only screen and (max-width: 768px) {
+    font: normal normal bold 1.5rem/1.2 Nunito;
+  }
 }
 
 //.card_item_color-title {
