@@ -23,7 +23,6 @@ const CardContainer = () => {
           brand={item.brand.title}
           color={item.color.title}
           description={item.description}
-          title={item.title}
           id={item.id}
         />
       ))}

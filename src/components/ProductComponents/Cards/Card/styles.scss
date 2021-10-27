@@ -9,6 +9,13 @@
   @media only screen and (max-width: 768px) {
     flex: 0 1 calc(50% - 0.5rem);
   }
+
+  @media only screen and (min-width: 769px) and (max-width: 1151px){
+    flex: 0 1 calc(33% - 0.6rem);
+  }
+  @media only screen and (min-width: 1151px) and (max-width: 1380px){
+    flex: 0 1 calc(25% - 0.75rem);
+  }
 }
 
 .card_item-image-wrapper {

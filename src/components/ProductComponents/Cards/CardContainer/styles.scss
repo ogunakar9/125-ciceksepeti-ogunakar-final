@@ -13,4 +13,10 @@
   @media only screen and (max-width: 768px) {
     gap: 1rem;
   }
+  @media only screen and (min-width: 769px) and (max-width: 1150px) {
+    gap: 0.9rem;
+  }
+  @media only screen and (min-width: 1151px) and (max-width: 1380px) {
+    gap: 1rem;
+  }
 }

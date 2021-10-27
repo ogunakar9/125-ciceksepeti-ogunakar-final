@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.scss";
 import { Link } from "react-router-dom";
 
-const Card = ({ img, price, brand, color, description, id, title }) => {
+const Card = ({ img, price, brand, color, description, id }) => {
   return (
     <Link to={`/productdetails/${id}`} className="card_item-background">
       <div className="card_item-image-wrapper">
