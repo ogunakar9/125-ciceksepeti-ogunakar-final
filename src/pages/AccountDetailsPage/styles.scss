@@ -203,6 +203,15 @@
   //TODO: padding top should be 0.5rem here but it is not necessary for some reason?
   padding: 0 3.625rem 0.5rem 0.625rem;
 
+  @media only screen and (min-width: 1200px) {
+    width: 14.375rem;
+  }
+
+  @media only screen and (min-width: 800px) and (max-width: 1200px){
+    width: 13rem;
+    white-space: nowrap;
+  }
+
   span:first-child{
     color: #B1B1B1;
     font-size: 0.9375rem;
@@ -244,13 +253,14 @@
   @media only screen and (min-width: 769px) and (max-width: 1200px) {
     padding: 0.5rem;
     line-height: 0;
-    width: 10.8rem;
-    height: 3rem;
+    width: 5rem;
+    height: 2rem;
   }
 
   @media only screen and (min-width: 1201px) and (max-width: 1500px) {
     line-height: 0;
     padding: 1rem;
+    width: 6rem;
   }
 
   @media only screen and (max-width: 768px) {
@@ -295,6 +305,12 @@
     height: 3rem;
     width: 10.8rem;
     line-height: 0;
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1500px) {
+    white-space: nowrap;
+    line-height: 1;
+    width: 7rem;
   }
 }
 
