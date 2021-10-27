@@ -92,6 +92,7 @@ function* sgSignIn(action) {
   }
 }
 
+//works but not used in this particular version
 export function* sgSignOut() {
   try {
     yield put({

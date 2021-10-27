@@ -33,8 +33,17 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchCategories());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(fetchColors());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(fetchBrands());
+  }, [dispatch]);
+
+  useEffect(() => {
     dispatch(fetchStatuses());
   }, [dispatch]);
 

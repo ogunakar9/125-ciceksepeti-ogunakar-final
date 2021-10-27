@@ -1,10 +1,27 @@
-# Getting Started with Create React App
+# 125-Ciceksepeti-React-Bootcamp
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project uses the following technologies:
 
-## Available Scripts
+* React
+* SCSS (through node-sass package)
+* React-Redux
+* Redux-Saga
+* React-router-dom  
+* Axios
 
-In the project directory, you can run:
+Click here for a [live demo](https://125-ciceksepeti-ogunakar-final.vercel.app/).
+
+## How it works:
+
+* All the styling is applied through SCSS. 
+* All API calls are made through Axios. 
+* Create products and profile pages are private routes for users only.  
+* Products, product categories, colors, brands, statuses are saved onto redux storage on load.
+* Category navbar uses query params and useLocation to redirect to a particular category with filtered cards.   
+* User authorization token is saved into local storage.
+* Every time a user visits, check user login saga is called. If a token exists in local storage, it gets saved into redux store. Should any calls on behalf of the user be made, a bearer token is attached automatically.
+* If a particular card is clicked, another API call is made with its id to fetch its details for the product-detail page.
+* Profile page displays given and received offers.   
 
 ### `yarn start`
 
