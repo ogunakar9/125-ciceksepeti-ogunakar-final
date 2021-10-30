@@ -32,7 +32,16 @@ Click here for a [live demo](https://125-ciceksepeti-ogunakar-final.vercel.app/)
 ### PageSpeed Insights Performance Report For Desktop & Mobile: 
 
 ##### Desktop:
-![desktop-performance](./src/assets/performance-report/performance-desktop.jpg "Desktop Performance")
+![desktop-performance](src/assets/performance-report/pageSpeed-desktop.jpg "Desktop Performance")
 
 ##### Mobile:
-![mobile-performance](./src/assets/performance-report/performance-mobile.jpg "Mobile Performance")
+![mobile-performance](src/assets/performance-report/pageSpeed-mobile.jpg "Mobile Performance")
+
+
+### Lighthouse Performance Report For Desktop & Mobile: 
+
+##### Desktop:
+![desktop-performance](src/assets/performance-report/lighthouse-desktop.jpg "Desktop Performance")
+
+##### Mobile:
+![mobile-performance](src/assets/performance-report/lighthouse-mobile.jpg "Mobile Performance")
