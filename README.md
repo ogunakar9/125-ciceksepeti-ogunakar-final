@@ -27,3 +27,12 @@ Click here for a [live demo](https://125-ciceksepeti-ogunakar-final.vercel.app/)
 * A big part of responsiveness is achieved through the use of rems and flex.
 * Notification delay is managed with setTimeout and clearTimeout.
 * Loading state is enabled just before async calls are made. Toggles the loader and displays it using React portal.
+
+
+### PageSpeed Insights Performance Report For Desktop & Mobile: 
+
+##### Desktop:
+![desktop-performance](./src/assets/performance-report/performance-desktop.jpg "Desktop Performance")
+
+##### Mobile:
+![mobile-performance](./src/assets/performance-report/performance-mobile.jpg "Mobile Performance")
