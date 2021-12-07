@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense, lazy } from "react";
 import "./style/default.scss";
-import Index from "./pages";
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SignUpPage from "./pages/SignUpPage/SignUpPage";
-import SignInPage from "./pages/SignInPage/SignInPage";
-import AccountDetailsPage from "./pages/AccountDetailsPage/AccountDetailsPage";
-import ProductDetails from "./pages/ProductDetails";
-import CreateProduct from "./pages/CreateProduct/CreateProduct";
-import {
-  checkUserSession,
-  fetchCategories,
-  fetchProducts,
-  fetchGivenOffers,
-  fetchReceivedOffers,
-} from "./store/actions";
+
+import { checkUserSession, fetchProducts } from "./store/actions";
 import PrivateRoute from "./components/shared/Auth/ProtectedRoute";
+
+const Index = lazy(() => import("./pages"));
+const SignUpPage = lazy(() => import("./pages/SignUpPage/SignUpPage"));
+const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
+const AccountDetailsPage = lazy(() =>
+  import("./pages/AccountDetailsPage/AccountDetailsPage")
+);
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const CreateProduct = lazy(() => import("./pages/CreateProduct/CreateProduct"));
 
 export default function App() {
   const dispatch = useDispatch();
@@ -28,21 +26,9 @@ export default function App() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(fetchCategories());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchGivenOffers());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(fetchReceivedOffers());
-  }, [dispatch]);
-
   return (
     <Router>
-      <div>
+      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/">
             <Index />
@@ -59,7 +45,7 @@ export default function App() {
             <ProductDetails />
           </Route>
         </Switch>
-      </div>
+      </Suspense>
     </Router>
   );
 }

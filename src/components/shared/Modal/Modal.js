@@ -5,6 +5,7 @@ import ReactDOM from "react-dom";
 import { GrClose } from "react-icons/gr";
 import { giveOffer, purchaseProduct, setModal } from "../../../store/actions";
 import { is_number } from "../../../utilities/Constants";
+import uuid from "react-uuid";
 
 const Modal = ({ productDetails, productId }) => {
   const dispatch = useDispatch();
@@ -117,10 +118,11 @@ const Modal = ({ productDetails, productId }) => {
           {inputs.map((input) => (
             <div
               className={`modal_offer_input-single-container ${
-                input["value"] === checked &&
-                "modal_offer_input-single-container_selected"
+                input["value"] === checked
+                  ? "modal_offer_input-single-container_selected"
+                  : ""
               }`}
-              key={input["value"]}
+              key={uuid()}
             >
               <input
                 type="radio"

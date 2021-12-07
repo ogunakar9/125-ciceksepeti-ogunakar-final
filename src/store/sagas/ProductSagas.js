@@ -13,7 +13,7 @@ import {
 } from "../types/ProductTypes";
 import { call, put, select, takeLatest } from "redux-saga/effects";
 import API from "../../services/api";
-import { sgFetchGivenOffers } from "./AccountSagas";
+import { sgFetchGivenOffers, sgFetchReceivedOffers } from "./AccountSagas";
 import { SG_FETCH_GIVEN_OFFERS } from "../types/AccountTypes";
 import { SET_LOADING, SET_MODAL, SET_NOTIFICATION } from "../types/MainTypes";
 
@@ -30,6 +30,11 @@ function* sgFetchProducts() {
       type: SET_PRODUCTS,
       payload: data,
     });
+
+    yield call(sgFetchCategories);
+    yield call(sgFetchGivenOffers);
+    yield call(sgFetchReceivedOffers);
+
     yield put({
       type: SET_LOADING,
       payload: { loading: false },
@@ -44,21 +49,12 @@ function* sgFetchProducts() {
 
 function* sgFetchCategories() {
   try {
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: true },
-    });
     const response = yield call(API.get, "/detail/category/all");
     const data = response.data;
 
     yield put({
       type: SET_CATEGORIES,
       payload: data,
-    });
-
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: false },
     });
   } catch (error) {
     yield put({

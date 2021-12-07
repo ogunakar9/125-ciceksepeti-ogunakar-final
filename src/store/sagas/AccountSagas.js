@@ -14,10 +14,6 @@ import { SET_LOADING } from "../types/MainTypes";
 
 export function* sgFetchGivenOffers() {
   try {
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: true },
-    });
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
@@ -38,10 +34,6 @@ export function* sgFetchGivenOffers() {
       type: SET_GIVEN_OFFERS,
       payload: response.data,
     });
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: false },
-    });
   } catch (error) {
     yield put({
       type: SET_LOADING,
@@ -52,11 +44,6 @@ export function* sgFetchGivenOffers() {
 
 export function* sgFetchReceivedOffers() {
   try {
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: true },
-    });
-
     const { isSignedIn, token } = yield select((state) => state.auth);
 
     if (!isSignedIn) {
@@ -76,10 +63,6 @@ export function* sgFetchReceivedOffers() {
     yield put({
       type: SET_RECEIVED_OFFERS,
       payload: response.data,
-    });
-    yield put({
-      type: SET_LOADING,
-      payload: { loading: false },
     });
   } catch (error) {
     yield put({
