@@ -9,7 +9,7 @@ This project uses the following technologies:
 * React-router-dom  
 * Axios
 
-Click here for a [live demo](https://125-ciceksepeti-ogunakar-final.vercel.app/). (backend not available at the moment)
+live demo not available at the moment
 
 ## How it works:
 
